@@ -1,0 +1,46 @@
+.productCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem 0;
+  height: 50vh;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    border: solid 1px black;
+    box-shadow: 1px 1px 10px 1px #000000;
+  }
+
+  img {
+    width: 80%;
+    height: 65%;
+    margin: 0 auto;
+  }
+
+  .cardBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .productCard {
+    height: 45vh;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .productCard {
+    height: 35vh;
+  }
+}

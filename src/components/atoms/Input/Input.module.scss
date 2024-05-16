@@ -1,0 +1,16 @@
+.input {
+  // margin-bottom: 1.5rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+
+  &.error {
+    // border: solid 1px red;
+    box-shadow: 0.1px 0.1px 5px 0.1px red;
+  }
+}
+
+.errorMessage {
+  margin: 0.5rem 0.5rem 1.5rem;
+  color: red;
+  font-weight: bold;
+}

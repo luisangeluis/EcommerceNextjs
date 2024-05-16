@@ -1,0 +1,31 @@
+.header {
+  padding: 1rem;
+  text-align: center;
+
+  .nav {
+    padding: 0.5rem;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+  }
+}

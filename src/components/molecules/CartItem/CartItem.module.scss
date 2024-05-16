@@ -1,0 +1,13 @@
+.item {
+  margin: 1rem auto;
+  padding: 1rem 0.5rem;
+  background-color: #e3e6e6;
+
+  text-align: center;
+  border-radius: 5px;
+
+  .itemBody {
+    border-radius: 10px;
+    padding: 1rem 0.5rem;
+  }
+}
