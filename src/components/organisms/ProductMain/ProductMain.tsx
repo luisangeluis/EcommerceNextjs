@@ -9,7 +9,7 @@ const ProductMain = async () => {
 
   return (
     <section className={`${styles.productMain}`}>
-      {products.response.map((product: Product) => {
+      {products.products.map((product: Product) => {
         return <ProductCard product={product} key={product.id} />;
       })}
     </section>
@@ -19,9 +19,8 @@ const ProductMain = async () => {
 const getProducts = async () => {
   try {
     const response = await fetch(`${apiUrl}/api/v1/products`);
-    const data = await response.json();
+    return await response.json();
 
-    return data;
   } catch (error: any) {
     console.log(error.message);
   }

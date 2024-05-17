@@ -46,7 +46,7 @@ const Header = () => {
   };
 
   return (
-    <header className={`${styles.header} bg-red-500`}>
+    <header className={`${styles.header} bg-blue-500`}>
       <h1>
         <Link href={"/"}>Ecommerce</Link>
       </h1>

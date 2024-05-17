@@ -4,7 +4,7 @@
   align-items: center;
   flex-direction: column;
   margin: 1rem 0;
-  height: 50vh;
+  height: 75vh;
   border-radius: 5px;
   background-color: #ffffff;
   cursor: pointer;
@@ -33,14 +33,10 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .productCard {
-    height: 45vh;
-  }
-}
+
 
 @media screen and (min-width: 992px) {
   .productCard {
-    height: 35vh;
+    height: 65vh;
   }
 }
