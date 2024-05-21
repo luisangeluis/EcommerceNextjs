@@ -1,10 +1,13 @@
+//Dependencies
 import { useSelector } from "react-redux";
+import Providers from "../store/Provider";
+//Styles
+import "./globals.css";
+import { Inter } from "next/font/google";
+//Components
 import Header from "@/components/molecules/Header/Header";
 import Footer from "@/components/molecules/Footer/Footer";
 import Cart from "@/components/molecules/Cart/Cart";
-import Providers from "../store/Provider";
-import "./globals.css";
-import { Inter } from "next/font/google";
 import Alert from "@/components/molecules/Alert/Alert";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,7 +28,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <Header />
           <Cart />
-          {children}
+          <main>{children}</main>
           <Footer />
           <Alert />
         </body>

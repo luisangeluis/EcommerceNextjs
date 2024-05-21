@@ -61,26 +61,32 @@ const LoginForm = () => {
 
   return (
     <form className={`${styles.form}`} onSubmit={handleSubmit(onSubmit)}>
-      <h2>Login</h2>
-      <Input
-        type={"text"}
-        id={"email"}
-        name={"email"}
-        label={"Email"}
-        register={register}
-        validations={{ required: true }}
-        errors={errors}
-      />
-      <Input
-        type={"text"}
-        id={"password"}
-        name={"password"}
-        label={"Password"}
-        register={register}
-        validations={{ required: true }}
-        errors={errors}
-      />
-      <input type="submit" value="Sign in" />
+      <div className={styles.headerForm}>
+        <h2>Login</h2>
+      </div>
+      <div className={styles.bodyForm}>
+        <Input
+          type={"text"}
+          id={"email"}
+          name={"email"}
+          label={"Email"}
+          register={register}
+          validations={{ required: true }}
+          errors={errors}
+        />
+        <Input
+          type={"text"}
+          id={"password"}
+          name={"password"}
+          label={"Password"}
+          register={register}
+          validations={{ required: true }}
+          errors={errors}
+        />
+        <div>
+          <input type="submit" value="Sign in" />
+        </div>
+      </div>
     </form>
   );
 };

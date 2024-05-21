@@ -3,9 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --primaryColor: #64ff00;
+  --colorOne: #e7e79d;
+  --colorTwo: #c0d890;
+  --colorThree: #78a890;
+  --colorFour: #606078;
+  --colorFive: #d8a878;
 }
 
+/* input:focus, */
+input:active,
+/* input:hover, */
+input:disabled {
+  outline: none;
+}
 
 body {
   display: flex;
@@ -15,9 +25,14 @@ body {
   background-color: #e3e6e6;
 }
 
-input:focus,
-input:active,
-input:hover,
-input:disabled {
-  outline: none;
+main {
+  display: flex;
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+}
+
+@media screen and (min-width: 992px) {
+  main {
+    padding: 1rem 2rem;
+  }
 }

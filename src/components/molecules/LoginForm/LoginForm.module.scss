@@ -1,31 +1,53 @@
 .form {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
   padding: 0.5rem;
+  width: 100%;
+  height: 75%;
   text-align: center;
-  border: solid 1px black;
+  border: solid 4px var(--colorFive);
   border-radius: 10px;
-  margin-bottom: 10rem;
-  width: 90%;
-  background-color: var(--primaryColor);
+  // background-color: var(--colorFour);
+
+  .headerForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  .bodyForm {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .form {
     padding: 1rem;
-    width: 80%;
   }
 }
 
 @media screen and (min-width: 992px) {
   .form {
-    margin-left: auto;
-    margin-right: auto;
-    width: 65%;
+    width: 50%;
+    height: 50%;
     text-align: left;
+    border-width: 3px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .form {
     width: 30%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .form {
+    width: 20%;
   }
 }

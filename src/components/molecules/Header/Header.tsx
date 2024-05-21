@@ -46,7 +46,7 @@ const Header = () => {
   };
 
   return (
-    <header className={`${styles.header} bg-blue-500`}>
+    <header className={`${styles.header}`}>
       <h1>
         <Link href={"/"}>Ecommerce</Link>
       </h1>
@@ -54,10 +54,10 @@ const Header = () => {
         {!user ? (
           <ul>
             <li>
-              <Link href="/user/login">Login</Link>
+              <Link href="/login">Login</Link>
             </li>
             <li>
-              <Link href="/user/register">Register</Link>
+              <Link href="/register">Register</Link>
             </li>
           </ul>
         ) : (

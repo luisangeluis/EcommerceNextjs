@@ -3,7 +3,7 @@ import styles from "./login.module.scss";
 
 const login = () => {
   return (
-    <section className={styles.login}>
+    <section className={styles.loginContainer}>
       <LoginForm />
     </section>
   );
