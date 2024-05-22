@@ -13,6 +13,8 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
+  console.log({ pathname });
+
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const [userToken] = useGetToken();
@@ -53,9 +55,11 @@ const Header = () => {
       <nav className={styles.nav}>
         {!user ? (
           <ul>
-            <li>
-              <Link href="/login">Login</Link>
-            </li>
+            {pathname !== "/login" && (
+              <li>
+                <Link href="/login">Login</Link>
+              </li>
+            )}
             <li>
               <Link href="/register">Register</Link>
             </li>

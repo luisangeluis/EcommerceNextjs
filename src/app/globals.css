@@ -8,9 +8,10 @@
   --colorThree: #78a890;
   --colorFour: #606078;
   --colorFive: #d8a878;
+  --colorRed: #dc3545;
 }
 
-/* input:focus, */
+input:focus,
 input:active,
 /* input:hover, */
 input:disabled {
@@ -27,8 +28,9 @@ body {
 
 main {
   display: flex;
+  justify-content: space-evenly;
   flex-grow: 1;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
 }
 
 @media screen and (min-width: 992px) {

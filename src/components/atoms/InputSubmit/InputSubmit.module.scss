@@ -1,0 +1,22 @@
+.submit {
+  display: block;
+  padding: 1rem 2rem;
+  width: 100%;
+  background-color: var(--colorThree);
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 992px) {
+  .submit {
+    display: initial;
+    padding: 0.5rem 1rem;
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .submit {
+    padding: 0.5rem 1rem;
+    width: 50%;
+  }
+}

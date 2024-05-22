@@ -1,21 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { setUserToken } from "@/store/slices/userTokenSlice";
-import Input from "@/components/atoms/Input/Input";
-import type { LoginFormInputs } from "@/types.d.ts";
+import { useRouter } from "next/navigation";
 import styles from "./LoginForm.module.scss";
+import type { LoginFormInputs } from "@/types.d.ts";
+import Input from "@/components/atoms/Input/Input";
+import InputSubmit from "@/components/atoms/InputSubmit/InputSubmit";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const schema = yup.object({
-  email: yup.string().email().required(),
-  password: yup.string().required(),
+  email: yup.string().email().required("Email is required"),
+  password: yup.string().required("Password is required"),
 });
 
 const LoginForm = () => {
@@ -83,8 +84,8 @@ const LoginForm = () => {
           validations={{ required: true }}
           errors={errors}
         />
-        <div>
-          <input type="submit" value="Sign in" />
+        <div className={styles.footerForm}>
+          <InputSubmit value={"Login"} />
         </div>
       </div>
     </form>
