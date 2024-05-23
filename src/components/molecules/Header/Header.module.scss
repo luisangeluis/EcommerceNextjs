@@ -2,11 +2,6 @@
   padding: 1rem;
   text-align: center;
   background-color: var(--colorFour);
-
-  .nav {
-    padding: 0.5rem;
-    text-align: center;
-  }
 }
 
 @media screen and (min-width: 992px) {
@@ -14,19 +9,5 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-
-      ul {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-      }
-    }
   }
 }

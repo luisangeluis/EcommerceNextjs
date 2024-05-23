@@ -7,8 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "@/store/slices/cartSlice";
 import useGetToken from "@/hooks/useGetToken";
 import styles from "./Header.module.scss";
-
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+import MainNav from "../MainNav/MainNav";
 
 const Header = () => {
   const router = useRouter();
@@ -17,62 +16,29 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  const [userToken] = useGetToken();
+  // const [userToken] = useGetToken();
   const [user, setUser] = useState();
 
-  useEffect(() => {
-    if (userToken) getUser(userToken);
-  }, [userToken]);
+  // useEffect(() => {
+  //   if (userToken) getUser(userToken);
+  // }, [userToken]);
 
-  const getUser = async (token: string) => {
-    return await fetch(`${apiUrl}/api/v1/users/my-user`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setUser(res.response);
-      });
-  };
-
-  const handlerClick = () => {
-    if (!userToken) {
-      router.push("/user/login");
-    } else if (pathname === "/cart") {
-      dispatch(setCart({ isClosed: true, isLoading: false }));
-    } else {
-      dispatch(setCart({ isClosed: false, isLoading: true }));
-    }
-  };
+  // const handlerClick = () => {
+  //   if (!userToken) {
+  //     router.push("/login");
+  //   } else if (pathname === "/cart") {
+  //     dispatch(setCart({ isClosed: true, isLoading: false }));
+  //   } else {
+  //     dispatch(setCart({ isClosed: false, isLoading: true }));
+  //   }
+  // };
 
   return (
     <header className={`${styles.header}`}>
       <h1>
         <Link href={"/"}>Ecommerce</Link>
       </h1>
-      <nav className={styles.nav}>
-        {!user ? (
-          <ul>
-            {pathname !== "/login" && (
-              <li>
-                <Link href="/login">Login</Link>
-              </li>
-            )}
-            <li>
-              <Link href="/register">Register</Link>
-            </li>
-          </ul>
-        ) : (
-          <p>Hola {user.firstName}</p>
-        )}
-        {cart.isClosed && (
-          <button className={``} onClick={handlerClick}>
-            CART
-          </button>
-        )}
-      </nav>
+      <MainNav />
     </header>
   );
 };
