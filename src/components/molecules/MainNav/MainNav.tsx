@@ -5,12 +5,17 @@ import styles from "./MainNav.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+
+import { setCart } from "@/store/slices/cartSlice";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const MainNav = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+
   const userToken = useGetToken();
   const pathname = usePathname();
   const [user, setUser] = useState();
@@ -48,12 +53,22 @@ const MainNav = () => {
         <ul>
           {pathname !== "/login" && (
             <li>
-              <Link href="/login">Login</Link>
+              <Link
+                href="/login"
+                className={`inline-block my-2 lg:my-0 px-4  py-3 lg:py-2 rounded-md `}
+              >
+                Login
+              </Link>
             </li>
           )}
           {pathname !== "/register" && (
             <li>
-              <Link href="/register">Register</Link>
+              <Link
+                href="/register"
+                className={`inline-block my-2 lg:my-0 px-4  py-3 lg:py-2 rounded-md`}
+              >
+                Register
+              </Link>
             </li>
           )}
         </ul>

@@ -7,20 +7,27 @@ import styles from "./Cart.module.scss";
 import Loader from "@/components/molecules/Loader/Loader";
 import CartItem from "@/components/molecules/CartItem/CartItem";
 import Link from "next/link";
+import useGetToken from "@/hooks/useGetToken";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  const userToken = useSelector((state) => state.userToken);
+  const userToken = useGetToken();
   const dispatch = useDispatch();
   const [subTotal, setSubtotal] = useState(0);
   // console.log(cart);
   useEffect(() => {
-    if (!cart.isClosed) {
+    if (!cart.isClosed && userToken) {
       dispatch(getCart(userToken));
     }
   }, [cart.isClosed]);
+
+  // useEffect(() => {
+  //   if (!cart.isClosed && userToken) {
+  //     dispatch(getCart(userToken));
+  //   }
+  // }, [userToken]);
 
   useEffect(() => {
     if (!cart.isClosed) {
