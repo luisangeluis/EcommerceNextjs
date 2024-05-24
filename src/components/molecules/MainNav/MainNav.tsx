@@ -11,20 +11,13 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const MainNav = () => {
   const cart = useSelector((state) => state.cart);
-  //   const userToken = useGetToken();
+  const userToken = useGetToken();
   const pathname = usePathname();
   const [user, setUser] = useState();
-  let currenToken = "";
 
   useEffect(() => {
-    if (currenToken) {
-      getUser(currenToken);
-    }
-  }, [currenToken]);
-
-  if (typeof window !== undefined) {
-    currenToken = localStorage.getItem("ecoUserToken")!;
-  }
+    if (userToken) getUser(userToken);
+  }, [userToken]);
 
   const getUser = async (token: string) => {
     return await fetch(`${apiUrl}/api/v1/users/my-user`, {
@@ -37,6 +30,16 @@ const MainNav = () => {
       .then((res) => {
         setUser(res.response);
       });
+  };
+
+  const handlerClick = () => {
+    if (!userToken) {
+      router.push("/login");
+    } else if (pathname === "/cart") {
+      dispatch(setCart({ isClosed: true, isLoading: false }));
+    } else {
+      dispatch(setCart({ isClosed: false, isLoading: true }));
+    }
   };
 
   const getNav = (user, pathname) => {
@@ -67,18 +70,7 @@ const MainNav = () => {
     }
   };
 
-  return (
-    <nav className={styles.mainNav}>
-      {
-        /* {cart.isClosed && (
-        <button className={``} onClick={handlerClick}>
-          CART
-        </button>
-      )} */
-        getNav(user, pathname)
-      }
-    </nav>
-  );
+  return <nav className={styles.mainNav}>{getNav(user, pathname)}</nav>;
 };
 
 export default MainNav;

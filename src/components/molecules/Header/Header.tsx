@@ -12,7 +12,6 @@ import MainNav from "../MainNav/MainNav";
 const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
-  console.log({ pathname });
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -22,16 +21,6 @@ const Header = () => {
   // useEffect(() => {
   //   if (userToken) getUser(userToken);
   // }, [userToken]);
-
-  // const handlerClick = () => {
-  //   if (!userToken) {
-  //     router.push("/login");
-  //   } else if (pathname === "/cart") {
-  //     dispatch(setCart({ isClosed: true, isLoading: false }));
-  //   } else {
-  //     dispatch(setCart({ isClosed: false, isLoading: true }));
-  //   }
-  // };
 
   return (
     <header className={`${styles.header}`}>

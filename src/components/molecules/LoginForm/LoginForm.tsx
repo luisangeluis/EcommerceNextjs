@@ -13,6 +13,7 @@ import Input from "@/components/atoms/Input/Input";
 import InputSubmit from "@/components/atoms/InputSubmit/InputSubmit";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+// const apiUrl = process.env.API_URL;
 
 const schema = yup.object({
   email: yup.string().email().required("Email is required"),
@@ -76,7 +77,7 @@ const LoginForm = () => {
           errors={errors}
         />
         <Input
-          type={"text"}
+          type={"password"}
           id={"password"}
           name={"password"}
           label={"Password"}

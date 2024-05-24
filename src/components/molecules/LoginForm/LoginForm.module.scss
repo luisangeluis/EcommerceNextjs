@@ -1,8 +1,8 @@
 .form {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-direction: column;
-  padding: 0.5rem;
+  padding: 1rem;
   width: 100%;
   height: 75%;
   text-align: center;
@@ -19,8 +19,13 @@
 
   .bodyForm {
     display: flex;
+    justify-content: space-evenly;
     flex-direction: column;
-    flex-grow: 1;
+    padding: 0.5rem;
+  }
+
+  .footerForm {
+    // padding: 1rem 0;
   }
 }
 

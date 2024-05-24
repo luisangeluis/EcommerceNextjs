@@ -7,20 +7,20 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 const useGetToken = () => {
   const dispatch = useDispatch();
   const userToken = useSelector((state) => state.userToken);
-  let currenToken = "";
+  // let currenToken = "";
 
   useEffect(() => {
     if (typeof window !== undefined) {
-      currenToken = localStorage.getItem("ecoUserToken")!;
+      const currenToken = localStorage.getItem("ecoUserToken");
 
-      // if (currenToken) {
-      //   if (userToken !== currenToken) {
-      //     dispatch(setUserToken(currenToken));
-      //   }
-      // }
+      if (currenToken) {
+        if (userToken !== currenToken) {
+          dispatch(setUserToken(currenToken));
+        }
+      }
     }
     // }, [userToken]);
-  }, []);
+  }, [userToken]);
 
   return userToken;
 };
