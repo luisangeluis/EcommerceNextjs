@@ -10,6 +10,11 @@
   --colorFive: #d8a878;
   --colorRed: #dc3545;
   --colorBlack: #6c757d;
+  --colorDark: #000000;
+  --colorWhite: #ffffff;
+
+  --borderThree: solid 2px var(--colorThree);
+  --borderFive: solid 2px var(--colorFive);
 }
 
 input:focus,

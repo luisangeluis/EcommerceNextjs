@@ -2,6 +2,12 @@
   padding: 1rem;
   text-align: center;
   background-color: var(--colorFour);
+
+  .title {
+    color: var(--colorWhite);
+    font-weight: bold;
+    font-size: 2rem;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -9,5 +15,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .title {
+      font-size: 1.7rem;
+    }
   }
 }

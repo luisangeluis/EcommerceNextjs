@@ -47,7 +47,7 @@ const MainNav = () => {
     }
   };
 
-  const getNav = (user, pathname) => {
+  const getNav = (user, pathname: string) => {
     if (!user) {
       return (
         <ul>
@@ -55,7 +55,7 @@ const MainNav = () => {
             <li>
               <Link
                 href="/login"
-                className={`inline-block my-2 lg:my-0 px-4  py-3 lg:py-2 rounded-md `}
+                className={`${styles.login} inline-block my-2 lg:my-0 px-4  py-3 lg:py-2 rounded-md `}
               >
                 Login
               </Link>
@@ -65,7 +65,7 @@ const MainNav = () => {
             <li>
               <Link
                 href="/register"
-                className={`inline-block my-2 lg:my-0 px-4  py-3 lg:py-2 rounded-md`}
+                className={`${styles.register} inline-block my-2 lg:my-0 px-4  py-3 lg:py-2 rounded-md`}
               >
                 Register
               </Link>
