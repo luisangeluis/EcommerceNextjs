@@ -7,7 +7,6 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 const useGetToken = () => {
   const dispatch = useDispatch();
   const userToken = useSelector((state) => state.userToken);
-  // let currenToken = "";
 
   useEffect(() => {
     if (typeof window !== undefined) {

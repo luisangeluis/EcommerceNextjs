@@ -8,6 +8,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 import { setCart } from "@/store/slices/cartSlice";
+import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -77,9 +78,9 @@ const MainNav = () => {
       return (
         <>
           <p>Hola {user.firstName}</p>
-          <button className={``} onClick={handlerClick}>
-            CART
-          </button>
+          <BtnCustom onClick={handlerClick} customClass={"btnWhite"}>
+            Cart
+          </BtnCustom>
         </>
       );
     }

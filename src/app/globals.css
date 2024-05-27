@@ -13,8 +13,12 @@
   --colorDark: #000000;
   --colorWhite: #ffffff;
 
+  --borderOne: solid 2px var(--colorOne);
   --borderThree: solid 2px var(--colorThree);
   --borderFive: solid 2px var(--colorFive);
+  --borderRed: solid 2px var(--colorRed);
+  --borderDark: solid 2px var(--colorDark);
+  --borderWhite: solid 2px var(--colorWhite);
 }
 
 input:focus,
@@ -22,6 +26,37 @@ input:active,
 /* input:hover, */
 input:disabled {
   outline: none;
+}
+
+button:hover,
+a:hover {
+  transition: transform 0.1s ease;
+  transform: scale(1.01);
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+
+.btnOne {
+  border: var(--borderOne);
+  color: var(--colorOne);
+}
+
+.btnDark {
+  border: var(--borderDark);
+  color: var(--colorDark);
+}
+
+.btnWhite {
+  border: var(--borderWhite);
+  color: var(--colorWhite);
+}
+
+.titleOne {
+  font-size: 2rem;
 }
 
 body {

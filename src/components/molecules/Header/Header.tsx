@@ -7,7 +7,7 @@ import MainNav from "../MainNav/MainNav";
 const Header = () => {
   return (
     <header className={`${styles.header}`}>
-      <h1 className={styles.title}>
+      <h1 className={`titleOne`}>
         <Link href={"/"}>Ecommerce</Link>
       </h1>
       <MainNav />

@@ -64,7 +64,7 @@ const LoginForm = () => {
   return (
     <form className={`${styles.form}`} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.headerForm}>
-        <h2>Login</h2>
+        <h2>LOGIN</h2>
       </div>
       <div className={styles.bodyForm}>
         <Input

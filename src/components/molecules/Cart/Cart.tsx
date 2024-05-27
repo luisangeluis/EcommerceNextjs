@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart, getCart } from "@/store/slices/cartSlice";
 import styles from "./Cart.module.scss";
-import Loader from "@/components/molecules/Loader/Loader";
-import CartItem from "@/components/molecules/CartItem/CartItem";
 import Link from "next/link";
 import useGetToken from "@/hooks/useGetToken";
+//Components
+import Loader from "@/components/molecules/Loader/Loader";
+import CartItem from "@/components/molecules/CartItem/CartItem";
+import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -53,7 +55,9 @@ const Cart = () => {
         <div className={`${styles.cartBody}`}>
           {!cart.isLoading && (
             <>
-              <button onClick={handlerClick}>Close</button>
+              <BtnCustom onClick={handlerClick} customClass={"btnDark"}>
+                Close
+              </BtnCustom>
               <h3>Cart</h3>
               <h3>Subtotal: ${subTotal}</h3>
               <Link href={"/cart"}>Go to cart</Link>

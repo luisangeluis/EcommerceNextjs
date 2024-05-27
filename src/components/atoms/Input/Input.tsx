@@ -3,10 +3,7 @@ import styles from "./Input.module.scss";
 const Input = ({ type, id, name, label, register, validations, errors }) => {
   return (
     <>
-      <label
-        htmlFor={id}
-        className={`${styles.label} block text-center text-center md:text-left`}
-      >
+      <label htmlFor={id} className={`${styles.label} block`}>
         {label}
       </label>
       <input

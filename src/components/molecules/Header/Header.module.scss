@@ -3,11 +3,11 @@
   text-align: center;
   background-color: var(--colorFour);
 
-  .title {
-    color: var(--colorWhite);
-    font-weight: bold;
-    font-size: 2rem;
-  }
+  // .title {
+  //   color: var(--colorWhite);
+  //   font-weight: bold;
+  //   font-size: 2rem;
+  // }
 }
 
 @media screen and (min-width: 992px) {
@@ -16,8 +16,8 @@
     justify-content: space-between;
     align-items: center;
 
-    .title {
-      font-size: 1.7rem;
-    }
+    // .title {
+    //   font-size: 1.7rem;
+    // }
   }
 }
