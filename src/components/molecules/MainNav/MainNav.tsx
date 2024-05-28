@@ -78,9 +78,11 @@ const MainNav = () => {
       return (
         <>
           <p>Hola {user.firstName}</p>
-          <BtnCustom onClick={handlerClick} customClass={"btnWhite"}>
-            Cart
-          </BtnCustom>
+          {cart.isClosed && (
+            <BtnCustom onClick={handlerClick} customClass={"btnWhite"}>
+              Cart
+            </BtnCustom>
+          )}
         </>
       );
     }

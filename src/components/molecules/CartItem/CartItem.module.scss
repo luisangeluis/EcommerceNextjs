@@ -1,13 +1,27 @@
 .item {
-  margin: 1rem auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 0.5rem auto;
   padding: 1rem 0.5rem;
-  background-color: #e3e6e6;
-
+  width: 95%;
+  // background-color: var(--colorFour);
+  border: var(--borderBlack);
   text-align: center;
   border-radius: 5px;
+
+  .itemHeader {
+    text-align: right;
+  }
 
   .itemBody {
     border-radius: 10px;
     padding: 1rem 0.5rem;
+  }
+
+  .itemFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }

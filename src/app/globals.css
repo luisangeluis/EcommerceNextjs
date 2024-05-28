@@ -7,6 +7,7 @@
   --colorTwo: #c0d890;
   --colorThree: #78a890;
   --colorFour: #606078;
+  --colorFourTransparent: rgba(96, 96, 120, 0.9);
   --colorFive: #d8a878;
   --colorRed: #dc3545;
   --colorBlack: #6c757d;
@@ -14,16 +15,24 @@
   --colorWhite: #ffffff;
 
   --borderOne: solid 2px var(--colorOne);
+  --borderTwo: solid 2px var(--colorTwo);
   --borderThree: solid 2px var(--colorThree);
+  --borderFour: solid 2px var(--colorFour);
   --borderFive: solid 2px var(--colorFive);
   --borderRed: solid 2px var(--colorRed);
+  --borderBlack: solid 2px var(--colorBlack);
   --borderDark: solid 2px var(--colorDark);
   --borderWhite: solid 2px var(--colorWhite);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 input:focus,
 input:active,
-/* input:hover, */
 input:disabled {
   outline: none;
 }
@@ -57,6 +66,12 @@ a:hover {
 
 .titleOne {
   font-size: 2rem;
+}
+
+.titleThree {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 body {

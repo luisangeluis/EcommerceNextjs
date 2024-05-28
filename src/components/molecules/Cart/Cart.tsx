@@ -58,12 +58,14 @@ const Cart = () => {
               <BtnCustom onClick={handlerClick} customClass={"btnDark"}>
                 Close
               </BtnCustom>
-              <h3>Cart</h3>
+              <h3 className={`titleThree`}>Cart</h3>
               <h3>Subtotal: ${subTotal}</h3>
               <Link href={"/cart"}>Go to cart</Link>
             </>
           )}
-          {showCartItems(cart.data?.cartItems)}
+          <article className={`${styles.cartItemsContainer}`}>
+            {showCartItems(cart.data?.cartItems)}
+          </article>
         </div>
       </>
     </aside>

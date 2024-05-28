@@ -39,17 +39,22 @@ const CartItem = ({ item }) => {
 
   return (
     <article className={styles.item}>
+      <div className={styles.itemHeader}>
+        {/* {loading && <p>Loading...</p>} */}
+        <button onClick={handlerDeleteClick}>Delete</button>
+      </div>
       <div className={styles.itemBody}>
+        <p>{item.product.title}</p>
+        {/* <h3>Quantity: {item.quantity}</h3> */}
+        <p>Unit price: ${item.product.price}</p>
+      </div>
+      <div className={styles.itemFooter}>
+        <p>Quantity</p>
         <Select
           options={productQuantity}
           onChange={handleChange}
           defaultValue={item.quantity}
         />
-        {/* {loading && <p>Loading...</p>} */}
-        <p>{item.product.title}</p>
-        <h3>Quantity: {item.quantity}</h3>
-        <p>Unit price: ${item.product.price}</p>
-        <button onClick={handlerDeleteClick}>Delete</button>
       </div>
     </article>
   );
