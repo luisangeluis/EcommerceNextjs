@@ -5,9 +5,9 @@
   bottom: 0;
   right: 0;
   z-index: 0;
-  background-color: var(--colorBlack);
+  background-color: var(--colorWhite);
   border: var(--borderBlack);
-  border-top-left-radius: 20px;
+  // border-top-left-radius: 20px;
   transition: width 450ms ease-out;
   box-sizing: border-box;
 
@@ -16,14 +16,18 @@
     border: 0;
   }
 
+  .cartHeader {
+    padding: 0.5rem;
+    text-align: center;
+  }
+
   .cartBody {
-    padding: 1rem;
     height: 100%;
 
     .cartItemsContainer {
       // padding: 0.5rem 0;
       max-height: 80%;
-      background-color: var(--colorWhite);
+      // background-color: var(--colorWhite);
       border-radius: 5px;
       overflow-y: auto;
     }

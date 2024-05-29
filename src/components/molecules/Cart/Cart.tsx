@@ -52,17 +52,24 @@ const Cart = () => {
     <aside className={`${styles.cart} ${cart.isClosed && styles.isClosed}`}>
       <>
         {cart.isLoading && <Loader />}
-        <div className={`${styles.cartBody}`}>
+        <div className={styles.cartHeader}>
           {!cart.isLoading && (
             <>
-              <BtnCustom onClick={handlerClick} customClass={"btnDark"}>
+              <BtnCustom onClick={handlerClick} customClass={"btnBorderDark"}>
                 Close
               </BtnCustom>
-              <h3 className={`titleThree`}>Cart</h3>
-              <h3>Subtotal: ${subTotal}</h3>
-              <Link href={"/cart"}>Go to cart</Link>
+              <h3 className={`titleFour`}>Subtotal</h3>
+              <p>{`$${subTotal}.00`}</p>
+              <BtnCustom
+                onClick={() => router.push("/cart")}
+                customClass={"btnDark"}
+              >
+                Go to cart
+              </BtnCustom>
             </>
           )}
+        </div>
+        <div className={`${styles.cartBody}`}>
           <article className={`${styles.cartItemsContainer}`}>
             {showCartItems(cart.data?.cartItems)}
           </article>

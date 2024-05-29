@@ -9,6 +9,7 @@
   --colorFour: #606078;
   --colorFourTransparent: rgba(96, 96, 120, 0.9);
   --colorFive: #d8a878;
+  --colorFiveTransparent: rgba(216, 168, 120, 0.5);
   --colorRed: #dc3545;
   --colorBlack: #6c757d;
   --colorDark: #000000;
@@ -54,9 +55,23 @@ a:hover {
   color: var(--colorOne);
 }
 
-.btnDark {
+.btnBorderBlack {
+  border: var(--borderBlack);
+  color: var(--colorBlack);
+}
+
+.btnBlack {
+  background-color: var(--colorBlack);
+  color: var(--colorWhite);
+}
+.btnBorderDark {
   border: var(--borderDark);
   color: var(--colorDark);
+}
+
+.btnDark {
+  background-color: var(--colorDark);
+  color: var(--colorWhite);
 }
 
 .btnWhite {
@@ -70,6 +85,12 @@ a:hover {
 
 .titleThree {
   font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.titleFour {
+  font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
 }

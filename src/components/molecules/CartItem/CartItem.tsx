@@ -34,7 +34,6 @@ const CartItem = ({ item }) => {
         updateCartItem(userToken, item.id, { quantity: Number(currentValue) }),
       );
     }
-    // setQuantity(e.target.value);
   };
 
   return (
@@ -46,10 +45,9 @@ const CartItem = ({ item }) => {
       <div className={styles.itemBody}>
         <p>{item.product.title}</p>
         {/* <h3>Quantity: {item.quantity}</h3> */}
-        <p>Unit price: ${item.product.price}</p>
+        <p>${item.product.price}</p>
       </div>
       <div className={styles.itemFooter}>
-        <p>Quantity</p>
         <Select
           options={productQuantity}
           onChange={handleChange}
