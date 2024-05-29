@@ -4,11 +4,16 @@ import Providers from "../store/Provider";
 //Styles
 import "./globals.css";
 import { Inter } from "next/font/google";
+//Fontawesome
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
 //Components
 import Header from "@/components/molecules/Header/Header";
 import Footer from "@/components/molecules/Footer/Footer";
 import Cart from "@/components/molecules/Cart/Cart";
 import Alert from "@/components/molecules/Alert/Alert";
+
+config.autoAddCss = false;
 
 const inter = Inter({ subsets: ["latin"] });
 

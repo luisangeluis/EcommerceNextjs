@@ -1,9 +1,18 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+
+//Redux
 import { useSelector, useDispatch } from "react-redux";
 import { deleteCartItem, updateCartItem } from "@/store/slices/cartSlice";
-// import useGetToken from "@/hooks/useGetToken";
+
+//Styles
 import styles from "./CartItem.module.scss";
+
+//Fontawesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
+//Components
 import Select from "@/components/molecules/Select/Select";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -20,7 +29,7 @@ const CartItem = ({ item }) => {
     setQuantity(item.quantity);
   }, []);
 
-  const handlerDeleteClick = () => {
+  const handleDeleteClick = () => {
     !userToken
       ? router.push("/user/login")
       : dispatch(deleteCartItem(userToken, item.id));
@@ -39,12 +48,12 @@ const CartItem = ({ item }) => {
   return (
     <article className={styles.item}>
       <div className={styles.itemHeader}>
-        {/* {loading && <p>Loading...</p>} */}
-        <button onClick={handlerDeleteClick}>Delete</button>
+        <button onClick={handleDeleteClick}>
+          <FontAwesomeIcon icon={faTrash} className="fa fa-trash" />
+        </button>
       </div>
       <div className={styles.itemBody}>
         <p>{item.product.title}</p>
-        {/* <h3>Quantity: {item.quantity}</h3> */}
         <p>${item.product.price}</p>
       </div>
       <div className={styles.itemFooter}>
