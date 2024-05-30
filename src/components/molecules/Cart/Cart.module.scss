@@ -24,25 +24,13 @@
     gap: 0.5rem;
     padding: 0.5rem;
     text-align: center;
-
-    > :nth-child(1) {
-      // align-self: flex-start;
-      border: solid 1px red;
-      // padding: 10px;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      font-size: 1rem;
-    }
   }
 
   .cartBody {
     height: 100%;
 
     .cartItemsContainer {
-      // padding: 0.5rem 0;
       max-height: 80%;
-      // background-color: var(--colorWhite);
       border-radius: 5px;
       overflow-y: auto;
     }

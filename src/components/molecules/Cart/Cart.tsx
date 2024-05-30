@@ -7,15 +7,14 @@ import styles from "./Cart.module.scss";
 import useGetToken from "@/hooks/useGetToken";
 
 //Fontawesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
 //Components
 import Loader from "@/components/molecules/Loader/Loader";
 import CartItem from "@/components/molecules/CartItem/CartItem";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
-
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+import CustomIcon from "@/components/atoms/CustomIcon/CustomIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -28,12 +27,6 @@ const Cart = () => {
       dispatch(getCart(userToken));
     }
   }, [cart.isClosed]);
-
-  // useEffect(() => {
-  //   if (!cart.isClosed && userToken) {
-  //     dispatch(getCart(userToken));
-  //   }
-  // }, [userToken]);
 
   useEffect(() => {
     if (!cart.isClosed) {
@@ -61,11 +54,17 @@ const Cart = () => {
         <div className={styles.cartHeader}>
           {!cart.isLoading && (
             <>
-              <div>
+              {/* <div>
                 <button onClick={handlerClick}>
                   <FontAwesomeIcon icon={faX} className="fa-solid fa-x" />
                 </button>
-              </div>
+              </div> */}
+              {/* <button className="btn btnTwo" onClick={handlerClick}>
+                <CustomIcon icon={faX} iconClass={"fa-solid fa-x"}></CustomIcon>
+              </button> */}
+              <BtnCustom onClick={handlerClick}>
+                <FontAwesomeIcon icon={faX} className="fa-solid fa-x" />
+              </BtnCustom>
               <h3 className={`titleFour`}>Subtotal</h3>
               <p>{`$${subTotal}.00`}</p>
               <BtnCustom
