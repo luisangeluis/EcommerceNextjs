@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart, getCart } from "@/store/slices/cartSlice";
 import styles from "./Cart.module.scss";
-import Link from "next/link";
 import useGetToken from "@/hooks/useGetToken";
+
+//Fontawesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+
 //Components
 import Loader from "@/components/molecules/Loader/Loader";
 import CartItem from "@/components/molecules/CartItem/CartItem";
@@ -18,7 +22,7 @@ const Cart = () => {
   const userToken = useGetToken();
   const dispatch = useDispatch();
   const [subTotal, setSubtotal] = useState(0);
-  // console.log(cart);
+
   useEffect(() => {
     if (!cart.isClosed && userToken) {
       dispatch(getCart(userToken));
@@ -49,15 +53,19 @@ const Cart = () => {
   };
 
   return (
-    <aside className={`${styles.cart} ${cart.isClosed && styles.isClosed}`}>
+    <aside
+      className={`${styles.cart} ${cart.isClosed && styles.isClosed} ${!cart.isClosed && styles.isOpened}`}
+    >
       <>
         {cart.isLoading && <Loader />}
         <div className={styles.cartHeader}>
           {!cart.isLoading && (
             <>
-              <BtnCustom onClick={handlerClick} customClass={"btnBorderDark"}>
-                Close
-              </BtnCustom>
+              <div>
+                <button onClick={handlerClick}>
+                  <FontAwesomeIcon icon={faX} className="fa-solid fa-x" />
+                </button>
+              </div>
               <h3 className={`titleFour`}>Subtotal</h3>
               <p>{`$${subTotal}.00`}</p>
               <BtnCustom
