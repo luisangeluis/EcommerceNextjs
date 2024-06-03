@@ -1,18 +1,26 @@
 "use client";
 
-import useGetToken from "@/hooks/useGetToken";
-import styles from "./MainNav.module.scss";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-
+import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "@/store/slices/cartSlice";
+
+import useGetToken from "@/hooks/useGetToken";
+
+//Fontawesome
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+//Styles
+import styles from "./MainNav.module.scss";
+
+//Components
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const MainNav = () => {
+const MainNav = ({ customClass }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -22,7 +30,9 @@ const MainNav = () => {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    if (userToken) getUser(userToken);
+    if (userToken) {
+      getUser(userToken);
+    }
   }, [userToken]);
 
   const getUser = async (token: string) => {
@@ -80,7 +90,10 @@ const MainNav = () => {
           <p>Hola {user.firstName}</p>
           {cart.isClosed && (
             <BtnCustom onClick={handlerClick} customClass={"btnWhite"}>
-              Cart
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                className="fa-solid fa-cart-shopping"
+              />
             </BtnCustom>
           )}
         </>
@@ -88,7 +101,11 @@ const MainNav = () => {
     }
   };
 
-  return <nav className={styles.mainNav}>{getNav(user, pathname)}</nav>;
+  return (
+    <nav className={`${styles.mainNav} ${styles[customClass]}`}>
+      {getNav(user, pathname)}
+    </nav>
+  );
 };
 
 export default MainNav;

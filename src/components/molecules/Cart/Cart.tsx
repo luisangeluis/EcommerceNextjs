@@ -8,13 +8,13 @@ import useGetToken from "@/hooks/useGetToken";
 
 //Fontawesome
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //Components
 import Loader from "@/components/molecules/Loader/Loader";
 import CartItem from "@/components/molecules/CartItem/CartItem";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
-import CustomIcon from "@/components/atoms/CustomIcon/CustomIcon";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import CustomIcon from "@/components/atoms/CustomIcon/CustomIcon";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);

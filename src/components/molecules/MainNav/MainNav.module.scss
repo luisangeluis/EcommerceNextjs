@@ -1,16 +1,29 @@
 .mainNav {
-  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
   text-align: center;
-  ul {
-    .login {
-      border: var(--borderThree);
-      color: var(--colorThree);
-    }
-    .register {
-      border: var(--borderFive);
-      color: var(--colorFive);
-    }
+  overflow: hidden;
+
+  transition: all 0.3s ease-in-out;
+}
+
+ul {
+  .login {
+    border: var(--borderThree);
+    color: var(--colorThree);
   }
+  .register {
+    border: var(--borderFive);
+    color: var(--colorFive);
+  }
+}
+
+.height0 {
+  height: 0;
+  padding: 0;
 }
 
 @media screen and (min-width: 992px) {
