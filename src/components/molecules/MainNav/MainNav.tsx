@@ -17,23 +17,27 @@ import styles from "./MainNav.module.scss";
 
 //Components
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
+import { clearUser, setUser } from "@/store/slices/userSlice";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const MainNav = ({ customClass }) => {
+  const pathname = usePathname();
   const router = useRouter();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-
-  const userToken = useGetToken();
-  const pathname = usePathname();
-  const [user, setUser] = useState();
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (userToken) {
-      getUser(userToken);
+    if (typeof window !== undefined) {
+      const currentToken = localStorage.getItem("ecoUserToken");
+      console.log({ currentToken });
+
+      if (!user.id && currentToken !== null) {
+        getUser(currentToken);
+      }
     }
-  }, [userToken]);
+  }, []);
 
   const getUser = async (token: string) => {
     return await fetch(`${apiUrl}/api/v1/users/my-user`, {
@@ -44,12 +48,21 @@ const MainNav = ({ customClass }) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        setUser(res.response);
-      });
+        // setUser(res.response);
+        console.log(res);
+
+        dispatch(setUser(res.response));
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const logoutUser = () => {
+    localStorage.setItem("ecoUserToken", "");
+    dispatch(clearUser());
   };
 
   const handlerClick = () => {
-    if (!userToken) {
+    if (!user) {
       router.push("/login");
     } else if (pathname === "/cart") {
       dispatch(setCart({ isClosed: true, isLoading: false }));
@@ -59,7 +72,7 @@ const MainNav = ({ customClass }) => {
   };
 
   const getNav = (user, pathname: string) => {
-    if (!user) {
+    if (!user.id) {
       return (
         <ul>
           {pathname !== "/login" && (
@@ -87,7 +100,12 @@ const MainNav = ({ customClass }) => {
     } else {
       return (
         <>
-          <p>Hola {user.firstName}</p>
+          <div>
+            <p>Hola {user.firstName}</p>
+            <BtnCustom onClick={logoutUser} customClass={`btn btnBlack`}>
+              Log out
+            </BtnCustom>
+          </div>
           {cart.isClosed && (
             <BtnCustom onClick={handlerClick} customClass={"btnWhite"}>
               <FontAwesomeIcon

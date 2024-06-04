@@ -1,4 +1,4 @@
-import styles from "./BtnRed.module.scss";
+import styles from "./BtnCustom.module.scss";
 
 //Puedo meter todos los estilos que quiero que tenga o que podria tener este btn
 //Siempre y cuando no cambie tanto el estilo
@@ -6,7 +6,10 @@ import styles from "./BtnRed.module.scss";
 const BtnCustom = ({ onClick, children, customClass }) => {
   return (
     <div>
-      <button onClick={onClick} className={`btn ${customClass}`}>
+      <button
+        onClick={onClick}
+        className={`${styles.btn} ${styles[customClass]}`}
+      >
         {children}
       </button>
     </div>

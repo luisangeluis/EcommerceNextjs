@@ -1,0 +1,34 @@
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+
+.btnOne {
+  border: var(--borderOne);
+  color: var(--colorOne);
+}
+
+.btnBorderBlack {
+  border: var(--borderBlack);
+  color: var(--colorBlack);
+}
+
+.btnBlack {
+  background-color: var(--colorBlack);
+  color: var(--colorWhite);
+}
+.btnBorderDark {
+  border: var(--borderDark);
+  color: var(--colorDark);
+}
+
+.btnDark {
+  background-color: var(--colorDark);
+  color: var(--colorWhite);
+}
+
+.btnWhite {
+  border: var(--borderWhite);
+  color: var(--colorWhite);
+}

@@ -5,15 +5,15 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
-import { setUserToken } from "@/store/slices/userTokenSlice";
+// import { setUserToken } from "@/store/slices/userTokenSlice";
 import { useRouter } from "next/navigation";
 import styles from "./LoginForm.module.scss";
 import type { LoginFormInputs } from "@/types.d.ts";
 import Input from "@/components/atoms/Input/Input";
 import InputSubmit from "@/components/atoms/InputSubmit/InputSubmit";
+import { setUser } from "@/store/slices/userSlice";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-// const apiUrl = process.env.API_URL;
 
 const schema = yup.object({
   email: yup.string().email().required("Email is required"),
@@ -37,19 +37,26 @@ const LoginForm = () => {
     }
   }, []);
 
-  const onSubmit: SubmitHandler<LoginFormInputs> = (data) => {
-    loginUser(data)
-      .then((res) => {
-        const userToken = res.token;
-        localStorage.setItem("ecoUserToken", userToken);
-        dispatch(setUserToken(userToken));
+  const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
+    const { token } = await getUserToken(data);
+    console.log({ token });
 
-        router.push("/");
-      })
-      .catch((error) => console.log(error));
+    const res = await fetch(`${apiUrl}/api/v1/users/my-user`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const user = await res.json();
+    console.log({ user });
+
+    localStorage.setItem("ecoUserToken", token);
+    dispatch(setUser(user.response));
+
+    router.push("/");
   };
 
-  const loginUser = async (data: LoginFormInputs) => {
+  const getUserToken = async (data: LoginFormInputs) => {
     const response = await fetch(`${apiUrl}/api/v1/auth/login`, {
       method: "POST",
       headers: {

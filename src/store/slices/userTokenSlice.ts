@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
 const userTokenSlice = createSlice({
   name: "userToken",
   // initialState: {
