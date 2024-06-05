@@ -38,22 +38,29 @@ const LoginForm = () => {
   }, []);
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
-    const { token } = await getUserToken(data);
-    console.log({ token });
+    try {
+      const { token } = await getUserToken(data);
 
-    const res = await fetch(`${apiUrl}/api/v1/users/my-user`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const user = await res.json();
-    console.log({ user });
+      console.log({ token });
 
-    localStorage.setItem("ecoUserToken", token);
-    dispatch(setUser(user.response));
+      const res = await fetch(`${apiUrl}/api/v1/users/my-user`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    router.push("/");
+      // console.log(res.status);
+
+      const user = await res.json();
+
+      dispatch(setUser(user.response));
+      localStorage.setItem("ecoUserToken", token);
+
+      router.push("/");
+    } catch (error) {
+      console.log({ error });
+    }
   };
 
   const getUserToken = async (data: LoginFormInputs) => {

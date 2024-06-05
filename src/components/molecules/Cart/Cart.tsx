@@ -18,13 +18,17 @@ import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  const userToken = useGetToken();
+  // const userToken = useGetToken();
   const dispatch = useDispatch();
   const [subTotal, setSubtotal] = useState(0);
 
   useEffect(() => {
-    if (!cart.isClosed && userToken) {
-      dispatch(getCart(userToken));
+    if (typeof window !== undefined) {
+      const currentToken = localStorage.getItem("ecoUserToken");
+
+      if (!cart.isClosed && currentToken) {
+        dispatch(getCart(currentToken));
+      }
     }
   }, [cart.isClosed]);
 
@@ -54,14 +58,6 @@ const Cart = () => {
         <div className={styles.cartHeader}>
           {!cart.isLoading && (
             <>
-              {/* <div>
-                <button onClick={handlerClick}>
-                  <FontAwesomeIcon icon={faX} className="fa-solid fa-x" />
-                </button>
-              </div> */}
-              {/* <button className="btn btnTwo" onClick={handlerClick}>
-                <CustomIcon icon={faX} iconClass={"fa-solid fa-x"}></CustomIcon>
-              </button> */}
               <BtnCustom onClick={handlerClick}>
                 <FontAwesomeIcon icon={faX} className="fa-solid fa-x" />
               </BtnCustom>
