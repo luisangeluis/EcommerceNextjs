@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { setUserToken } from "@/store/slices/userTokenSlice";
 import { useRouter } from "next/navigation";
 import styles from "./LoginForm.module.scss";
 import type { LoginFormInputs } from "@/types.d.ts";
 import Input from "@/components/atoms/Input/Input";
 import InputSubmit from "@/components/atoms/InputSubmit/InputSubmit";
-import { setUser } from "@/store/slices/userSlice";
+import { getUser, setUser } from "@/store/slices/userSlice";
+import Loader from "../Loader/Loader";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -30,6 +31,7 @@ const LoginForm = () => {
   });
   const router = useRouter();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -39,71 +41,84 @@ const LoginForm = () => {
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     try {
-      const { token } = await getUserToken(data);
+      dispatch(setUser({ isLoading: true }));
+      const tokenRes = await getUserToken(data);
+      console.log(tokenRes);
 
-      console.log({ token });
+      const tokenData = await tokenRes!.json();
 
-      const res = await fetch(`${apiUrl}/api/v1/users/my-user`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      if (tokenRes!.ok) {
+        dispatch(getUser(tokenData.token));
+      } else {
+        console.log(tokenData.message);
+      }
+      // console.log(tokenRes.status);
+
+      // if (tokenRes.token) {
+      //   dispatch(getUser(tokenRes.token));
+      // }
 
       // console.log(res.status);
 
-      const user = await res.json();
+      // const user = await res.json();
 
-      dispatch(setUser(user.response));
-      localStorage.setItem("ecoUserToken", token);
+      // dispatch(setUser(user.response));
+      // localStorage.setItem("ecoUserToken", token);
 
-      router.push("/");
+      // router.push("/");
     } catch (error) {
       console.log({ error });
     }
   };
 
   const getUserToken = async (data: LoginFormInputs) => {
-    const response = await fetch(`${apiUrl}/api/v1/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: data.email, password: data.password }),
-    });
+    try {
+      const response = await fetch(`${apiUrl}/api/v1/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: data.email, password: data.password }),
+      });
 
-    return await response.json();
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <form className={`${styles.form}`} onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.headerForm}>
-        <h2>LOGIN</h2>
-      </div>
-      <div className={styles.bodyForm}>
-        <Input
-          type={"text"}
-          id={"email"}
-          name={"email"}
-          label={"Email"}
-          register={register}
-          validations={{ required: true }}
-          errors={errors}
-        />
-        <Input
-          type={"password"}
-          id={"password"}
-          name={"password"}
-          label={"Password"}
-          register={register}
-          validations={{ required: true }}
-          errors={errors}
-        />
-        <div className={styles.footerForm}>
-          <InputSubmit value={"Login"} />
+    <>
+      {user.isLoading && <Loader />}
+      <form className={`${styles.form}`} onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.headerForm}>
+          <h2>LOGIN</h2>
         </div>
-      </div>
-    </form>
+        <div className={styles.bodyForm}>
+          <Input
+            type={"text"}
+            id={"email"}
+            name={"email"}
+            label={"Email"}
+            register={register}
+            validations={{ required: true }}
+            errors={errors}
+          />
+          <Input
+            type={"password"}
+            id={"password"}
+            name={"password"}
+            label={"Password"}
+            register={register}
+            validations={{ required: true }}
+            errors={errors}
+          />
+          <div className={styles.footerForm}>
+            <InputSubmit value={"Login"} />
+          </div>
+        </div>
+      </form>
+    </>
   );
 };
 

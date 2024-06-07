@@ -33,7 +33,9 @@ const MainNav = ({ customClass }) => {
       const currentToken = localStorage.getItem("ecoUserToken");
       console.log({ currentToken });
 
-      if (!user.id && currentToken !== null) {
+      if (!user.id && currentToken !== "" && currentToken !== null ) {
+        console.log("getting user");
+
         getUser(currentToken);
       }
     }
