@@ -8,16 +8,12 @@ export const cartSlice = createSlice({
   initialState: {
     isClosed: true,
     data: {},
-    isLoading: false,
-    error: "",
   },
   reducers: {
     clearCart: () => {
       return {
         isClosed: true,
         data: {},
-        isLoading: false,
-        error: "",
       };
     },
 
@@ -46,7 +42,9 @@ export const getCart = (userToken: string) => (dispatch) => {
     .then((res) => res.json())
     .then((res) => {
       const data = res.response;
-      dispatch(setCart({ data, isLoading: false }));
+      console.log(data);
+
+      dispatch(setCart({ data }));
     })
     .catch((error) => console.log(error));
 };

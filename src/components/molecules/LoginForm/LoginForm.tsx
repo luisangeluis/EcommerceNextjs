@@ -13,6 +13,7 @@ import Input from "@/components/atoms/Input/Input";
 import InputSubmit from "@/components/atoms/InputSubmit/InputSubmit";
 import { getUser, setUser } from "@/store/slices/userSlice";
 import Loader from "../Loader/Loader";
+import { setLoadingErrorMessage } from "@/store/slices/loadingErrorMessageSlice";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -32,6 +33,7 @@ const LoginForm = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const loadingErrorMessage = useSelector((state) => state.loadingErrorMessage);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -41,7 +43,7 @@ const LoginForm = () => {
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     try {
-      dispatch(setUser({ isLoading: true }));
+      dispatch(setLoadingErrorMessage({ isLoading: true }));
       const tokenRes = await getUserToken(data);
       console.log(tokenRes);
 
@@ -49,8 +51,17 @@ const LoginForm = () => {
 
       if (tokenRes!.ok) {
         dispatch(getUser(tokenData.token));
+        dispatch(setLoadingErrorMessage({ isLoading: false }));
+        localStorage.setItem("ecoUserToken", tokenData.token);
       } else {
         console.log(tokenData.message);
+        dispatch(
+          setLoadingErrorMessage({
+            isLoading: false,
+            isError: true,
+            message: tokenData.message,
+          }),
+        );
       }
       // console.log(tokenRes.status);
 
@@ -89,7 +100,7 @@ const LoginForm = () => {
 
   return (
     <>
-      {user.isLoading && <Loader />}
+      {loadingErrorMessage.isLoading && <Loader />}
       <form className={`${styles.form}`} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.headerForm}>
           <h2>LOGIN</h2>

@@ -5,6 +5,7 @@ import user from "./slices/userSlice";
 import loading from "./slices/loadingSlice";
 import modalContainer from "./slices/modalContainerSlice";
 import alert from "./slices/alertSlice";
+import loadingErrorMessage from "./slices/loadingErrorMessageSlice";
 
 export default configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export default configureStore({
     loading,
     modalContainer,
     alert,
+    loadingErrorMessage,
   },
 });

@@ -5,15 +5,11 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    data: {
-      id: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      roleId: "",
-    },
-    isLoading: false,
-    error: "",
+    id: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    roleId: "",
   },
   reducers: {
     setUser: (state, action) => {
@@ -52,7 +48,7 @@ export const getUser = (token: string) => (dispatch) => {
     .then((res) => {
       const data = res.response;
       console.log(data);
-      dispatch(setUser({ data, isLoading: false }));
+      dispatch(setUser(data));
     })
     .catch((error) => console.log(error));
 };

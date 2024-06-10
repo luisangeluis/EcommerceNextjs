@@ -17,7 +17,8 @@ import styles from "./MainNav.module.scss";
 
 //Components
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
-import { clearUser, setUser } from "@/store/slices/userSlice";
+import { clearUser, getUser, setUser } from "@/store/slices/userSlice";
+import { setLoadingErrorMessage } from "@/store/slices/loadingErrorMessageSlice";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -33,30 +34,30 @@ const MainNav = ({ customClass }) => {
       const currentToken = localStorage.getItem("ecoUserToken");
       console.log({ currentToken });
 
-      if (!user.id && currentToken !== "" && currentToken !== null ) {
+      if (!user.id && currentToken !== "" && currentToken !== null) {
         console.log("getting user");
 
-        getUser(currentToken);
+        dispatch(getUser(currentToken));
       }
     }
   }, []);
 
-  const getUser = async (token: string) => {
-    return await fetch(`${apiUrl}/api/v1/users/my-user`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        // setUser(res.response);
-        console.log(res);
+  // const getUser = async (token: string) => {
+  //   return await fetch(`${apiUrl}/api/v1/users/my-user`, {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       // setUser(res.response);
+  //       console.log(res);
 
-        dispatch(setUser(res.response));
-      })
-      .catch((error) => console.log(error));
-  };
+  //       dispatch(setUser(res.response));
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
   const logoutUser = () => {
     localStorage.setItem("ecoUserToken", "");
@@ -67,9 +68,10 @@ const MainNav = ({ customClass }) => {
     if (!user) {
       router.push("/login");
     } else if (pathname === "/cart") {
-      dispatch(setCart({ isClosed: true, isLoading: false }));
+      dispatch(setCart({ isClosed: true }));
     } else {
-      dispatch(setCart({ isClosed: false, isLoading: true }));
+      // dispatch(setLoadingErrorMessage({ isLoading: true }));
+      dispatch(setCart({ isClosed: false }));
     }
   };
 

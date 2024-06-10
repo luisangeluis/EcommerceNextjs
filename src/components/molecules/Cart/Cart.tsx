@@ -14,10 +14,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loader from "@/components/molecules/Loader/Loader";
 import CartItem from "@/components/molecules/CartItem/CartItem";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
+import { setLoadingErrorMessage } from "@/store/slices/loadingErrorMessageSlice";
 // import CustomIcon from "@/components/atoms/CustomIcon/CustomIcon";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const loadingErrorMessage = useSelector((state) => state.loadingErrorMessage);
   // const userToken = useGetToken();
   const dispatch = useDispatch();
   const [subTotal, setSubtotal] = useState(0);
@@ -26,8 +28,13 @@ const Cart = () => {
     if (typeof window !== undefined) {
       const currentToken = localStorage.getItem("ecoUserToken");
 
-      if (!cart.isClosed && currentToken) {
-        dispatch(getCart(currentToken));
+      if (!cart.isClosed && currentToken !== null && currentToken !== "") {
+        dispatch(setLoadingErrorMessage({ isLoading: true }));
+        console.log("obteniendo cart");
+
+        // dispatch(getCart(currentToken));
+
+        dispatch(setLoadingErrorMessage({ isLoading: false }));
       }
     }
   }, [cart.isClosed]);
@@ -54,7 +61,7 @@ const Cart = () => {
       className={`${styles.cart} ${cart.isClosed && styles.isClosed} ${!cart.isClosed && styles.isOpened}`}
     >
       <>
-        {cart.isLoading && <Loader />}
+        {loadingErrorMessage.isLoading && <Loader />}
         <div className={styles.cartHeader}>
           {!cart.isLoading && (
             <>
@@ -62,7 +69,7 @@ const Cart = () => {
                 <FontAwesomeIcon icon={faX} className="fa-solid fa-x" />
               </BtnCustom>
               <h3 className={`titleFour`}>Subtotal</h3>
-              <p>{`$${subTotal}.00`}</p>
+              <p>{`$${subTotal ? subTotal : "00"}.00`}</p>
               <BtnCustom
                 onClick={() => router.push("/cart")}
                 customClass={"btnDark"}
