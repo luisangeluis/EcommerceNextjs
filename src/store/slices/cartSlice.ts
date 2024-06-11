@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { setIsLoading } from "@/store/slices/loadingSlice";
+import { setLoadingErrorMessage } from "./loadingErrorMessageSlice";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -31,6 +32,8 @@ export default cartSlice.reducer;
 export const { clearCart, setCart } = cartSlice.actions;
 
 export const getCart = (userToken: string) => (dispatch) => {
+  dispatch(setLoadingErrorMessage({ isLoading: true }));
+
   const init = {
     method: "GET",
     headers: {
@@ -42,9 +45,10 @@ export const getCart = (userToken: string) => (dispatch) => {
     .then((res) => res.json())
     .then((res) => {
       const data = res.response;
-      console.log(data);
+      // console.log(data);
 
       dispatch(setCart({ data }));
+      dispatch(setLoadingErrorMessage({ isLoading: false }));
     })
     .catch((error) => console.log(error));
 };

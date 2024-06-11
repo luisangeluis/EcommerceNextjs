@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 //Fontawesome
@@ -15,6 +15,26 @@ import MainNav from "@/components/molecules/MainNav/MainNav";
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
+  const [showToggle, setShowToggel] = useState(false);
+  let screenSize = window.innerWidth;
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleResize = () => {
+    screenSize = window.innerWidth;
+
+    if (screenSize > 992) {
+      setShowToggel(false);
+      setOpenNav(true);
+    } else {
+      setShowToggel(true);
+    }
+  };
 
   return (
     <header className={`${styles.header}`}>
@@ -22,11 +42,13 @@ const Header = () => {
         <h1 className={`titleOne`}>
           <Link href={"/"}>Ecommerce</Link>
         </h1>
-        <BtnCustom onClick={() => setOpenNav(!openNav)}>
-          <FontAwesomeIcon icon={faBars} className="fa-solid fa-bars" />
-        </BtnCustom>
+        {showToggle && (
+          <BtnCustom onClick={() => setOpenNav(!openNav)}>
+            <FontAwesomeIcon icon={faBars} className="fa-solid fa-bars" />
+          </BtnCustom>
+        )}
       </div>
-      <MainNav customClass={openNav && "height0"} />
+      <MainNav customClass={!openNav && "height0"} />
     </header>
   );
 };

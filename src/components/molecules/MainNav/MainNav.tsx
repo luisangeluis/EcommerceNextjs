@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+
+//Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "@/store/slices/cartSlice";
-
-import useGetToken from "@/hooks/useGetToken";
+import { clearUser, getUser } from "@/store/slices/userSlice";
 
 //Fontawesome
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -17,10 +18,6 @@ import styles from "./MainNav.module.scss";
 
 //Components
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
-import { clearUser, getUser, setUser } from "@/store/slices/userSlice";
-import { setLoadingErrorMessage } from "@/store/slices/loadingErrorMessageSlice";
-
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const MainNav = ({ customClass }) => {
   const pathname = usePathname();
@@ -42,23 +39,6 @@ const MainNav = ({ customClass }) => {
     }
   }, []);
 
-  // const getUser = async (token: string) => {
-  //   return await fetch(`${apiUrl}/api/v1/users/my-user`, {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       // setUser(res.response);
-  //       console.log(res);
-
-  //       dispatch(setUser(res.response));
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
-
   const logoutUser = () => {
     localStorage.setItem("ecoUserToken", "");
     dispatch(clearUser());
@@ -70,7 +50,6 @@ const MainNav = ({ customClass }) => {
     } else if (pathname === "/cart") {
       dispatch(setCart({ isClosed: true }));
     } else {
-      // dispatch(setLoadingErrorMessage({ isLoading: true }));
       dispatch(setCart({ isClosed: false }));
     }
   };

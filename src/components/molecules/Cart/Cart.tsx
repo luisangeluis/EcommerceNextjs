@@ -29,12 +29,12 @@ const Cart = () => {
       const currentToken = localStorage.getItem("ecoUserToken");
 
       if (!cart.isClosed && currentToken !== null && currentToken !== "") {
-        dispatch(setLoadingErrorMessage({ isLoading: true }));
+        // dispatch(setLoadingErrorMessage({ isLoading: true }));
         console.log("obteniendo cart");
 
-        // dispatch(getCart(currentToken));
+        dispatch(getCart(currentToken));
 
-        dispatch(setLoadingErrorMessage({ isLoading: false }));
+        // dispatch(setLoadingErrorMessage({ isLoading: false }));
       }
     }
   }, [cart.isClosed]);
@@ -74,7 +74,7 @@ const Cart = () => {
                 onClick={() => router.push("/cart")}
                 customClass={"btnDark"}
               >
-                Go to cart
+                Detail cart
               </BtnCustom>
             </>
           )}
