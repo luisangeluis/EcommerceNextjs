@@ -18,6 +18,7 @@ import styles from "./MainNav.module.scss";
 
 //Components
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
+import Avatar from "../Avatar/Avatar";
 
 const MainNav = ({ customClass }) => {
   const pathname = usePathname();
@@ -29,10 +30,10 @@ const MainNav = ({ customClass }) => {
   useEffect(() => {
     if (typeof window !== undefined) {
       const currentToken = localStorage.getItem("ecoUserToken");
-      console.log({ currentToken });
+      // console.log({ currentToken });
 
       if (!user.id && currentToken !== "" && currentToken !== null) {
-        console.log("getting user");
+        // console.log("getting user");
 
         dispatch(getUser(currentToken));
       }
@@ -84,10 +85,11 @@ const MainNav = ({ customClass }) => {
       return (
         <>
           <div>
-            <p>Hola {user.firstName}</p>
-            <BtnCustom onClick={logoutUser} customClass={`btn btnBlack`}>
-              Log out
-            </BtnCustom>
+            <Avatar
+              name={user.firstName}
+              onClick={logoutUser}
+              customClass={"btnBlack"}
+            />
           </div>
           {cart.isClosed && (
             <BtnCustom onClick={handlerClick} customClass={"btnWhite"}>

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 //Fontawesome
@@ -16,24 +16,39 @@ import MainNav from "@/components/molecules/MainNav/MainNav";
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
   const [showToggle, setShowToggel] = useState(false);
-  let screenSize = window.innerWidth;
+  // let screenWidth = 0;
+
+  const screenWidth = useRef(0);
+
+  // console.log({ screenWidth });
+  console.log({ screenWidth });
 
   useEffect(() => {
+    // screenWidth = getSizeWidth();
+    screenWidth.current = getSizeWidth();
     handleResize();
+
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleResize = () => {
-    screenSize = window.innerWidth;
+  const getSizeWidth = () => {
+    let screenWidth = 0;
+    if (typeof window !== "undefined") {
+      screenWidth = window.innerWidth;
+    }
 
-    if (screenSize > 992) {
+    return screenWidth;
+  };
+
+  const handleResize = () => {
+    screenWidth.current = getSizeWidth();
+
+    if (screenWidth.current > 992) {
       setShowToggel(false);
       setOpenNav(true);
-    } else {
-      setShowToggel(true);
-    }
+    } else setShowToggel(true);
   };
 
   return (

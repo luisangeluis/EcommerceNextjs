@@ -1,0 +1,14 @@
+.avatarContainer {
+  .title {
+    margin: 1rem auto;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .avatarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+}

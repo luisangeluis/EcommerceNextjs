@@ -56,7 +56,7 @@ export const getCart = (userToken: string) => (dispatch) => {
 export const addProductToCart =
   (userToken: string, productId: string) => (dispatch) => {
     console.log("addProductToCart");
-    dispatch(setIsLoading(true));
+    dispatch(setLoadingErrorMessage({ isLoading: true }));
 
     const init = {
       method: "POST",
@@ -76,7 +76,7 @@ export const addProductToCart =
 export const updateCartItem =
   (userToken: string, cartItemId: string, data) => (dispatch) => {
     console.log("updateCartItem");
-    dispatch(setIsLoading(true));
+    dispatch(setLoadingErrorMessage({ isLoading: true }));
 
     const init = {
       method: "PATCH",
@@ -97,6 +97,7 @@ export const updateCartItem =
 export const deleteCartItem =
   (userToken: string, cartItem: string) => (dispatch) => {
     console.log("deleteCartItem");
+    setLoadingErrorMessage({ isLoading: true });
 
     const init = {
       method: "DELETE",

@@ -39,7 +39,7 @@ const LoginForm = () => {
     if (typeof window !== "undefined") {
       if (localStorage.getItem("ecoUserToken")) router.push("/");
     }
-  }, []);
+  }, [user]);
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     try {
@@ -63,20 +63,6 @@ const LoginForm = () => {
           }),
         );
       }
-      // console.log(tokenRes.status);
-
-      // if (tokenRes.token) {
-      //   dispatch(getUser(tokenRes.token));
-      // }
-
-      // console.log(res.status);
-
-      // const user = await res.json();
-
-      // dispatch(setUser(user.response));
-      // localStorage.setItem("ecoUserToken", token);
-
-      // router.push("/");
     } catch (error) {
       console.log({ error });
     }

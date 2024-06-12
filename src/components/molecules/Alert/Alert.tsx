@@ -5,7 +5,7 @@ import styles from "./Alert.module.scss";
 
 const Alert = () => {
   const alert = useSelector((state) => state.alert);
-  console.log(alert);
+  // console.log(alert);
 
   if (!alert) return null;
 
