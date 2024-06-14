@@ -63,7 +63,8 @@ const Header = () => {
           </BtnCustom>
         )}
       </div>
-      <MainNav customClass={!openNav && "height0"} />
+      {openNav && <MainNav />}
+      {/* <MainNav customClass={!openNav && "height0"} /> */}
     </header>
   );
 };

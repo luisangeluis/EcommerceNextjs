@@ -1,0 +1,13 @@
+.DropDownContainer {
+  min-height: 2rem;
+  position: relative;
+  background-color: white;
+  border-radius: 5px;
+
+  .DropDownBody {
+    top: 75%;
+    left: calc(-100% + 75%);
+    padding: 1rem;
+    position: absolute;
+  }
+}

@@ -1,6 +1,28 @@
 .avatarContainer {
+  // display: flex;
+  // position: relative;
+  text-align: center;
+  padding: 1rem;
+
   .title {
     margin: 1rem auto;
+
+    &:hover {
+      + .list {
+        // display: block;
+      }
+    }
+  }
+
+  .list {
+    width: 50vw;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    position: absolute;
+    left: calc(50%);
+    bottom: calc(-50%);
+    transform: translate(-50%, -50%);
+    background-color: white;
   }
 }
 

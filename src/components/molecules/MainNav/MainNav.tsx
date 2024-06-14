@@ -84,13 +84,11 @@ const MainNav = ({ customClass }) => {
     } else {
       return (
         <>
-          <div>
-            <Avatar
-              name={user.firstName}
-              onClick={logoutUser}
-              customClass={"btnBlack"}
-            />
-          </div>
+          <Avatar
+            name={user.firstName}
+            onClick={logoutUser}
+            customClass={"btnBlack"}
+          />
           {cart.isClosed && (
             <BtnCustom onClick={handlerClick} customClass={"btnWhite"}>
               <FontAwesomeIcon
