@@ -5,7 +5,7 @@ import styles from "./BtnCustom.module.scss";
 
 const BtnCustom = ({ onClick, children, customClass }) => {
   return (
-    <div>
+    <div className={styles.btnCustomContainer}>
       <button
         onClick={onClick}
         className={`${styles.btn} ${styles[customClass]}`}

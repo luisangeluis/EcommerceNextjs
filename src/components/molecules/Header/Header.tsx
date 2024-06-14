@@ -48,7 +48,10 @@ const Header = () => {
     if (screenWidth.current > 992) {
       setShowToggel(false);
       setOpenNav(true);
-    } else setShowToggel(true);
+    } else {
+      setShowToggel(true);
+      setOpenNav(false);
+    }
   };
 
   return (

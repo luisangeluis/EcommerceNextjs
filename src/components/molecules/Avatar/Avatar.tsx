@@ -6,7 +6,7 @@ import DropDown from "../DropDown/DropDown";
 const Avatar = ({ name, onClick, customClass }) => {
   return (
     <article className={styles.avatarContainer}>
-      <DropDown name={name} />
+      <DropDown name={name} onClick={onClick} customClass={customClass} />
       {/* <button className={}>{`Hello ${name}`}</button> */}
       {/* <button onClick={() => setOpenList(!openList)}>
         <p className={styles.title}>{`Hello ${name}`}</p>

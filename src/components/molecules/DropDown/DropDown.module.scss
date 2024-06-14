@@ -3,11 +3,22 @@
   position: relative;
   background-color: white;
   border-radius: 5px;
+  text-align: center;
 
   .DropDownBody {
-    top: 75%;
-    left: calc(-100% + 75%);
-    padding: 1rem;
+    margin-top: 1rem;
     position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: var(--colorWhite);
+    border-radius: 5px;
+
+    .list {
+      padding: 1rem;
+
+      li {
+        padding: 0.5rem;
+      }
+    }
   }
 }

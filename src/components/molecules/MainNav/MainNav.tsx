@@ -33,7 +33,7 @@ const MainNav = ({ customClass }) => {
       // console.log({ currentToken });
 
       if (!user.id && currentToken !== "" && currentToken !== null) {
-        // console.log("getting user");
+        console.log("getting user");
 
         dispatch(getUser(currentToken));
       }

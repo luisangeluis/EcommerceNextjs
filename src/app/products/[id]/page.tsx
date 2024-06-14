@@ -1,5 +1,7 @@
-import styles from "./product.module.scss";
+import styles from "@/styles/productPage.module.scss";
+//components
 import ProductDetail from "@/components/organisms/ProductDetail/ProductDetail";
+import Title2 from "@/components/atoms/Title2/Title2";
 
 const apiUrl = process.env.API_URL;
 
@@ -13,8 +15,9 @@ const product = async ({ params }: ProductProps) => {
   const product = await getProduct(params.id);
 
   return (
-    <section className={styles.product}>
-      <h1>Detail Product</h1>
+    <section className={styles.productPage}>
+      {/* <h1>Detail Product</h1> */}
+      <Title2 title={"Detail product"} />
       <ProductDetail product={product.response} />
     </section>
   );
