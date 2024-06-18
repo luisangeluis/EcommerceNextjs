@@ -12,8 +12,6 @@ const ProductDetail = ({ product }) => {
   const userToken = useSelector((state) => state.userToken);
   const cart = useSelector((state) => state.cart);
 
-  console.log(product);
-
   const handlerClickAddToCart = (product) => {
     if (!userToken) router.push("/user/login");
     else {
@@ -27,32 +25,45 @@ const ProductDetail = ({ product }) => {
     <article className={`${styles.productDetail} p-2`}>
       <div className={styles.detailImages}>
         <ul className={styles.list}>
-          <li>
-            <Image src={product.productImage[0].url} width={600} height={600} />
-          </li>
-          <li>
-            <Image src={product.productImage[0].url} width={400} height={400} />
-          </li>
-          <li>
-            <Image src={product.productImage[0].url} width={400} height={400} />
-          </li>
-          {/* <li>
-            <Image src={product.productImage[0].url} width={400} height={400} />
-          </li>
-          <li>
-            <Image src={product.productImage[0].url} width={400} height={400} />
-          </li>
-          <li>
-            <Image src={product.productImage[0].url} width={400} height={400} />
-          </li>
-          <li>
-            <Image src={product.productImage[0].url} width={400} height={400} />
-          </li> */}
-          {/* {product.productImage.map((image) => (
-            <li key={image.id}>
-              <Image src={image.url} width={100} height={100} />
+          {product.productImage.length > 0 ? (
+            <>
+              <li>
+                <Image
+                  src={product.productImage[0].url}
+                  width={300}
+                  height={400}
+                  alt=""
+                />
+              </li>
+              <li>
+                <Image
+                  src={product.productImage[0].url}
+                  width={300}
+                  height={400}
+                  alt=""
+                />
+              </li>
+              <li>
+                <Image
+                  src={product.productImage[0].url}
+                  width={300}
+                  height={400}
+                  alt=""
+                />
+              </li>
+            </>
+          ) : (
+            <li>
+              <Image
+                alt={"default-image"}
+                src={
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
+                }
+                width={300}
+                height={300}
+              />
             </li>
-          ))} */}
+          )}
         </ul>
       </div>
       <div className={`${styles.detailBody}`}>

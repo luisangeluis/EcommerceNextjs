@@ -43,7 +43,9 @@ a:hover {
   transition: transform 0.1s ease;
   transform: scale(1.01);
 }
-
+img {
+  /* max-width: 100%; */
+}
 .titleOne {
   font-size: 2rem;
 }
@@ -69,10 +71,7 @@ body {
 }
 
 main {
-  display: flex;
-  justify-content: space-evenly;
   flex-grow: 1;
-  /* padding: 0.5rem 0; */
   margin-top: 8rem;
 }
 

@@ -1,34 +1,31 @@
 .productDetail {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  flex-grow: 1;
+  // margin: 1rem 0;
+  padding: 1rem 1rem;
 
   .detailImages {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    text-align: center;
-    max-height: 50vh;
+    margin: 1rem 0;
+    padding: 1rem 0;
     overflow-y: auto;
+    max-height: 50vh;
 
     .list {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
       li {
-        max-height: 50vh;
+        margin: 0.5rem 0;
+
+        img {
+          margin: 0 auto;
+        }
       }
     }
   }
 
   .detailBody {
-    text-align: center;
-    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem 0;
+    padding: 1rem 0;
   }
 }
 
