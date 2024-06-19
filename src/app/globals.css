@@ -38,11 +38,12 @@ input:disabled {
   outline: none;
 }
 
-button:hover,
+/* button:hover, */
 a:hover {
   transition: transform 0.1s ease;
   transform: scale(1.01);
 }
+
 img {
   /* max-width: 100%; */
 }

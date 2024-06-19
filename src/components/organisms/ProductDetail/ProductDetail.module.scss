@@ -1,21 +1,31 @@
 .productDetail {
-  // margin: 1rem 0;
   padding: 1rem 1rem;
 
-  .detailImages {
+  .imagesDetail {
     margin: 1rem 0;
     padding: 1rem 0;
-    overflow-y: auto;
-    max-height: 50vh;
 
     .list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(60px, 100%), 1fr));
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+      padding: 0.5rem;
+      max-height: 30vh;
+      overflow: auto;
+
       li {
         margin: 0.5rem 0;
-
-        img {
-          margin: 0 auto;
-        }
+        // width: 80px;
+        // height: 80px;
       }
+    }
+
+    .selectedImage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: 40vh;
     }
   }
 
@@ -32,8 +42,18 @@
 @media screen and (min-width: 992px) {
   .productDetail {
     display: grid;
-    // grid-template-columns: repeat(auto-fit, minmax(10vw, 1fr));
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 2fr 1fr;
     gap: 1rem;
+
+    .imagesDetail {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 1rem;
+
+      .list {
+        max-height: 50vh;
+        display: flex;
+      }
+    }
   }
 }

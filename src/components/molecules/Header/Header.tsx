@@ -21,7 +21,7 @@ const Header = () => {
   const screenWidth = useRef(0);
 
   // console.log({ screenWidth });
-  console.log({ screenWidth });
+  // console.log({ screenWidth });
 
   useEffect(() => {
     // screenWidth = getSizeWidth();

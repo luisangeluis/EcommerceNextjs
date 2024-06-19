@@ -30,7 +30,7 @@ const MainNav = ({ customClass }) => {
   useEffect(() => {
     if (typeof window !== undefined) {
       const currentToken = localStorage.getItem("ecoUserToken");
-      // console.log({ currentToken });
+      console.log({ currentToken });
 
       if (!user.id && currentToken !== "" && currentToken !== null) {
         console.log("getting user");

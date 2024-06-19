@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +12,35 @@ const ProductDetail = ({ product }) => {
   const dispatch = useDispatch();
   const userToken = useSelector((state) => state.userToken);
   const cart = useSelector((state) => state.cart);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  console.log({ selectedImage });
+
+  useEffect(() => {
+    if (product && product.productImage.length > 0) {
+      setSelectedImage({
+        src: product.productImage[0]?.url,
+        width: 500,
+        height: 500,
+        alt: "",
+      });
+    }
+  }, []);
+
+  const handlerClickSelectedImage = (e: Event) => {
+    console.log(e.target);
+    console.log(e.target?.src);
+    console.log(e.target?.width);
+    console.log(e.target?.height);
+    console.log(e.target?.alt);
+
+    setSelectedImage({
+      src: e.target?.src,
+      width: 500,
+      height: 500,
+      alt: "",
+    });
+  };
 
   const handlerClickAddToCart = (product) => {
     if (!userToken) router.push("/user/login");
@@ -23,48 +53,144 @@ const ProductDetail = ({ product }) => {
 
   return (
     <article className={`${styles.productDetail} p-2`}>
-      <div className={styles.detailImages}>
+      <div className={styles.imagesDetail}>
         <ul className={styles.list}>
-          {product.productImage.length > 0 ? (
-            <>
-              <li>
-                <Image
-                  src={product.productImage[0].url}
-                  width={300}
-                  height={400}
-                  alt=""
-                />
-              </li>
-              <li>
-                <Image
-                  src={product.productImage[0].url}
-                  width={300}
-                  height={400}
-                  alt=""
-                />
-              </li>
-              <li>
-                <Image
-                  src={product.productImage[0].url}
-                  width={300}
-                  height={400}
-                  alt=""
-                />
-              </li>
-            </>
+          {product.productImage.length ? (
+            product.productImage.map((image, i) => {
+              return (
+                <li key={i}>
+                  <button>
+                    <Image src={image.url} width={400} height={400} alt={""} />
+                  </button>
+                </li>
+              );
+            })
           ) : (
             <li>
               <Image
-                alt={"default-image"}
                 src={
                   "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
                 }
                 width={300}
                 height={300}
+                alt="default-image"
               />
             </li>
           )}
+          {/* {product.productImage.length > 0 ? (
+            <>
+              <li>
+                <button onClick={handlerClickSelectedImage}>
+                  <Image
+                    src={product.productImage[0].url}
+                    width={400}
+                    height={400}
+                    alt=""
+                  />
+                </button>
+              </li>
+              <li>
+                <button onClick={handlerClickSelectedImage}>
+                  <Image
+                    src={product.productImage[0].url}
+                    width={400}
+                    height={400}
+                    alt=""
+                  />
+                </button>
+              </li>
+              <li>
+                <button onClick={handlerClickSelectedImage}>
+                  <Image
+                    src={product.productImage[0].url}
+                    width={400}
+                    height={400}
+                    alt=""
+                  />
+                </button>
+              </li>
+              <li>
+                <button onClick={handlerClickSelectedImage}>
+                  <Image
+                    src={product.productImage[0].url}
+                    width={400}
+                    height={400}
+                    alt=""
+                  />
+                </button>
+              </li>
+              <li>
+                <button onClick={handlerClickSelectedImage}>
+                  <Image
+                    src={product.productImage[0].url}
+                    width={400}
+                    height={400}
+                    alt=""
+                  />
+                </button>
+              </li>
+              <li>
+                <button onClick={handlerClickSelectedImage}>
+                  <Image
+                    src={product.productImage[0].url}
+                    width={400}
+                    height={400}
+                    alt=""
+                  />
+                </button>
+              </li>
+              <li>
+                <button onClick={handlerClickSelectedImage}>
+                  <Image
+                    src={product.productImage[0].url}
+                    width={400}
+                    height={400}
+                    alt=""
+                  />
+                </button>
+              </li>
+              <li>
+                <button onClick={handlerClickSelectedImage}>
+                  <Image
+                    src={product.productImage[0].url}
+                    width={400}
+                    height={400}
+                    alt=""
+                  />
+                </button>
+              </li>
+              <li>
+                <button onClick={handlerClickSelectedImage}>
+                  <Image
+                    src={product.productImage[0].url}
+                    width={400}
+                    height={400}
+                    alt=""
+                  />
+                </button>
+              </li>
+            </>
+          ) : (
+            <li>
+              <Image
+                src={
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
+                }
+                width={300}
+                height={300}
+                alt="default-image"
+              />
+            </li>
+          )} */}
         </ul>
+        <div className={styles.selectedImage}>
+          <Image
+            src={selectedImage?.src}
+            width={selectedImage?.width}
+            height={selectedImage?.height}
+            alt={selectedImage?.alt}
+          />
+        </div>
       </div>
       <div className={`${styles.detailBody}`}>
         <h2>{product.title}</h2>

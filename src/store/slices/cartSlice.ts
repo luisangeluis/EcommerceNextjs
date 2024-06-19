@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setIsLoading } from "@/store/slices/loadingSlice";
 import { setLoadingErrorMessage } from "./loadingErrorMessageSlice";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
