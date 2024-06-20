@@ -16,15 +16,9 @@ import MainNav from "@/components/molecules/MainNav/MainNav";
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
   const [showToggle, setShowToggel] = useState(false);
-  // let screenWidth = 0;
-
   const screenWidth = useRef(0);
 
-  // console.log({ screenWidth });
-  // console.log({ screenWidth });
-
   useEffect(() => {
-    // screenWidth = getSizeWidth();
     screenWidth.current = getSizeWidth();
     handleResize();
 
@@ -67,7 +61,6 @@ const Header = () => {
         )}
       </div>
       {openNav && <MainNav />}
-      {/* <MainNav customClass={!openNav && "height0"} /> */}
     </header>
   );
 };

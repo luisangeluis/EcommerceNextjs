@@ -16,8 +16,6 @@
 
       li {
         margin: 0.5rem 0;
-        // width: 80px;
-        // height: 80px;
       }
     }
 
@@ -25,7 +23,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      max-height: 40vh;
+      min-height: 40vh;
     }
   }
 
@@ -51,8 +49,12 @@
       gap: 1rem;
 
       .list {
-        max-height: 50vh;
-        display: flex;
+        grid-template-columns: 1fr;
+
+        li {
+          width: 50%;
+          margin-left: auto;
+        }
       }
     }
   }

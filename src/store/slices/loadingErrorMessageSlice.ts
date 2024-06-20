@@ -8,10 +8,13 @@ const loadingErrorMessageSlice = createSlice({
     message: "",
   },
   reducers: {
-    setLoadingErrorMessage: (state, action) => ({
-      ...state,
-      ...action.payload,
-    }),
+    setLoadingErrorMessage: (state, action) => {
+      const newState = { ...state };
+
+      Object.assign(newState, action.payload);
+
+      return newState;
+    },
     clearLoadingErrorMessage: (state, action) => ({
       isLoading: false,
       isError: false,

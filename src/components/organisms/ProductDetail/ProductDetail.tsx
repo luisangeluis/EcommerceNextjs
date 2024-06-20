@@ -13,31 +13,23 @@ const ProductDetail = ({ product }) => {
   const userToken = useSelector((state) => state.userToken);
   const cart = useSelector((state) => state.cart);
   const [selectedImage, setSelectedImage] = useState(null);
-
-  console.log({ selectedImage });
-
+  // console.log({ selectedImage });
   useEffect(() => {
     if (product && product.productImage.length > 0) {
       setSelectedImage({
-        src: product.productImage[0]?.url,
-        width: 500,
-        height: 500,
+        src: product.productImage[0]!.url,
+        width: 400,
+        height: 400,
         alt: "",
       });
     }
   }, []);
 
-  const handlerClickSelectedImage = (e: Event) => {
-    console.log(e.target);
-    console.log(e.target?.src);
-    console.log(e.target?.width);
-    console.log(e.target?.height);
-    console.log(e.target?.alt);
-
+  const handlerClickSelectedImage = (image) => {
     setSelectedImage({
-      src: e.target?.src,
-      width: 500,
-      height: 500,
+      src: image.url,
+      width: 400,
+      height: 400,
       alt: "",
     });
   };
@@ -55,28 +47,16 @@ const ProductDetail = ({ product }) => {
     <article className={`${styles.productDetail} p-2`}>
       <div className={styles.imagesDetail}>
         <ul className={styles.list}>
-          {product.productImage.length ? (
+          {product.productImage.length > 0 &&
             product.productImage.map((image, i) => {
               return (
                 <li key={i}>
-                  <button>
-                    <Image src={image.url} width={400} height={400} alt={""} />
+                  <button onClick={() => handlerClickSelectedImage(image)}>
+                    <Image src={image.url} width={500} height={500} alt={""} />
                   </button>
                 </li>
               );
-            })
-          ) : (
-            <li>
-              <Image
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
-                }
-                width={300}
-                height={300}
-                alt="default-image"
-              />
-            </li>
-          )}
+            })}
           {/* {product.productImage.length > 0 ? (
             <>
               <li>
@@ -184,12 +164,23 @@ const ProductDetail = ({ product }) => {
           )} */}
         </ul>
         <div className={styles.selectedImage}>
-          <Image
-            src={selectedImage?.src}
-            width={selectedImage?.width}
-            height={selectedImage?.height}
-            alt={selectedImage?.alt}
-          />
+          {product.productImage.length ? (
+            <Image
+              src={selectedImage?.src}
+              width={selectedImage?.width}
+              height={selectedImage?.height}
+              alt={selectedImage?.alt}
+            />
+          ) : (
+            <Image
+              src={
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
+              }
+              width={400}
+              height={400}
+              alt="default-image"
+            />
+          )}
         </div>
       </div>
       <div className={`${styles.detailBody}`}>

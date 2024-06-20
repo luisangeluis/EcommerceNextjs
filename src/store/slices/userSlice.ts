@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { setLoadingErrorMessage } from "./loadingErrorMessageSlice";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -36,6 +37,8 @@ const userSlice = createSlice({
 });
 
 export const getUser = (token: string) => (dispatch) => {
+  dispatch(setLoadingErrorMessage({ isLoading: true }));
+
   const init = {
     method: "GET",
     headers: {
@@ -49,6 +52,7 @@ export const getUser = (token: string) => (dispatch) => {
       const data = res.response;
       // console.log(data);
       dispatch(setUser(data));
+      dispatch(setLoadingErrorMessage({ isLoading: false }));
     })
     .catch((error) => console.log(error));
 };

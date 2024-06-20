@@ -19,6 +19,7 @@ import styles from "./MainNav.module.scss";
 //Components
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import Avatar from "../Avatar/Avatar";
+import Loader from "../Loader/Loader";
 
 const MainNav = ({ customClass }) => {
   const pathname = usePathname();
@@ -26,13 +27,17 @@ const MainNav = ({ customClass }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user);
+  const loadingErrorMessage = useSelector((state) => state.loadingErrorMessage);
+
+  // console.log({ loadingErrorMessage });
+  // console.log({ user });
 
   useEffect(() => {
     if (typeof window !== undefined) {
       const currentToken = localStorage.getItem("ecoUserToken");
-      console.log({ currentToken });
 
       if (!user.id && currentToken !== "" && currentToken !== null) {
+        console.log({ currentToken });
         console.log("getting user");
 
         dispatch(getUser(currentToken));
@@ -103,9 +108,12 @@ const MainNav = ({ customClass }) => {
   };
 
   return (
-    <nav className={`${styles.mainNav} ${styles[customClass]}`}>
-      {getNav(user, pathname)}
-    </nav>
+    <>
+      {loadingErrorMessage?.isLoading && <Loader />}
+      <nav className={`${styles.mainNav} ${styles[customClass]}`}>
+        {getNav(user, pathname)}
+      </nav>
+    </>
   );
 };
 
