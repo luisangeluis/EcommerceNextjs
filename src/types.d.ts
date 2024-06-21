@@ -7,6 +7,13 @@ export type Product = {
   productImage: Array;
 };
 
+export type Products = {
+  totalResults: number;
+  totalPages: number;
+  currentPage: number;
+  products: Product[];
+};
+
 export type LoginFormInputs = {
   email: string;
   password: string;

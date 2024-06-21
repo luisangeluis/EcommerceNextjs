@@ -31,7 +31,7 @@ export default cartSlice.reducer;
 export const { clearCart, setCart } = cartSlice.actions;
 
 export const getCart = (userToken: string) => (dispatch) => {
-  dispatch(setLoadingErrorMessage({ isLoading: true }));
+  // dispatch(setLoadingErrorMessage({ isLoading: true }));
 
   const init = {
     method: "GET",
@@ -47,7 +47,7 @@ export const getCart = (userToken: string) => (dispatch) => {
       // console.log(data);
 
       dispatch(setCart({ data }));
-      dispatch(setLoadingErrorMessage({ isLoading: false }));
+      // dispatch(setLoadingErrorMessage({ isLoading: false }));
     })
     .catch((error) => console.log(error));
 };
@@ -55,7 +55,7 @@ export const getCart = (userToken: string) => (dispatch) => {
 export const addProductToCart =
   (userToken: string, productId: string) => (dispatch) => {
     console.log("addProductToCart");
-    dispatch(setLoadingErrorMessage({ isLoading: true }));
+    // dispatch(setLoadingErrorMessage({ isLoading: true }));
 
     const init = {
       method: "POST",
@@ -75,7 +75,7 @@ export const addProductToCart =
 export const updateCartItem =
   (userToken: string, cartItemId: string, data) => (dispatch) => {
     console.log("updateCartItem");
-    dispatch(setLoadingErrorMessage({ isLoading: true }));
+    // dispatch(setLoadingErrorMessage({ isLoading: true }));
 
     const init = {
       method: "PATCH",
@@ -96,7 +96,7 @@ export const updateCartItem =
 export const deleteCartItem =
   (userToken: string, cartItem: string) => (dispatch) => {
     console.log("deleteCartItem");
-    setLoadingErrorMessage({ isLoading: true });
+    // setLoadingErrorMessage({ isLoading: true });
 
     const init = {
       method: "DELETE",

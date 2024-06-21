@@ -36,8 +36,11 @@ const userSlice = createSlice({
   },
 });
 
+export default userSlice.reducer;
+export const { setUser, clearUser } = userSlice.actions;
+
 export const getUser = (token: string) => (dispatch) => {
-  dispatch(setLoadingErrorMessage({ isLoading: true }));
+  // dispatch(setLoadingErrorMessage({ isLoading: true }));
 
   const init = {
     method: "GET",
@@ -50,12 +53,9 @@ export const getUser = (token: string) => (dispatch) => {
     .then((res) => res.json())
     .then((res) => {
       const data = res.response;
-      // console.log(data);
+      console.log(data);
       dispatch(setUser(data));
-      dispatch(setLoadingErrorMessage({ isLoading: false }));
+      // dispatch(setLoadingErrorMessage({ isLoading: false }));
     })
     .catch((error) => console.log(error));
 };
-
-export default userSlice.reducer;
-export const { setUser, clearUser } = userSlice.actions;

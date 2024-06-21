@@ -61,7 +61,7 @@ const Cart = () => {
       className={`${styles.cart} ${cart.isClosed && styles.isClosed} ${!cart.isClosed && styles.isOpened}`}
     >
       <>
-        {loadingErrorMessage.isLoading && <Loader />}
+        {/* {loadingErrorMessage.isLoading && <Loader />} */}
         <div className={styles.cartHeader}>
           {!cart.isLoading && (
             <>

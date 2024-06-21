@@ -109,7 +109,7 @@ const MainNav = ({ customClass }) => {
 
   return (
     <>
-      {loadingErrorMessage?.isLoading && <Loader />}
+      {/* {loadingErrorMessage?.isLoading && <Loader />} */}
       <nav className={`${styles.mainNav} ${styles[customClass]}`}>
         {getNav(user, pathname)}
       </nav>

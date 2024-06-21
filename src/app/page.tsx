@@ -5,30 +5,12 @@ import type { Product } from "@/types";
 import styles from "@/styles/home.module.scss";
 
 //Components
-import ProductCard from "@/components/molecules/ProductCard/ProductCard";
-
-const apiUrl = process.env.API_URL;
+import Products from "@/components/organisms/Products/Products";
 
 export default async function Home() {
-  const products = await getProducts();
-
-  console.log({ products });
-
   return (
     <section className={`${styles.homeContainer}`}>
-      {products.products.map((product: Product) => {
-        return <ProductCard product={product} key={product.id} />;
-      })}
+      <Products />
     </section>
   );
 }
-
-const getProducts = async () => {
-  try {
-    const response = await fetch(`${apiUrl}/api/v1/products`);
-
-    return await response.json();
-  } catch (error: any) {
-    console.log(error.message);
-  }
-};
