@@ -3,7 +3,7 @@ import styles from "@/styles/productPage.module.scss";
 import ProductDetail from "@/components/organisms/ProductDetail/ProductDetail";
 import Title2 from "@/components/atoms/Title2/Title2";
 
-const apiUrl = process.env.API_URL;
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 interface ProductProps {
   params: {

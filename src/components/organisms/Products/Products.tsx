@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "@/store/slices/productsSlice";
 
 // types
-import { Product, Products } from "@/types";
+import { Product } from "@/types";
 
 //Styles
 import styles from "./Products.module.scss";
@@ -18,15 +18,20 @@ import Loader from "@/components/molecules/Loader/Loader";
 import Pagination from "@/components/molecules/Pagination/Pagination";
 
 const Products = () => {
-  const products = useSelector((state: Products) => state.products);
+  const products = useSelector((state) => state.products);
+  const loadingErrorMessage = useSelector((state) => state.loadingErrorMessage);
   const dispatch = useDispatch();
-
+  console.log("products");
+  
   useEffect(() => {
+    console.log("useefect");
+    
     dispatch(getProducts());
   }, []);
 
   return (
     <section className={styles.productsContainer}>
+      {loadingErrorMessage.isLoading  && <Loader />}
       {products.products.length < 1 && <Loader />}
       <section className={styles.products}>
         {products.products.length > 0 &&
