@@ -26,14 +26,13 @@ export default productsSlice.reducer;
 export const { setProducts } = productsSlice.actions;
 
 export const getProducts = () => (dispatch) => {
-  console.log("getting products");
-  dispatch(setLoadingErrorMessage({isLoading:true}))
+  dispatch(setLoadingErrorMessage({ isLoading: true }));
   fetch(`${apiUrl}/api/v1/products`)
+    // fetch(`${apiUrl}/api/v1/products`, { mode: "no-cors" })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       dispatch(setProducts(data));
-  dispatch(setLoadingErrorMessage({isLoading:false}))
-
-    });
+    })
+    .catch((error) => console.log(error));
+  dispatch(setLoadingErrorMessage({ isLoading: false }));
 };

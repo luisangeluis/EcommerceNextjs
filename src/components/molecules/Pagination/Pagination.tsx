@@ -1,41 +1,38 @@
-import { useEffect, useState } from "react";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import styles from "./Pagination.module.scss";
 
 const Pagination = ({ totalPages }) => {
-  const [totalGroups, setTotalGroups] = useState(0);
-  const pagesPerGroup = 3;
-  console.log({totalPages});
-  console.log({totalGroups});
-  
-  useEffect(() => {
-    setTotalGroups(Math.ceil(totalPages / pagesPerGroup));
-    // createGroups();
-  }, []);
+  let sections = Math.ceil(totalPages / 3);
+  const btnSection = useRef(null);
 
-  // const createGroups = () => {
-  //   const groups = [];
-
-  //   let sum = 0;
-  //   let resto = 0;
-  //   do {
-  //     groups.push(pagesPerGroup);
-
-  //     sum = groups.reduce((accum, current) => accum + current, 0);
-
-  //     if (sum >= totalPages) {
-  //       resto = sum - totalPages;
-  //       groups.splice(-1, 1, resto);
-  //     }
-  //   } while (sum <= totalPages);
-
-  //   console.log({ sum });
-  //   console.log({ resto });
-  //   console.log(groups);
-  // };
+  console.log({ btnSection });
+  console.log(btnSection.current?.offsetWidth);
+  useEffect(() => {}, []);
 
   return (
     <section className={styles.paginationContainer}>
-      <h3>Pagination</h3>
+      <p>{"<<"}&nbsp;&nbsp;&nbsp;</p>
+      <p>&nbsp;&nbsp;{"<"}</p>
+      <div className={styles.btnSection} ref={btnSection}>
+        <div
+          className={styles.btnGroup}
+          style={{ width: btnSection.current?.offsetWidth * sections }}
+        >
+          {Array.from({ length: totalPages }, (_, i) => (
+            <div
+              className={styles.btnContainer}
+              key={i}
+              style={{ width: btnSection.current?.offsetWidth / 3 }}
+            >
+              <button>{i + 1}</button>
+            </div>
+          ))}
+        </div>
+      </div>
+      <p>{">"}&nbsp;&nbsp;</p>
+      <p>&nbsp;&nbsp;&nbsp;{">>"}</p>
     </section>
   );
 };
