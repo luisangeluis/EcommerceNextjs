@@ -1,0 +1,15 @@
+.paginationContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;  
+  
+}
+
+@media screen and (min-width:992px){
+  .paginationContainer{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    
+  }
+}

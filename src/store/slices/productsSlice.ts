@@ -25,14 +25,25 @@ const productsSlice = createSlice({
 export default productsSlice.reducer;
 export const { setProducts } = productsSlice.actions;
 
-export const getProducts = () => (dispatch) => {
-  dispatch(setLoadingErrorMessage({ isLoading: true }));
-  fetch(`${apiUrl}/api/v1/products`)
-    // fetch(`${apiUrl}/api/v1/products`, { mode: "no-cors" })
-    .then((res) => res.json())
-    .then((data) => {
-      dispatch(setProducts(data));
-    })
-    .catch((error) => console.log(error));
-  dispatch(setLoadingErrorMessage({ isLoading: false }));
-};
+export const getProducts =
+  ({ productInfo, categoryId, page } = {}) =>
+  (dispatch) => {
+    let queryParams: any = {};
+
+    if (productInfo) queryParams.productInfo = productInfo;
+    if (categoryId) queryParams.categoryId = categoryId;
+    if (page) queryParams.page = page;
+
+    let queryString = new URLSearchParams(queryParams).toString();
+    let url = `${apiUrl}/api/v1/products?${queryString}`;
+
+    dispatch(setLoadingErrorMessage({ isLoading: true }));
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(setProducts(data));
+      })
+      .catch((error) => console.log(error));
+    dispatch(setLoadingErrorMessage({ isLoading: false }));
+  };

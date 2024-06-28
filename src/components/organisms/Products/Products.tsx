@@ -15,7 +15,7 @@ import styles from "./Products.module.scss";
 //Components
 import ProductCard from "@/components/molecules/ProductCard/ProductCard";
 import Loader from "@/components/molecules/Loader/Loader";
-import Pagination from "@/components/molecules/Pagination/Pagination";
+import CustomPagination from "@/components/molecules/CustomPagination/CustomPagination";
 
 const Products = () => {
   const products = useSelector((state) => state.products);
@@ -25,6 +25,8 @@ const Products = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+
+  const handlerClick = () => console.log("click");
 
   return (
     <section className={styles.productsContainer}>
@@ -37,7 +39,7 @@ const Products = () => {
           ))}
       </section>
       {products.totalPages > 0 && (
-        <Pagination totalPages={products.totalPages} />
+        <CustomPagination totalPages={products.totalPages} />
       )}
     </section>
   );
