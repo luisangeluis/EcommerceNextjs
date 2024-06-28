@@ -1,7 +1,16 @@
-.products {
-  padding: 2rem 0.5rem;
-  text-align: center;
-  color: black;
+.productsContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  
+
+  .products {
+    padding: 2rem 0.5rem;
+    text-align: center;
+    color: black;
+  }
 }
 
 @media screen and (min-width: 768px) {
