@@ -2,6 +2,16 @@
   display: flex;
   justify-content: space-around;
   align-items: center;  
+  padding: 1rem .5rem;
+
+  .pagination{
+    font-size: 2.5rem;
+    // background-color: var(--colorFour);
+    color:blue;
+    font-weight: bold;
+    border-radius: 10px;
+    border: var(--borderFour);
+    }
   
 }
 

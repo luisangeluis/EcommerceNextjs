@@ -1,0 +1,14 @@
+.productFinderContainter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    // align-self: flex-end;
+    padding: 1rem;
+    border: var(--borderWhite);
+    border-radius: .5rem;
+
+    .input{
+        padding: .5rem;
+    }
+}
