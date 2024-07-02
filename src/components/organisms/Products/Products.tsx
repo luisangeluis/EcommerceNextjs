@@ -25,11 +25,15 @@ const Products = () => {
   return (
     <section className={styles.productsContainer}>
       {products.isLoading === true && <Loader />}
+      {products.products.length === true && <Loader />}
       <section className={styles.products}>
-        {products.products.length > 0 &&
+        {products.products.length > 0 ? (
           products.products.map((product: Product, i: number) => (
             <ProductCard product={product} key={i} />
-          ))}
+          ))
+        ) : (
+          <h3>NO RESULTS</h3>
+        )}
       </section>
       {products.totalPages > 0 && (
         <CustomPagination totalPages={products.totalPages} />
