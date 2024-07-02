@@ -1,25 +1,19 @@
 "use client";
-
 import { useEffect } from "react";
-
-//Redux
+//REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "@/store/slices/productsSlice";
-
-// types
+// TYPES
 import { Product } from "@/types";
-
-//Styles
+//STYLES
 import styles from "./Products.module.scss";
-
-//Components
+//COMPONENTS
 import ProductCard from "@/components/molecules/ProductCard/ProductCard";
 import Loader from "@/components/molecules/Loader/Loader";
 import CustomPagination from "@/components/molecules/CustomPagination/CustomPagination";
 
 const Products = () => {
   const products = useSelector((state) => state.products);
-  const loadingErrorMessage = useSelector((state) => state.loadingErrorMessage);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,8 +24,7 @@ const Products = () => {
 
   return (
     <section className={styles.productsContainer}>
-      {loadingErrorMessage.isLoading === true && <Loader />}
-      {/* {products.products.length < 1 && <Loader />} */}
+      {products.isLoading === true && <Loader />}
       <section className={styles.products}>
         {products.products.length > 0 &&
           products.products.map((product: Product, i: number) => (

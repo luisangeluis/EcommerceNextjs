@@ -8,14 +8,20 @@ import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 const ProductFinder = () => {
   const dispatch = useDispatch();
 
+  const handlerClick = () => console.log("click");
+
   return (
     <section className={styles.productFinderContainter}>
-      <input
-        type="text"
-        placeholder="Type a product name"
-        className={styles.input}
-      />
-      <BtnCustom>Search</BtnCustom>
+      <div>
+        <input
+          type="text"
+          placeholder="Type a product name"
+          className={styles.input}
+        />
+      </div>
+      <BtnCustom customClass={"btnBlack"} onClick={handlerClick}>
+        Search
+      </BtnCustom>
     </section>
   );
 };

@@ -1,12 +1,15 @@
-.btn {
+.btnCustomContainer{
+  
   width: 100%;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  white-space: nowrap;
-
-  transition: transform 0.1s ease;
-  transform: scale(1.01);
+  .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    white-space: nowrap;
+  
+    transition: transform 0.1s ease;
+    transform: scale(1.01);
+  }
 }
 
 .btnOne {

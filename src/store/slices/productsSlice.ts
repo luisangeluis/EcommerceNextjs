@@ -10,6 +10,9 @@ const productsSlice = createSlice({
     totalPages: 0,
     currentPage: 0,
     products: [],
+    isLoading: false,
+    isError: true,
+    message: "",
   },
   reducers: {
     setProducts: (state, action) => {
@@ -37,13 +40,14 @@ export const getProducts =
     let queryString = new URLSearchParams(queryParams).toString();
     let url = `${apiUrl}/api/v1/products?${queryString}`;
 
-    dispatch(setLoadingErrorMessage({ isLoading: true }));
+    dispatch(setProducts({ isLoading: true }));
 
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        dispatch(setProducts(data));
+        // dispatch(setProducts(data));
+        dispatch(setProducts({ ...data, isLoading: false }));
       })
       .catch((error) => console.log(error));
-    dispatch(setLoadingErrorMessage({ isLoading: false }));
+    // dispatch(setLoadingErrorMessage({ isLoading: false }));
   };
