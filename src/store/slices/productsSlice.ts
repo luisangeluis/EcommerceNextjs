@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setLoadingErrorMessage } from "./loadingErrorMessageSlice";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -11,7 +10,7 @@ const productsSlice = createSlice({
     currentPage: 0,
     products: [],
     isLoading: false,
-    isError: true,
+    isError: false,
     message: "",
   },
   reducers: {
@@ -40,13 +39,13 @@ export const getProducts =
     let queryString = new URLSearchParams(queryParams).toString();
     let url = `${apiUrl}/api/v1/products?${queryString}`;
 
-    dispatch(setProducts({ isLoading: true }));
+    // dispatch(setProducts({ isLoading: true }));
 
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         // dispatch(setProducts(data));
-        dispatch(setProducts({ ...data, isLoading: false }));
+        // dispatch(setProducts({ ...data, isLoading: false }));
       })
       .catch((error) => console.log(error));
     // dispatch(setLoadingErrorMessage({ isLoading: false }));

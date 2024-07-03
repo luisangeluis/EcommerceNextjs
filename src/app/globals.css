@@ -14,6 +14,7 @@
   --colorBlack: #6c757d;
   --colorDark: #000000;
   --colorWhite: #ffffff;
+  --colorWhiteTransparent: #ffffff50;
 
   --borderOne: solid 2px var(--colorOne);
   --borderTwo: solid 2px var(--colorTwo);

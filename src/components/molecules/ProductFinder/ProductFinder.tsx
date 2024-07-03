@@ -1,5 +1,4 @@
-"use client";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 //STYLES
 import styles from "./ProductFinder.module.scss";
@@ -8,17 +7,18 @@ import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import { getProducts } from "@/store/slices/productsSlice";
 
 const ProductFinder = () => {
-  //TODO yo cre
+  const [term, setTerm] = useState("");
   const dispatch = useDispatch();
-  const inputRef = useRef("");
-  const [value, setValue] = useState("");
 
   const handlerClick = () => {
-    setvalue(inputRef.current.value);
-    dispatch(getProducts({ productInfo: value }));
+    dispatch(getProducts({ productInfo: term }));
   };
 
-  // const onChange;
+  const handlerChange = (e) => {
+    console.log(e);
+    const term = e.target.value;
+    setTerm(term);
+  };
 
   return (
     <section className={styles.productFinderContainter}>
@@ -27,8 +27,8 @@ const ProductFinder = () => {
           type="text"
           placeholder="Type a product name"
           className={styles.input}
-          ref={inputRef}
-          value={value}
+          value={term}
+          onChange={handlerChange}
         />
       </div>
       <BtnCustom customClass={"btnBlack"} onClick={handlerClick}>
