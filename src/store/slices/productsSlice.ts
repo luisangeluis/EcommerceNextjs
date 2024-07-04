@@ -30,6 +30,8 @@ export const { setProducts } = productsSlice.actions;
 export const getProducts =
   ({ productInfo, categoryId, page } = {}) =>
   (dispatch) => {
+    dispatch(setProducts({ isLoading: true }));
+
     let queryParams: any = {};
 
     if (productInfo) queryParams.productInfo = productInfo;
@@ -39,14 +41,13 @@ export const getProducts =
     let queryString = new URLSearchParams(queryParams).toString();
     let url = `${apiUrl}/api/v1/products?${queryString}`;
 
-    // dispatch(setProducts({ isLoading: true }));
-
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         // dispatch(setProducts(data));
-        // dispatch(setProducts({ ...data, isLoading: false }));
+        dispatch(setProducts({ ...data, isLoading: false }));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally((fin) => console.log({ fin }));
     // dispatch(setLoadingErrorMessage({ isLoading: false }));
   };

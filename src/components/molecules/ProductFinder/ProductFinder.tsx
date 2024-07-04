@@ -15,9 +15,10 @@ const ProductFinder = () => {
   };
 
   const handlerChange = (e) => {
-    console.log(e);
     const term = e.target.value;
     setTerm(term);
+
+    if (term === "") dispatch(getProducts());
   };
 
   return (
