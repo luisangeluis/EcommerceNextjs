@@ -2,10 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-  text-align: center;
+  
+  padding: 0 1rem;
 
-  transition: all 300ms ease;
+
+  text-align: center;
 }
 
 ul {
@@ -19,10 +20,14 @@ ul {
   }
 }
 
-.height0 {
-  height: 0;
-  padding: 0;
-  // transition: all 0.1s ease-;
+.addHeight {
+  height: 100px;
+  // padding: 0;
+}
+
+.miAnimation{
+  animation: crecer 3s forwards;
+
 }
 
 @media screen and (min-width: 992px) {
@@ -38,5 +43,19 @@ ul {
       align-items: center;
       gap: 0.5rem;
     }
+  }
+}
+
+//ANIMATION
+
+@keyframes crecer {
+  0% {
+    height: 0;
+  }
+  // 50% {
+  //   height: 50px;
+  // }
+  100% {
+    height: inherit;
   }
 }

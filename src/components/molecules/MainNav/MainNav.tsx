@@ -3,23 +3,18 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-
-//Redux
+//REDUX
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "@/store/slices/cartSlice";
 import { clearUser, getUser } from "@/store/slices/userSlice";
-
 //Fontawesome
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-//Styles
+//STYLES
 import styles from "./MainNav.module.scss";
-
-//Components
+//COMPONENTS
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import Avatar from "../Avatar/Avatar";
-import Loader from "../Loader/Loader";
 
 const MainNav = ({ customClass }) => {
   const pathname = usePathname();
@@ -27,19 +22,12 @@ const MainNav = ({ customClass }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user);
-  const loadingErrorMessage = useSelector((state) => state.loadingErrorMessage);
-
-  // console.log({ loadingErrorMessage });
-  // console.log({ user });
 
   useEffect(() => {
     if (typeof window !== undefined) {
       const currentToken = localStorage.getItem("ecoUserToken");
 
       if (!user.id && currentToken !== "" && currentToken !== null) {
-        console.log({ currentToken });
-        console.log("getting user");
-
         dispatch(getUser(currentToken));
       }
     }
@@ -108,12 +96,11 @@ const MainNav = ({ customClass }) => {
   };
 
   return (
-    <>
-      {/* {loadingErrorMessage?.isLoading && <Loader />} */}
-      <nav className={`${styles.mainNav} ${styles[customClass]}`}>
-        {getNav(user, pathname)}
-      </nav>
-    </>
+    <nav
+      className={`${styles.mainNav} ${styles.addHeight} ${styles[customClass]}`}
+    >
+      {getNav(user, pathname)}
+    </nav>
   );
 };
 
