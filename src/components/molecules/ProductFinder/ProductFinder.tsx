@@ -23,7 +23,7 @@ const ProductFinder = () => {
 
   return (
     <section className={styles.productFinderContainter}>
-      <div>
+      <div className={styles.inputContainer}>
         <input
           type="text"
           placeholder="Type a product name"

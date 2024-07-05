@@ -35,7 +35,7 @@ const ProductDetail = ({ product }) => {
   };
 
   const handlerClickAddToCart = (product) => {
-    if (!userToken) router.push("/user/login");
+    if (!userToken) router.push("/login");
     else {
       if (cart.isClosed) dispatch(setCart({ isClosed: false }));
 
@@ -57,111 +57,6 @@ const ProductDetail = ({ product }) => {
                 </li>
               );
             })}
-          {/* {product.productImage.length > 0 ? (
-            <>
-              <li>
-                <button onClick={handlerClickSelectedImage}>
-                  <Image
-                    src={product.productImage[0].url}
-                    width={400}
-                    height={400}
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button onClick={handlerClickSelectedImage}>
-                  <Image
-                    src={product.productImage[0].url}
-                    width={400}
-                    height={400}
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button onClick={handlerClickSelectedImage}>
-                  <Image
-                    src={product.productImage[0].url}
-                    width={400}
-                    height={400}
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button onClick={handlerClickSelectedImage}>
-                  <Image
-                    src={product.productImage[0].url}
-                    width={400}
-                    height={400}
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button onClick={handlerClickSelectedImage}>
-                  <Image
-                    src={product.productImage[0].url}
-                    width={400}
-                    height={400}
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button onClick={handlerClickSelectedImage}>
-                  <Image
-                    src={product.productImage[0].url}
-                    width={400}
-                    height={400}
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button onClick={handlerClickSelectedImage}>
-                  <Image
-                    src={product.productImage[0].url}
-                    width={400}
-                    height={400}
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button onClick={handlerClickSelectedImage}>
-                  <Image
-                    src={product.productImage[0].url}
-                    width={400}
-                    height={400}
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button onClick={handlerClickSelectedImage}>
-                  <Image
-                    src={product.productImage[0].url}
-                    width={400}
-                    height={400}
-                    alt=""
-                  />
-                </button>
-              </li>
-            </>
-          ) : (
-            <li>
-              <Image
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
-                }
-                width={300}
-                height={300}
-                alt="default-image"
-              />
-            </li>
-          )} */}
         </ul>
         <div className={styles.selectedImage}>
           {product.productImage.length ? (
