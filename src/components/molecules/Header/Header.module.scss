@@ -1,13 +1,12 @@
 .header {
+  width: 100%;
   text-align: center;
-  background-color: var(--colorFour);
-  height: auto;
   height: auto;
   position: fixed;
   z-index: 1;
-  width: 100%;
-
+  background-color: var(--colorFour);
   box-shadow: 1px 1px 10px 2px var(--colorFour);
+
 
   .headerHeader {
     display: flex;
@@ -26,9 +25,8 @@
     justify-content: space-between;
     align-items: center;
     min-height: 6rem;
-
-    // .title {
-    //   font-size: 1.7rem;
-    // }
   }
 }
+
+
+

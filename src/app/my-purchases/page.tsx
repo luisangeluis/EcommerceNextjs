@@ -11,10 +11,14 @@ const MyPurchases = () => {
   const [purchases, setPurchases] = useState(null);
 
   useEffect(() => {
-    getMyPurchases(userToken)
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    if (typeof window !== undefined) {
+      const currentToken = localStorage.getItem("ecoUserToken");
+
+      getMyPurchases(currentToken)
+        .then((res) => res.json())
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
   }, []);
 
   // const purchases = await getMyPurchases(userToken);

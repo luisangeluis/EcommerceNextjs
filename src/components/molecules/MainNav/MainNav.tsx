@@ -96,9 +96,7 @@ const MainNav = ({ customClass }) => {
   };
 
   return (
-    <nav
-      className={`${styles.mainNav} ${styles.addHeight} ${styles[customClass]}`}
-    >
+    <nav className={`${styles.mainNav} ${styles[customClass]}`}>
       {getNav(user, pathname)}
     </nav>
   );

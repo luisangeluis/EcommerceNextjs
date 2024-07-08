@@ -1,40 +1,28 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 import { clearCart, getCart } from "@/store/slices/cartSlice";
 import styles from "./Cart.module.scss";
-import useGetToken from "@/hooks/useGetToken";
-
-//Fontawesome
+//FONTAWESOME
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-//Components
-import Loader from "@/components/molecules/Loader/Loader";
+//COMPONENTS
 import CartItem from "@/components/molecules/CartItem/CartItem";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
-import { setLoadingErrorMessage } from "@/store/slices/loadingErrorMessageSlice";
-// import CustomIcon from "@/components/atoms/CustomIcon/CustomIcon";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  const loadingErrorMessage = useSelector((state) => state.loadingErrorMessage);
-  // const userToken = useGetToken();
   const dispatch = useDispatch();
   const [subTotal, setSubtotal] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== undefined) {
       const currentToken = localStorage.getItem("ecoUserToken");
 
       if (!cart.isClosed && currentToken !== null && currentToken !== "") {
-        // dispatch(setLoadingErrorMessage({ isLoading: true }));
-        console.log("obteniendo cart");
-
         dispatch(getCart(currentToken));
-
-        // dispatch(setLoadingErrorMessage({ isLoading: false }));
       }
     }
   }, [cart.isClosed]);
@@ -43,7 +31,7 @@ const Cart = () => {
     if (!cart.isClosed) {
       let sum = cart.data.cartItems?.reduce(
         (accum, cartItem) => accum + cartItem.quantity * cartItem.product.price,
-        0,
+        0
       );
       setSubtotal(sum);
     }
@@ -58,10 +46,11 @@ const Cart = () => {
 
   return (
     <aside
-      className={`${styles.cart} ${cart.isClosed && styles.isClosed} ${!cart.isClosed && styles.isOpened}`}
+      className={`${styles.cart} ${cart.isClosed && styles.isClosed} ${
+        !cart.isClosed && styles.isOpened
+      }`}
     >
       <>
-        {/* {loadingErrorMessage.isLoading && <Loader />} */}
         <div className={styles.cartHeader}>
           {!cart.isLoading && (
             <>

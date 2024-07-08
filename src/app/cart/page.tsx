@@ -1,49 +1,58 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart, setCart } from "@/store/slices/cartSlice";
 import { setAlert } from "@/store/slices/alertSlice";
-//Styles
+//STYLES
 import styles from "./cartDetail.module.scss";
-//Components
+//COMPONENTS
 import CartItemDetail from "@/components/molecules/CartItemDetail/CartItemDetail";
-import Loader from "@/components/molecules/Loader/Loader";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const CartDetail = () => {
-  const userToken = useSelector((state) => state.userToken);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const router = useRouter();
 
   useEffect(() => {
-    dispatch(setCart({ isClosed: true }));
-    userToken ? dispatch(getCart(userToken)) : router.push("/user/login");
+    console.log("naciendo cartDetail");
+    if (typeof window !== undefined) {
+      const currentToken = localStorage.getItem("ecoUserToken");
+
+      if (currentToken !== "" && currentToken !== null) {
+        dispatch(setCart({ isClosed: true }));
+        dispatch(getCart(currentToken));
+      }
+    }
+    // user ? dispatch(getCart(userToken)) : router.push("/login");
   }, []);
 
-  const makeOrder = (userToten) => {
-    const init = {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${userToten}`,
-      },
-    };
+  const makeOrder = () => {
+    let currentToken = "";
+    if (typeof window !== undefined) {
+      currentToken = localStorage.getItem("ecoUserToken");
 
-    fetch(`${apiUrl}/api/v1/cart/${cart?.id}/make-order`, init)
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-        dispatch(getCart(userToken));
-        dispatch(setAlert(res.message));
-        setTimeout(() => {
-          router.push("/my-purchases");
-          dispatch(setAlert(""));
-        }, 3000);
-      })
-      .catch((error) => console.log(error));
+      const init = {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${currentToken}`,
+        },
+      };
+
+      fetch(`${apiUrl}/api/v1/cart/make-order`, init)
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          dispatch(setAlert(res.message));
+          setTimeout(() => {
+            router.push("/my-purchases");
+            dispatch(setAlert(""));
+          }, 3000);
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   return (
@@ -56,12 +65,10 @@ const CartDetail = () => {
               Total: $
               {cart.data.cartItems?.reduce(
                 (accum, item) => accum + item.product.price * item.quantity,
-                0,
+                0
               )}
             </p>
-            <button onClick={() => makeOrder(userToken)}>
-              Proceed to payment
-            </button>
+            <button onClick={makeOrder}>Proceed to payment</button>
           </>
         )}
       </div>

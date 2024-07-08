@@ -47,7 +47,6 @@ export const getProducts =
         // dispatch(setProducts(data));
         dispatch(setProducts({ ...data, isLoading: false }));
       })
-      .catch((error) => console.log(error))
-      .finally((fin) => console.log({ fin }));
+      .catch((error) => console.log(error));
     // dispatch(setLoadingErrorMessage({ isLoading: false }));
   };

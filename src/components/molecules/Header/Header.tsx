@@ -60,7 +60,7 @@ const Header = () => {
           </BtnCustom>
         )}
       </div>
-      {openNav && <MainNav />}
+      <MainNav customClass={`${openNav && "hAuto"}`} />
     </header>
   );
 };
