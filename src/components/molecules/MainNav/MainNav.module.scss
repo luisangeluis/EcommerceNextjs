@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   padding: 0 1rem;
   text-align: center;
 
@@ -22,12 +23,16 @@
   }
 }
 
+.hAuto{
+  max-height: 100vh;
+}
+
+
 
 @media screen and (min-width: 992px) {
   .mainNav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: row-reverse;
+
     gap: 1rem;
 
     > ul {
@@ -38,23 +43,4 @@
     }
   }
 }
-
-//ANIMATION
-
-.hAuto{
-  max-height: 100vh;
-}
-
-
-// @keyframes crecer {
-//   0% {
-//     height: 0;
-//   }
-//   // 50% {
-//   //   height: 50px;
-//   // }
-//   100% {
-//     height: inherit;
-//   }
-// }
 
