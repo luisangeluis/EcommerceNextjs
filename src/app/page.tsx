@@ -1,20 +1,19 @@
 "use client";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-//TYPES
-import type { Product } from "@/types";
+import { getProducts } from "@/store/slices/productsSlice";
 //STYLES
 import styles from "@/styles/home.module.scss";
 //COMPONENTS
 import Products from "@/components/organisms/Products/Products";
 import ProductFinder from "@/components/molecules/ProductFinder/ProductFinder";
-import Backdrop from "@/components/atoms/Backdrop/Backdrop";
-import { CircularProgress } from "@mui/material";
 import CustomPagination from "@/components/molecules/CustomPagination/CustomPagination";
-import { useEffect } from "react";
-import { getProducts } from "@/store/slices/productsSlice";
+import Loader from "@/components/molecules/Loader/Loader";
+import Alert from "@/components/molecules/Alert/Alert";
 
 export default function Home() {
   const products = useSelector((state) => state.products);
+  const alert = useSelector((state) => state.alert);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,11 +22,8 @@ export default function Home() {
 
   return (
     <section className={`${styles.homeContainer}`}>
-      {products.isLoading && (
-        <Backdrop>
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      )}
+      {products.isLoading && <Loader />}
+      {alert && <Alert message={alert} />}
       <ProductFinder />
       {products.products.length > 0 && (
         <Products products={products.products} />

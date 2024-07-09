@@ -8,6 +8,7 @@
   .DropDownBody {
     margin-top: 1rem;
     position: absolute;
+    z-index: 2;
     left: 50%;
     transform: translate(-50%);
     background-color: var(--colorWhite);

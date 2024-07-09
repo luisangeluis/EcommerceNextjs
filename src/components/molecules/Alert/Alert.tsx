@@ -3,13 +3,8 @@ import { useSelector } from "react-redux";
 //Styles
 import styles from "./Alert.module.scss";
 
-const Alert = () => {
-  const alert = useSelector((state) => state.alert);
-  // console.log(alert);
-
-  if (!alert) return null;
-
-  return <section className={styles.alert}>{alert}</section>;
+const Alert = ({ message }) => {
+  return <section className={styles.alert}>{message}</section>;
 };
 
 export default Alert;

@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@hookform/resolvers": "^3.3.2",
     "@mui/icons-material": "^5.15.21",
+    "@mui/joy": "^5.0.0-beta.47",
     "@mui/material": "^5.15.21",
     "@reduxjs/toolkit": "^1.9.7",
     "@types/node": "20.7.0",

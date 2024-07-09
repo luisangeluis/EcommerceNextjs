@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { setAlert } from "./alertSlice";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -11,7 +12,6 @@ const productsSlice = createSlice({
     products: [],
     isLoading: false,
     isError: false,
-    message: "",
   },
   reducers: {
     setProducts: (state, action) => {
@@ -44,9 +44,8 @@ export const getProducts =
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        // dispatch(setProducts(data));
         dispatch(setProducts({ ...data, isLoading: false }));
+        if (!data.totalResults) dispatch(setAlert("no results"));
       })
       .catch((error) => console.log(error));
-    // dispatch(setLoadingErrorMessage({ isLoading: false }));
   };

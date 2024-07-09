@@ -1,12 +1,12 @@
 .header {
+  padding: 1rem .5rem;
   width: 100%;
+  min-height: 7rem;
   text-align: center;
-  height: auto;
   position: fixed;
   z-index: 1;
   background-color: var(--colorFour);
   box-shadow: 1px 1px 10px 2px var(--colorFour);
-
 
   .headerHeader {
     display: flex;

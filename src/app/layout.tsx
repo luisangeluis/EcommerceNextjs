@@ -1,17 +1,15 @@
-//Dependencies
-import { useSelector } from "react-redux";
+//DEPENDENCIES
 import Providers from "../store/Provider";
-//Styles
+//STYLES
 import "./globals.css";
 import { Inter } from "next/font/google";
-//Fontawesome
+//FONTAWESOME
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-//Components
+//COMPONENTS
 import Header from "@/components/molecules/Header/Header";
 import Footer from "@/components/molecules/Footer/Footer";
 import Cart from "@/components/molecules/Cart/Cart";
-import Alert from "@/components/molecules/Alert/Alert";
 
 config.autoAddCss = false;
 
@@ -35,7 +33,6 @@ export default function RootLayout({
           <Cart />
           <main>{children}</main>
           <Footer />
-          <Alert />
         </body>
       </Providers>
     </html>
