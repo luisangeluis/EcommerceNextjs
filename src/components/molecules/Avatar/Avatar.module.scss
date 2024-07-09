@@ -1,17 +1,12 @@
 .avatarContainer {
-  // display: flex;
-  // position: relative;
   text-align: center;
   padding: 1rem;
+
+
 
   .title {
     margin: 1rem auto;
 
-    &:hover {
-      + .list {
-        // display: block;
-      }
-    }
   }
 
   .list {
