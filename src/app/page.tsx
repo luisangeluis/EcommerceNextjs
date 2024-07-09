@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <section className={`${styles.homeContainer}`}>
       {products.isLoading && <Loader />}
-      {alert && <Alert message={alert} />}
+      {products.message && <Alert message={products.message} />}
       <ProductFinder />
       {products.products.length > 0 && (
         <Products products={products.products} />

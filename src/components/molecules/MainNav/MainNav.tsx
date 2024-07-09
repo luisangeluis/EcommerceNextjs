@@ -31,7 +31,7 @@ const MainNav = ({ customClass }) => {
         dispatch(getUser(currentToken));
       }
     }
-  }, []);
+  }, [user]);
 
   const logoutUser = () => {
     localStorage.setItem("ecoUserToken", "");

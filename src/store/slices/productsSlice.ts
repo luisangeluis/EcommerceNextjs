@@ -12,6 +12,7 @@ const productsSlice = createSlice({
     products: [],
     isLoading: false,
     isError: false,
+    message: "",
   },
   reducers: {
     setProducts: (state, action) => {
@@ -30,7 +31,7 @@ export const { setProducts } = productsSlice.actions;
 export const getProducts =
   ({ productInfo, categoryId, page } = {}) =>
   (dispatch) => {
-    dispatch(setProducts({ isLoading: true }));
+    dispatch(setProducts({ isLoading: true, isError: false, message: "" }));
 
     let queryParams: any = {};
 
@@ -45,7 +46,11 @@ export const getProducts =
       .then((res) => res.json())
       .then((data) => {
         dispatch(setProducts({ ...data, isLoading: false }));
-        if (!data.totalResults) dispatch(setAlert("no results"));
+        if (!data.totalResults)
+          dispatch(
+            setProducts({ ...data, isLoading: false, message: "no results" })
+          );
+        else dispatch(setProducts({ ...data, isLoading: false }));
       })
       .catch((error) => console.log(error));
   };
