@@ -1,17 +1,22 @@
 import { useState } from "react";
+//STYLES
 import styles from "./Avatar.module.scss";
-import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
-// import DropDown from "../DropDown/DropDown";
-import Dropdown from "@mui/joy/Dropdown";
-import { MenuItem } from "@mui/material";
-import MenuButton from "@mui/joy/MenuButton";
-import Menu from "@mui/joy/Menu";
+//COMPONENTS
 import DropDown from "../DropDown/DropDown";
 
-const Avatar = ({ name, onClick, customClass }) => {
+const Avatar = ({ user, onClick, customClass, children }) => {
+  const [openDropdown, setOpenDropdown] = useState(false);
+
+  const handleClick = () => setOpenDropdown(!openDropdown);
+
   return (
     <article className={styles.avatarContainer}>
-      <DropDown name={name} onClick={onClick} customClass={customClass} />
+      <button className={styles.avatarBtn} onClick={handleClick}>
+        {user?.firstName[0].toUpperCase()}
+      </button>
+      <p>{user?.firstName}</p>
+      {openDropdown && children}
+      {/* <DropDown name={name} onClick={onClick} customClass={customClass} /> */}
     </article>
   );
 };

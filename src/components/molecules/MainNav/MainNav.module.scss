@@ -6,7 +6,7 @@
   padding: 0 1rem;
   text-align: center;
   max-height: 100vh;
-  animation:move 800ms;
+  animation:move 2s ease-out;
   
   ul {
     .login {
@@ -20,21 +20,18 @@
   }
 }
 
-.hAuto{
-  max-height: 100vh;
-  overflow: hidden;
-}
+// .hAuto{
+//   max-height: 100vh;
+//   overflow: hidden;
+// }
 
 @keyframes move {
   0% {
     max-height: 0;
-    opacity: 0;
   }
   100% {
     max-height: 100vh;
-    opacity: 1;
-    
-  }
+      }
 }
 
 

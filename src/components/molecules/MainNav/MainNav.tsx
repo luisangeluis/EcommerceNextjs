@@ -24,6 +24,7 @@ const MainNav = ({ customClass }) => {
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
+    console.log("hola");
     if (typeof window !== undefined) {
       const currentToken = localStorage.getItem("ecoUserToken");
 
@@ -77,11 +78,9 @@ const MainNav = ({ customClass }) => {
     } else {
       return (
         <>
-          <Avatar
-            name={user.firstName}
-            onClick={logoutUser}
-            customClass={"btnBlack"}
-          />
+          <Avatar user={user} onClick={logoutUser} customClass={"btnBlack"}>
+            <p>Hola</p>
+          </Avatar>
           {cart.isClosed && (
             <BtnCustom onClick={handlerClick} customClass={"btnWhite"}>
               <FontAwesomeIcon
