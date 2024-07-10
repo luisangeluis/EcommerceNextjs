@@ -15,6 +15,8 @@ import styles from "./MainNav.module.scss";
 //COMPONENTS
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import Avatar from "../Avatar/Avatar";
+import DropDown from "../DropDown/DropDown";
+import Loader from "../Loader/Loader";
 
 const MainNav = ({ customClass }) => {
   const pathname = usePathname();
@@ -78,8 +80,10 @@ const MainNav = ({ customClass }) => {
     } else {
       return (
         <>
+          {user.isLoading && <Loader />}
           <Avatar user={user} onClick={logoutUser} customClass={"btnBlack"}>
-            <p>Hola</p>
+            {/* <p>Hola</p> */}
+            <DropDown />
           </Avatar>
           {cart.isClosed && (
             <BtnCustom onClick={handlerClick} customClass={"btnWhite"}>

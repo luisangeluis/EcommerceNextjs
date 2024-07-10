@@ -11,6 +11,9 @@ const userSlice = createSlice({
     lastName: "",
     email: "",
     roleId: "",
+    isLoading: false,
+    isError: false,
+    message: "",
   },
   reducers: {
     setUser: (state, action) => {
