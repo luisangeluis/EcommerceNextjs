@@ -7,12 +7,14 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState: {
     isClosed: true,
+    isLoading: false,
     data: {},
   },
   reducers: {
     clearCart: () => {
       return {
         isClosed: true,
+        isLoading: false,
         data: {},
       };
     },
@@ -31,6 +33,8 @@ export default cartSlice.reducer;
 export const { clearCart, setCart } = cartSlice.actions;
 
 export const getCart = (userToken: string) => (dispatch) => {
+  dispatch(setCart({ isLoading: true }));
+
   const init = {
     method: "GET",
     headers: {
@@ -43,7 +47,7 @@ export const getCart = (userToken: string) => (dispatch) => {
     .then((res) => {
       const data = res.response;
 
-      dispatch(setCart({ data }));
+      dispatch(setCart({ data, isLoading: false }));
     })
     .catch((error) => console.log(error));
 };

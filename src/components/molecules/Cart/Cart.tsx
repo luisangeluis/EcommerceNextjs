@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //COMPONENTS
 import CartItem from "@/components/molecules/CartItem/CartItem";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
+import Loader from "../Loader/Loader";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -50,30 +51,27 @@ const Cart = () => {
         !cart.isClosed && styles.isOpened
       }`}
     >
-      <>
+      <section className={styles.cartContainer}>
+        {cart.isLoading && <Loader />}
         <div className={styles.cartHeader}>
-          {!cart.isLoading && (
-            <>
-              <BtnCustom onClick={handlerClick}>
-                <FontAwesomeIcon icon={faX} className="fa-solid fa-x" />
-              </BtnCustom>
-              <h3 className={`titleFour`}>Subtotal</h3>
-              <p>{`$${subTotal ? subTotal : "00"}.00`}</p>
-              <BtnCustom
-                onClick={() => router.push("/cart")}
-                customClass={"btnDark"}
-              >
-                Detail cart
-              </BtnCustom>
-            </>
-          )}
+          <BtnCustom onClick={handlerClick}>
+            <FontAwesomeIcon icon={faX} className="fa-solid fa-x" />
+          </BtnCustom>
+          <h3 className={`titleFour`}>Subtotal</h3>
+          <p>{`$${subTotal ? subTotal : "00"}.00`}</p>
+          <BtnCustom
+            onClick={() => router.push("/cart")}
+            customClass={"btnDark"}
+          >
+            Detail cart
+          </BtnCustom>
         </div>
         <div className={`${styles.cartBody}`}>
           <article className={`${styles.cartItemsContainer}`}>
             {showCartItems(cart.data?.cartItems)}
           </article>
         </div>
-      </>
+      </section>
     </aside>
   );
 };

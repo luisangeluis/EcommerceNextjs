@@ -45,7 +45,7 @@ export const getProducts =
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        dispatch(setProducts({ ...data, isLoading: false }));
+        // dispatch(setProducts({ ...data, isLoading: false }));
         if (!data.totalResults)
           dispatch(
             setProducts({ ...data, isLoading: false, message: "no results" })
