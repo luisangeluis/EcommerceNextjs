@@ -16,7 +16,6 @@ const Avatar = ({ user, onClick, customClass, children }) => {
       </button>
       <p>{user?.firstName}</p>
       {openDropdown && children}
-      {/* <DropDown name={name} onClick={onClick} customClass={customClass} /> */}
     </article>
   );
 };

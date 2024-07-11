@@ -1,10 +1,33 @@
 .alert {
-  min-width: 8rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap:.5rem;
   padding: 0.5rem;
+  min-width: 8rem;
   border-radius: 7px;
   position: fixed;
-  top: 10vh;
+  top: 20%;
   right: 0;
-  background-color: lightblue;
+  z-index:1;
+  background-color: var(--colorFive);
+  color:var(--colorFour);
+  font-weight:bold;
   text-align: center;
+
+  animation: slideFromRight 400ms ease-in-out;
+
 }
+
+//ANIMATION
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%); /* Comienza fuera de la pantalla a la derecha */
+  }
+  100% {
+    transform: translateX(0); /* Termina en su posición original */
+  }
+}
+
+

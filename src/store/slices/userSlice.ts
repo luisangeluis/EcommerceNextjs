@@ -56,7 +56,7 @@ export const getUser = (token: string) => (dispatch) => {
     .then((res) => res.json())
     .then((res) => {
       const data = res.response;
-      console.log(data);
+      // console.log(data);
       dispatch(setUser(data));
       // dispatch(setLoadingErrorMessage({ isLoading: false }));
     })

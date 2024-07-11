@@ -26,7 +26,6 @@ const MainNav = ({ customClass }) => {
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    console.log("hola");
     if (typeof window !== undefined) {
       const currentToken = localStorage.getItem("ecoUserToken");
 
@@ -81,10 +80,6 @@ const MainNav = ({ customClass }) => {
       return (
         <>
           {user.isLoading && <Loader />}
-          <Avatar user={user} onClick={logoutUser} customClass={"btnBlack"}>
-            {/* <p>Hola</p> */}
-            <DropDown />
-          </Avatar>
           {cart.isClosed && (
             <BtnCustom onClick={handlerClick} customClass={"btnWhite"}>
               <FontAwesomeIcon
@@ -93,6 +88,9 @@ const MainNav = ({ customClass }) => {
               />
             </BtnCustom>
           )}
+          <Avatar user={user} onClick={logoutUser} customClass={"btnBlack"}>
+            <DropDown />
+          </Avatar>
         </>
       );
     }
