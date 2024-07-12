@@ -6,7 +6,8 @@
   text-align: center;
 
   .DropDownBody {
-    margin-top: 1rem;
+    padding:.5rem;
+    margin-top: .5rem;
     position: absolute;
     z-index: 2;
     left: 50%;
@@ -18,8 +19,19 @@
       padding: 1rem;
 
       li {
-        padding: 0.5rem;
+        /*padding: 0.5rem;*/
       }
     }
   }
+}
+
+@media screen and (min-width:992px){
+  .DropDownContainer{
+    .DropDownBody{
+      /*margin-top: 1.5rem;
+      transform: translate(-100%);
+      left: 100%;*/
+    }
+  }
+  
 }

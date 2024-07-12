@@ -1,4 +1,5 @@
 "use client";
+import { setProducts } from "@/store/slices/productsSlice";
 //Styles
 import styles from "./Alert.module.scss";
 //Fontawesome
@@ -8,11 +9,11 @@ import { useDispatch } from "react-redux";
 
 const Alert = ({ message }) => {
   const dispatch = useDispatch();
-  // const handleClick=()=>dispatch
+  const handleClick = () => dispatch(setProducts({ message: "" }));
 
   return (
     <section className={styles.alert}>
-      <button>
+      <button onClick={handleClick}>
         <FontAwesomeIcon icon={faX} className="fa-solid fa-x" />
       </button>
       <p>{message}</p>

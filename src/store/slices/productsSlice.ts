@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { setAlert } from "./alertSlice";
+import { log } from "console";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -48,9 +49,14 @@ export const getProducts =
         // dispatch(setProducts({ ...data, isLoading: false }));
         if (!data.totalResults)
           dispatch(
-            setProducts({ ...data, isLoading: false, message: "no results" })
+            setProducts({ ...data, isLoading: false, message: "no results" }),
           );
         else dispatch(setProducts({ ...data, isLoading: false }));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        dispatch(
+          setProducts({ isLoading: false, message: "Unexpected error" }),
+        );
+      });
   };

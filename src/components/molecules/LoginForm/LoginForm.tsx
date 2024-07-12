@@ -76,7 +76,6 @@ const LoginForm = () => {
 
   return (
     <>
-      {loadingErrorMessage.isLoading && <Loader />}
       <form className={`${styles.form}`} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.headerForm}>
           <h2>LOGIN</h2>

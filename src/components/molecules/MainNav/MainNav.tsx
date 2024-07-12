@@ -88,9 +88,7 @@ const MainNav = ({ customClass }) => {
               />
             </BtnCustom>
           )}
-          <Avatar user={user} onClick={logoutUser} customClass={"btnBlack"}>
-            <DropDown />
-          </Avatar>
+          <Avatar user={user} onClick={logoutUser} customClass={"btnBlack"} />
         </>
       );
     }

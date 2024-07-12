@@ -1,10 +1,10 @@
 import { useState } from "react";
 //STYLES
 import styles from "./Avatar.module.scss";
-//COMPONENTS
 import DropDown from "../DropDown/DropDown";
+//COMPONENTS
 
-const Avatar = ({ user, onClick, customClass, children }) => {
+const Avatar = ({ user, onClick, customClass }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
 
   const handleClick = () => setOpenDropdown(!openDropdown);
@@ -14,8 +14,7 @@ const Avatar = ({ user, onClick, customClass, children }) => {
       <button className={styles.avatarBtn} onClick={handleClick}>
         {user?.firstName[0].toUpperCase()}
       </button>
-      <p>{user?.firstName}</p>
-      {openDropdown && children}
+      {openDropdown && <DropDown userName={user?.firstName} />}
     </article>
   );
 };

@@ -1,21 +1,21 @@
 .alert {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap:.5rem;
+  gap: .5rem;
   padding: 0.5rem;
   min-width: 8rem;
   border-radius: 7px;
   position: fixed;
   top: 20%;
-  right: 0;
-  z-index:1;
+  right: 5%;
+  z-index: 1;
   background-color: var(--colorFive);
-  color:var(--colorFour);
-  font-weight:bold;
+  color: var(--colorFour);
+  font-weight: bold;
   text-align: center;
 
-  animation: slideFromRight 400ms ease-in-out;
+  animation: slideFromRight 200ms ease-in-out;
 
 }
 
@@ -23,11 +23,12 @@
 
 @keyframes slideFromRight {
   0% {
-    transform: translateX(100%); /* Comienza fuera de la pantalla a la derecha */
+    transform: translateX(100%);
+    /* Comienza fuera de la pantalla a la derecha */
   }
+
   100% {
-    transform: translateX(0); /* Termina en su posición original */
+    transform: translateX(0);
+    /* Termina en su posición original */
   }
 }
-
-

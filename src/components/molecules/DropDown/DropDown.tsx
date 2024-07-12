@@ -2,12 +2,13 @@ import { useState } from "react";
 import styles from "./DropDown.module.scss";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 
-const DropDown = ({ customClass }) => {
+const DropDown = ({ customClass, userName }) => {
   const handleClick = () => console.log("click");
 
   return (
     <article className={styles.DropDownContainer}>
       <div className={styles.DropDownBody}>
+        <p>User:{userName}</p>
         <ul className={styles.list}>
           <li>
             <BtnCustom onClick={handleClick} customClass={`${customClass}`}>
