@@ -10,6 +10,7 @@ import ProductFinder from "@/components/molecules/ProductFinder/ProductFinder";
 import CustomPagination from "@/components/molecules/CustomPagination/CustomPagination";
 import Loader from "@/components/molecules/Loader/Loader";
 import Alert from "@/components/molecules/Alert/Alert";
+import Backdrop from "@/components/atoms/Backdrop/Backdrop";
 
 export default function Home() {
   const products = useSelector((state) => state.products);
@@ -22,7 +23,11 @@ export default function Home() {
 
   return (
     <section className={`${styles.homeContainer}`}>
-      {products.isLoading && <Loader />}
+      {products.isLoading && (
+        <Backdrop customClass={"pFixed"}>
+          <Loader />
+        </Backdrop>
+      )}
       {products.message && <Alert message={products.message} />}
       <ProductFinder />
       {products.products.length > 0 && (

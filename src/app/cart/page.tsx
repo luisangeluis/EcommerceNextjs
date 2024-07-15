@@ -3,18 +3,19 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart, setCart } from "@/store/slices/cartSlice";
-import { setAlert } from "@/store/slices/alertSlice";
+//import { setAlert } from "@/store/slices/alertSlice";
 //STYLES
 import styles from "./cartDetail.module.scss";
 //COMPONENTS
 import CartItemDetail from "@/components/molecules/CartItemDetail/CartItemDetail";
+import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const CartDetail = () => {
-  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const router = useRouter();
+  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
     console.log("naciendo cartDetail");
@@ -31,28 +32,28 @@ const CartDetail = () => {
 
   const makeOrder = () => {
     let currentToken = "";
-    if (typeof window !== undefined) {
-      currentToken = localStorage.getItem("ecoUserToken");
+    //if (typeof window !== undefined) {
+    currentToken = localStorage.getItem("ecoUserToken");
 
-      const init = {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${currentToken}`,
-        },
-      };
+    const init = {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${currentToken}`,
+      },
+    };
 
-      fetch(`${apiUrl}/api/v1/cart/make-order`, init)
-        .then((res) => res.json())
-        .then((res) => {
-          console.log(res);
-          dispatch(setAlert(res.message));
-          setTimeout(() => {
-            router.push("/my-purchases");
-            dispatch(setAlert(""));
-          }, 3000);
-        })
-        .catch((error) => console.log(error));
-    }
+    fetch(`${apiUrl}/api/v1/cart/make-order`, init)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        //dispatch(setAlert(res.message));
+        setTimeout(() => {
+          router.push("/my-purchases");
+          //dispatch(setAlert(""));
+        }, 3000);
+      })
+      .catch((error) => console.log(error));
+    //}
   };
 
   return (
@@ -65,10 +66,14 @@ const CartDetail = () => {
               Total: $
               {cart.data.cartItems?.reduce(
                 (accum, item) => accum + item.product.price * item.quantity,
-                0
+                0,
               )}
             </p>
-            <button onClick={makeOrder}>Proceed to payment</button>
+            {/*<button onClick={makeOrder}>*/}
+            <BtnCustom customClass={"btnBorderBlack"} onClick={makeOrder}>
+              Proceed to payment
+            </BtnCustom>
+            {/*</button>*/}
           </>
         )}
       </div>

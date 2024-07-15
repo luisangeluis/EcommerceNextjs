@@ -30,17 +30,27 @@ const CartItem = ({ item }) => {
   }, []);
 
   const handleDeleteClick = () => {
-    !userToken
-      ? router.push("/user/login")
-      : dispatch(deleteCartItem(userToken, item.id));
+    const currentToken = localStorage.getItem("ecoUserToken");
+    +!currentToken
+      ? router.push("/login")
+      : dispatch(deleteCartItem(currentToken, item.id));
   };
 
   const handleChange = (e) => {
+    const currentToken = localStorage.getItem("ecoUserToken");
+
     const currentValue = e.target.value;
 
-    if (currentValue >= 1 && currentValue <= 10) {
+    if (
+      currentValue >= 1 &&
+      currentValue <= 10 &&
+      currentToken !== null &&
+      currentToken !== ""
+    ) {
       dispatch(
-        updateCartItem(userToken, item.id, { quantity: Number(currentValue) }),
+        updateCartItem(currentToken, item.id, {
+          quantity: Number(currentValue),
+        }),
       );
     }
   };

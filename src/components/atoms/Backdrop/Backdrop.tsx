@@ -1,7 +1,11 @@
 import styles from "./Backdrop.module.scss";
 
-const Backdrop = ({ children }) => {
-  return <div className={styles.backdropContainer}>{children}</div>;
+const Backdrop = ({ children, customClass }) => {
+  return (
+    <div className={`${styles.backdropContainer} ${styles[customClass]}`}>
+      {children}
+    </div>
+  );
 };
 
 export default Backdrop;

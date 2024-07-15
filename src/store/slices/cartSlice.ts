@@ -6,16 +6,20 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
+    data: {},
     isClosed: true,
     isLoading: false,
-    data: {},
+    isError: false,
+    message: "",
   },
   reducers: {
     clearCart: () => {
       return {
+        data: {},
         isClosed: true,
         isLoading: false,
-        data: {},
+        isError: false,
+        message: "",
       };
     },
 
@@ -33,7 +37,7 @@ export default cartSlice.reducer;
 export const { clearCart, setCart } = cartSlice.actions;
 
 export const getCart = (userToken: string) => (dispatch) => {
-  dispatch(setCart({ isLoading: true }));
+  dispatch(setCart({ isLoading: true, isError: false, message: "" }));
 
   const init = {
     method: "GET",
@@ -46,10 +50,17 @@ export const getCart = (userToken: string) => (dispatch) => {
     .then((res) => res.json())
     .then((res) => {
       const data = res.response;
-
       dispatch(setCart({ data, isLoading: false }));
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      dispatch(
+        setCart({
+          isLoading: false,
+          isError: true,
+          message: `Error: ${error.message}`,
+        }),
+      );
+    });
 };
 
 export const addProductToCart =

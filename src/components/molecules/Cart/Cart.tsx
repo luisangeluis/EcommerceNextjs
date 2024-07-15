@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CartItem from "@/components/molecules/CartItem/CartItem";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import Loader from "../Loader/Loader";
+import Backdrop from "@/components/atoms/Backdrop/Backdrop";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -32,7 +33,7 @@ const Cart = () => {
     if (!cart.isClosed) {
       let sum = cart.data.cartItems?.reduce(
         (accum, cartItem) => accum + cartItem.quantity * cartItem.product.price,
-        0
+        0,
       );
       setSubtotal(sum);
     }
@@ -51,8 +52,12 @@ const Cart = () => {
         !cart.isClosed && styles.isOpened
       }`}
     >
+      {cart.isLoading && (
+        <Backdrop customClass={"pAbsolute"}>
+          <Loader />
+        </Backdrop>
+      )}
       <section className={styles.cartContainer}>
-        {cart.isLoading && <Loader />}
         <div className={styles.cartHeader}>
           <BtnCustom onClick={handlerClick}>
             <FontAwesomeIcon icon={faX} className="fa-solid fa-x" />
@@ -67,6 +72,7 @@ const Cart = () => {
           </BtnCustom>
         </div>
         <div className={`${styles.cartBody}`}>
+          {cart.data.cartItems?.length === 0 && <h3>No items</h3>}
           <article className={`${styles.cartItemsContainer}`}>
             {showCartItems(cart.data?.cartItems)}
           </article>

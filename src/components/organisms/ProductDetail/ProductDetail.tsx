@@ -35,11 +35,13 @@ const ProductDetail = ({ product }) => {
   };
 
   const handlerClickAddToCart = (product) => {
-    if (!userToken) router.push("/login");
+    const currentToken = localStorage.getItem("ecoUserToken");
+
+    if (!currentToken) router.push("/login");
     else {
       if (cart.isClosed) dispatch(setCart({ isClosed: false }));
 
-      dispatch(addProductToCart(userToken, product.id));
+      dispatch(addProductToCart(currentToken, product.id));
     }
   };
 
