@@ -6,7 +6,7 @@ import { getProducts, setProducts } from "@/store/slices/productsSlice";
 import styles from "@/styles/home.module.scss";
 //COMPONENTS
 import Products from "@/components/organisms/Products/Products";
-import ProductFinder from "@/components/molecules/ProductFinder/ProductFinder";
+import ProductInput from "@/components/molecules/ProductInput/ProductInput";
 import CustomPagination from "@/components/molecules/CustomPagination/CustomPagination";
 import Loader from "@/components/molecules/Loader/Loader";
 import Alert from "@/components/molecules/Alert/Alert";
@@ -29,7 +29,7 @@ export default function Home() {
         </Backdrop>
       )}
       {products.message && <Alert message={products.message} />}
-      <ProductFinder />
+      <ProductInput />
       {products.products.length > 0 && (
         <Products products={products.products} />
       )}

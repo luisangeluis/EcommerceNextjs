@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 //STYLES
-import styles from "./ProductFinder.module.scss";
+import styles from "./ProductInput.module.scss";
 //COMPONENTS
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import { getProducts } from "@/store/slices/productsSlice";
 
-const ProductFinder = () => {
+const ProductInput = () => {
   const [term, setTerm] = useState("");
   const dispatch = useDispatch();
 
@@ -39,4 +39,4 @@ const ProductFinder = () => {
   );
 };
 
-export default ProductFinder;
+export default ProductInput;
