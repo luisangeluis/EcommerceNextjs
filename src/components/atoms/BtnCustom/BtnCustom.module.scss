@@ -1,20 +1,25 @@
-.btnCustomContainer{
-  
+.btnCustomContainer {
+
   // width: 100%;
   .btn {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-weight: bold;
     white-space: nowrap;
-  
+
     transition: transform 0.1s ease;
     transform: scale(1.01);
   }
 }
 
 .btnOne {
-  border: var(--borderOne);
-  color: var(--colorOne);
+  background-color: var(--colorOne);
+  color: var(--colorWhite);
+}
+
+.btnThree {
+  background-color: var(--colorThree);
+  color: var(--colorWhite);
 }
 
 .btnBorderBlack {
@@ -26,6 +31,7 @@
   background-color: var(--colorBlack);
   color: var(--colorWhite);
 }
+
 .btnBorderDark {
   border: var(--borderDark);
   color: var(--colorDark);
