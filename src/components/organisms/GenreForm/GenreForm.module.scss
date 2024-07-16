@@ -1,0 +1,26 @@
+.categoriesContainer {
+  padding: 1rem .5rem;
+  justify-content: center;
+  align-items: center;
+
+  .categoriesLabel {
+    padding: 0 .5rem;
+    color: black;
+  }
+
+  .categories {
+    padding: 0 .5rem;
+  }
+}
+
+@media screen and (min-width:992px) {
+  .categoriesContainer {
+    align-items: flex-start;
+
+    padding: 1rem;
+
+    .categoriesLabel {
+      text-align: left;
+    }
+  }
+}
