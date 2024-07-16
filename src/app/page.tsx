@@ -31,7 +31,9 @@ export default function Home() {
       )}
       {products.message && <Alert message={products.message} />}
       {/* <ProductInput />*/}
+      {/** <ProductBrowser />*/}
       <ProductBrowser />
+
       {products.products.length > 0 && (
         <Products products={products.products} />
       )}

@@ -2,6 +2,24 @@
   display: grid;
   gap: 1rem;
   padding: .5rem;
+
+  .categoriesContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    text-align: center;
+
+    .categories {
+      //justify-content: space-evenly;
+      padding: 1rem .5rem;
+    }
+  }
+}
+
+.customRadio {
+
+  color: black;
 }
 
 @media screen and (min-width:992px) {
