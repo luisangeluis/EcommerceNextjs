@@ -11,6 +11,7 @@ import CustomPagination from "@/components/molecules/CustomPagination/CustomPagi
 import Loader from "@/components/molecules/Loader/Loader";
 import Alert from "@/components/molecules/Alert/Alert";
 import Backdrop from "@/components/atoms/Backdrop/Backdrop";
+import ProductBrowser from "@/components/organisms/ProductBrowser/ProductBrowser";
 
 export default function Home() {
   const products = useSelector((state) => state.products);
@@ -29,7 +30,8 @@ export default function Home() {
         </Backdrop>
       )}
       {products.message && <Alert message={products.message} />}
-      <ProductInput />
+      {/* <ProductInput />*/}
+      <ProductBrowser />
       {products.products.length > 0 && (
         <Products products={products.products} />
       )}
