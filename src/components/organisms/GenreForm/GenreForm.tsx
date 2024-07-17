@@ -7,16 +7,30 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const GenreForm = () => {
   const dispatch = useDispatch();
-  const [category, setCategory] = useState();
+  const [categories, setCategories] = useState();
+  const [currentCategory, setCurrentCategory] = useState();
 
-  //GET CATEGORIES FROM API
+  //TODO to make endpoint of categories
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   const handleChange = () => {
     //dispatch(getProducts({ cate }));
+  };
+
+  const getCategories = () => {
+    fetch(`${apiUrl}/api/v1/categories`)
+      .then((res) => res.ok)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error.message));
   };
 
   return (
@@ -27,7 +41,7 @@ const GenreForm = () => {
         aria-labelledby="categories"
         name="categories"
         className={styles.categories}
-        value={category}
+        value={currentCategory}
         onChange={handleChange}
       >
         <FormControlLabel
