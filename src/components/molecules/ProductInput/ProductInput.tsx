@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //STYLES
 import styles from "./ProductInput.module.scss";
 //COMPONENTS
@@ -7,8 +7,9 @@ import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import { getProducts } from "@/store/slices/productsSlice";
 
 const ProductInput = () => {
-  const [term, setTerm] = useState("");
   const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
+  const [term, setTerm] = useState("");
 
   const handlerClick = () => {
     dispatch(getProducts({ productInfo: term }));
@@ -18,7 +19,7 @@ const ProductInput = () => {
     const term = e.target.value;
     setTerm(term);
 
-    if (term === "") dispatch(getProducts());
+    if (term === "" && products.products.length === 0) dispatch(getProducts());
   };
 
   return (

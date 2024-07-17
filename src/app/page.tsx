@@ -30,8 +30,6 @@ export default function Home() {
         </Backdrop>
       )}
       {products.message && <Alert message={products.message} />}
-      {/* <ProductInput />*/}
-      {/** <ProductBrowser />*/}
       <ProductBrowser />
 
       {products.products.length > 0 && (

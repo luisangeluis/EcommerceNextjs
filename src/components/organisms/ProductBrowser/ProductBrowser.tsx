@@ -10,7 +10,7 @@ const ProductBrowser = () => {
         <GenreForm />
         <ProductInput />
       </section>
-      <hr style={{ border: "solid 1px var(--colorThree)" }} />
+      {/**<hr style={{ border: "solid 1px var(--colorThree)" }} /> */}
     </>
   );
 };

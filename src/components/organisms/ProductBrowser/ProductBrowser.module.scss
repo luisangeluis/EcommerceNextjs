@@ -2,8 +2,15 @@
   display: grid;
   gap: 1rem;
   padding: .5rem;
+  background-color: var(--colorWhiteTransparent);
+  border: var(--borderWhite);
+  border-radius: 1rem;
+  transition: box-shadow 200ms ease-in-out;
 
+  &:hover {
+    box-shadow: 1px 1px 10px 2px var(--colorDarkTransparent);
 
+  }
 }
 
 @media screen and (min-width:992px) {
