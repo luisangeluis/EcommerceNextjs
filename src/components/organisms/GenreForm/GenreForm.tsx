@@ -28,7 +28,7 @@ const GenreForm = () => {
 
   const getCategories = () => {
     fetch(`${apiUrl}/api/v1/categories`)
-      .then((res) => res.ok)
+      .then((res) => res.ok === true && res.json())
       .then((res) => console.log(res))
       .catch((error) => console.log(error.message));
   };
