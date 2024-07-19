@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 //STYLES
 import styles from "./GenreForm.module.scss";
 //COMPONENTS
@@ -6,30 +8,36 @@ import FormLabel from "@mui/material/FormLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { getProducts } from "@/store/slices/productsSlice";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const GenreForm = () => {
   const dispatch = useDispatch();
-  const [categories, setCategories] = useState();
-  const [currentCategory, setCurrentCategory] = useState();
-
-  //TODO to make endpoint of categories
+  const products = useSelector((state) => state.products);
+  const [categories, setCategories] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState("");
 
   useEffect(() => {
     getCategories();
   }, []);
 
-  const handleChange = () => {
-    //dispatch(getProducts({ cate }));
+  useEffect(() => {
+    setCurrentCategory("");
+  }, [products]);
+
+  const handleChange = (e) => {
+    const selectedCategory = e.target.value;
+    setCurrentCategory(selectedCategory);
+    dispatch(getProducts({ categoryId: selectedCategory }));
   };
 
   const getCategories = () => {
     fetch(`${apiUrl}/api/v1/categories`)
       .then((res) => res.ok === true && res.json())
-      .then((res) => console.log(res))
+      .then((res) => {
+        setCategories(res.data);
+      })
       .catch((error) => console.log(error.message));
   };
 
@@ -44,21 +52,14 @@ const GenreForm = () => {
         value={currentCategory}
         onChange={handleChange}
       >
-        <FormControlLabel
-          value="sport"
-          control={<Radio color="default" />}
-          label="Sports"
-        />
-        <FormControlLabel
-          value="home"
-          control={<Radio color="default" />}
-          label="Home"
-        />
-        <FormControlLabel
-          value="toys"
-          control={<Radio color="default" />}
-          label="Toys"
-        />
+        {categories.map((c, i) => (
+          <FormControlLabel
+            key={i}
+            value={c.id}
+            control={<Radio />}
+            label={c.name}
+          />
+        ))}
       </RadioGroup>
     </FormControl>
   );
