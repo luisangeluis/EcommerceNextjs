@@ -1,25 +1,23 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 //STYLES
 import styles from "./ProductInput.module.scss";
 //COMPONENTS
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
-import { getProducts } from "@/store/slices/productsSlice";
 
-const ProductInput = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
+const ProductInput = ({ setTermsToSearch }) => {
   const [term, setTerm] = useState("");
 
-  const handlerClick = () => {
-    dispatch(getProducts({ productInfo: term }));
-  };
+  useEffect(() => {
+    if (!term) {
+      setTermsToSearch({});
+    }
+  }, [term]);
+
+  const handlerClick = () => setTermsToSearch({ productInfo: term });
 
   const handlerChange = (e) => {
-    const term = e.target.value;
-    setTerm(term);
-
-    if (term === "" && products.products.length === 0) dispatch(getProducts());
+    const value = e.target.value;
+    setTerm(value);
   };
 
   return (

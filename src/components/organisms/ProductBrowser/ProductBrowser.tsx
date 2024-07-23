@@ -1,17 +1,24 @@
 import styles from "./ProductBrowser.module.scss";
 import ProductInput from "@/components/molecules/ProductInput/ProductInput";
-import FormControl from "@mui/material/FormControl";
 import GenreForm from "@/components/organisms/GenreForm/GenreForm";
+import { getProducts } from "@/store/slices/productsSlice";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const ProductBrowser = () => {
+  const dispatch = useDispatch();
+  const [termsToSearch, setTermsToSearch] = useState({});
+
+  useEffect(() => {
+    dispatch(getProducts(termsToSearch));
+  }, [termsToSearch]);
+
   return (
-    <>
-      <section className={styles.productBrowser}>
-        <GenreForm />
-        <ProductInput />
-      </section>
-      {/**<hr style={{ border: "solid 1px var(--colorThree)" }} /> */}
-    </>
+    <section className={styles.productBrowser}>
+      <GenreForm setTermsToSearch={setTermsToSearch} />
+
+      <ProductInput setTermsToSearch={setTermsToSearch} />
+    </section>
   );
 };
 
