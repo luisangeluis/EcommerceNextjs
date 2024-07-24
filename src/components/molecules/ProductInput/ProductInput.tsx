@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "./ProductInput.module.scss";
 //COMPONENTS
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
+import InputText from "@/components/atoms/InputText/InputText";
 
 const ProductInput = ({ termsToSearch, setTermsToSearch }) => {
   const [term, setTerm] = useState("");
@@ -16,22 +17,18 @@ const ProductInput = ({ termsToSearch, setTermsToSearch }) => {
   const handlerClick = () =>
     setTermsToSearch({ ...termsToSearch, productInfo: term });
 
-  const handlerChange = (e) => {
+  const handleChange = (e) => {
     const value = e.target.value;
     setTerm(value);
   };
 
   return (
     <section className={styles.productFinderContainter}>
-      <div className={styles.inputContainer}>
-        <input
-          type="text"
-          placeholder="Type a product name"
-          className={styles.input}
-          value={term}
-          onChange={handlerChange}
-        />
-      </div>
+      <InputText
+        placeholder={"Type a term"}
+        onChange={handleChange}
+        value={term}
+      />
       <BtnCustom customClass={"btnBlack"} onClick={handlerClick}>
         Search
       </BtnCustom>
