@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./CustomPagination.module.scss";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
@@ -14,10 +14,13 @@ const CustomPagination = ({ totalPages }) => {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (page) dispatch(getProducts({ page }));
+  }, [page]);
+
   const handleChange = (e, value) => {
     console.log(value);
     setPage(value);
-    dispatch(getProducts({ page: value }));
   };
 
   return (

@@ -4,7 +4,7 @@ import styles from "./ProductInput.module.scss";
 //COMPONENTS
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 
-const ProductInput = ({ setTermsToSearch }) => {
+const ProductInput = ({ termsToSearch, setTermsToSearch }) => {
   const [term, setTerm] = useState("");
 
   useEffect(() => {
@@ -13,7 +13,8 @@ const ProductInput = ({ setTermsToSearch }) => {
     }
   }, [term]);
 
-  const handlerClick = () => setTermsToSearch({ productInfo: term });
+  const handlerClick = () =>
+    setTermsToSearch({ ...termsToSearch, productInfo: term });
 
   const handlerChange = (e) => {
     const value = e.target.value;

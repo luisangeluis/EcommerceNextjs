@@ -17,7 +17,7 @@ const ProductBrowser = () => {
     <section className={styles.productBrowser}>
       <GenreForm setTermsToSearch={setTermsToSearch} />
 
-      <ProductInput setTermsToSearch={setTermsToSearch} />
+      <ProductInput setTermsToSearch={setTermsToSearch} termsToSearch={termsToSearch}/>
     </section>
   );
 };

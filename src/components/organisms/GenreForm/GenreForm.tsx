@@ -14,22 +14,18 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const GenreForm = ({ setTermsToSearch }) => {
   const [categories, setCategories] = useState([]);
-
-  const [currentCategory, setCurrentCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     getCategories();
   }, []);
 
-  const handleChange = (e) => {
-    const selectedCategory = e.target.value;
-    const name = e.target.name;
+  useEffect(() => {
+    setTermsToSearch({ categoryId: selectedCategory });
+  }, [selectedCategory]);
 
-    console.log(selectedCategory);
-    console.log(name);
-
-    //setCurrentCategory(selectedCategory);
-    //setTermsToSearch({ categoryId: selectedCategory });
+  const handleChange = (event) => {
+    setSelectedCategory(event.target.value);
   };
 
   const getCategories = () => {
@@ -51,7 +47,7 @@ const GenreForm = ({ setTermsToSearch }) => {
           aria-labelledby="categories"
           name="categories"
           className={styles.categories}
-          value={currentCategory}
+          value={selectedCategory}
           onChange={handleChange}
         >
           {categories?.map((c, i) => (
@@ -64,10 +60,16 @@ const GenreForm = ({ setTermsToSearch }) => {
           ))}
         </RadioGroup>
       </FormControl>
-      {currentCategory && (
-        <section>
-          <button onClick={setCurrentCategory("")}>Clear category</button>
-        </section>
+      {selectedCategory && (
+        <div>
+          <button
+            onClick={() => {
+              setSelectedCategory("");
+            }}
+          >
+            Clear filters
+          </button>
+        </div>
       )}
     </>
   );
