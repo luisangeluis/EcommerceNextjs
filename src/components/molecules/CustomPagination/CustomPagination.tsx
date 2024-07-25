@@ -7,21 +7,16 @@ import Stack from "@mui/material/Stack";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useDispatch } from "react-redux";
-import { getProducts } from "@/store/slices/productsSlice";
 
-const CustomPagination = ({ totalPages }) => {
+const CustomPagination = ({ totalPages,termsToSearch, setTermsToSearch }) => {
   const [page, setPage] = useState(1);
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (page) dispatch(getProducts({ page }));
+    if (page) setTermsToSearch({ ...termsToSearch, page });
   }, [page]);
 
-  const handleChange = (e, value) => {
-    console.log(value);
-    setPage(value);
-  };
+  const handleChange = (e, value) => setPage(value);
+
 
   return (
     <section className={styles.paginationContainer}>
@@ -34,10 +29,7 @@ const CustomPagination = ({ totalPages }) => {
           className={styles.pagination}
           renderItem={(item) => (
             <PaginationItem
-              slots={{
-                previous: ArrowBackIcon,
-                next: ArrowForwardIcon,
-              }}
+              slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
               {...item}
             />
           )}

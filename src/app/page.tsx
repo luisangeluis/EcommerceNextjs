@@ -42,7 +42,11 @@ export default function Home() {
         <Products products={products.products} />
       )}
       {products.totalPages > 0 && (
-        <CustomPagination totalPages={products.totalPages} />
+        <CustomPagination
+          totalPages={products.totalPages}
+          termsToSearch={termsToSearch}
+          setTermsToSearch={setTermsToSearch}
+        />
       )}
     </section>
   );
