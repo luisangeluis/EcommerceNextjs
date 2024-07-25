@@ -12,7 +12,7 @@ import Radio from "@mui/material/Radio";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const GenreForm = ({ setTermsToSearch }) => {
+const GenreForm = ({ termsToSearch,setTermsToSearch }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -21,11 +21,11 @@ const GenreForm = ({ setTermsToSearch }) => {
   }, []);
 
   useEffect(() => {
-    setTermsToSearch({ categoryId: selectedCategory });
+    setTermsToSearch({...termsToSearch, categoryId: selectedCategory });
   }, [selectedCategory]);
 
-  const handleChange = (event) => {
-    setSelectedCategory(event.target.value);
+  const handleChange = (e) => {
+    setSelectedCategory(e.target.value);
   };
 
   const getCategories = () => {

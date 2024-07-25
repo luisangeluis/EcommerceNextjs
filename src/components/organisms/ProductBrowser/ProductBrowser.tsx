@@ -1,44 +1,40 @@
-"use client"
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "@/store/slices/productsSlice";
 //STYLES
 import styles from "./ProductBrowser.module.scss";
 //COMPONENTS
-import ProductInput from "@/components/molecules/ProductInput/ProductInput";
-import GenreForm from "@/components/organisms/GenreForm/GenreForm";
-import Backdrop from "@/components/atoms/Backdrop/Backdrop";
-import Loader from "@/components/molecules/Loader/Loader";
-import Products from "../Products/Products";
-import CustomPagination from "@/components/molecules/CustomPagination/CustomPagination";
+import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
+import InputText from "@/components/atoms/InputText/InputText";
 
-const ProductBrowser = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
-  const [termsToSearch, setTermsToSearch] = useState({});
+const ProductBrowser = ({ termsToSearch, setTermsToSearch }) => {
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    dispatch(getProducts(termsToSearch));
-  }, [termsToSearch]);
+    if (inputValue === "" && Object.keys(termsToSearch).length === 0) {
+      setTermsToSearch({});
+    }
+  }, [inputValue]);
+  
+  const handlerClick = () => {
+    if (inputValue){
+      setTermsToSearch({ ...termsToSearch, productInfo: inputValue });
+    }
+  };
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+  };
 
   return (
-    <section className={styles.productBrowser}>
-      {products.isLoading && (
-        <Backdrop customClass={"pFixed"}>
-          <Loader />
-        </Backdrop>
-      )}
-      <section>
-        <GenreForm setTermsToSearch={setTermsToSearch} />
-        <ProductInput setTermsToSearch={setTermsToSearch} termsToSearch={termsToSearch}/>
-      </section>
-      {products.products.length > 0 && (
-        <Products products={products.products} />
-      )}
-      {products.totalPages > 0 && (
-        <CustomPagination totalPages={products.totalPages} />
-      )}
-
+    <section className={styles.productFinderContainter}>
+      <InputText
+        onChange={handleChange}
+        placeholder={"Type a term"}
+        value={inputValue}
+      />
+      <BtnCustom onClick={handlerClick} customClass={"btnBlack"}>
+        Search
+      </BtnCustom>
     </section>
   );
 };

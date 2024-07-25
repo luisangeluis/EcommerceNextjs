@@ -1,4 +1,4 @@
-"use client"
+"use client";
 //STYLES
 import styles from "@/styles/home.module.scss";
 //COMPONENTS
@@ -10,9 +10,7 @@ import Loader from "@/components/molecules/Loader/Loader";
 import GenreForm from "@/components/organisms/GenreForm/GenreForm";
 import Products from "@/components/organisms/Products/Products";
 import CustomPagination from "@/components/molecules/CustomPagination/CustomPagination";
-import ProductInput from "@/components/molecules/ProductInput/ProductInput";
 import Backdrop from "@/components/atoms/Backdrop/Backdrop";
-
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -31,8 +29,12 @@ export default function Home() {
         </Backdrop>
       )}
       <section>
-        <GenreForm setTermsToSearch={setTermsToSearch} />
-        <ProductInput
+        <GenreForm 
+          setTermsToSearch={setTermsToSearch} 
+          termsToSearch={termsToSearch}
+
+        />
+        <ProductBrowser
           setTermsToSearch={setTermsToSearch}
           termsToSearch={termsToSearch}
         />
@@ -45,13 +47,4 @@ export default function Home() {
       )}
     </section>
   );
-  /*
-  return (
-    <section className={`${styles.homeContainer}`}>
-     
-      <ProductBrowser />
-      
-    </section>
-  );
-  */
 }

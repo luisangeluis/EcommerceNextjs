@@ -1,21 +1,25 @@
-.productBrowser {
-  display: grid;
-  gap: 1rem;
-  padding: .5rem;
-  background-color: var(--colorWhiteTransparent);
-  border: var(--borderWhite);
-  border-radius: 1rem;
-  transition: box-shadow 200ms ease-in-out;
+.productFinderContainter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: .5rem;
+  border-radius: .5rem;
 
-  &:hover {
-    box-shadow: 1px 1px 10px 2px var(--colorDarkTransparent);
-
+  .input {
+    padding: .5rem;
+    border-radius: 10px;
   }
 }
 
 @media screen and (min-width:992px) {
-  .productBrowser {
-    display: flex;
-    justify-content: space-between;
+  .productFinderContainter {
+    justify-content: flex-end;
+
+    flex-direction: row;
+    margin-left: 0;
+    margin-right: 0;
+    // width: 75%;
+    padding: 1rem;
   }
 }
