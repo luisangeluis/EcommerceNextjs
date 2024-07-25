@@ -13,10 +13,10 @@ const ProductBrowser = ({ termsToSearch, setTermsToSearch }) => {
       setTermsToSearch({});
     }
   }, [inputValue]);
-  
+
   const handlerClick = () => {
-    if (inputValue){
-      setTermsToSearch({ ...termsToSearch, productInfo: inputValue });
+    if (inputValue) {
+      setTermsToSearch({ productInfo: inputValue });
     }
   };
 

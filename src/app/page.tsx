@@ -29,10 +29,9 @@ export default function Home() {
         </Backdrop>
       )}
       <section>
-        <GenreForm 
-          setTermsToSearch={setTermsToSearch} 
+        <GenreForm
+          setTermsToSearch={setTermsToSearch}
           termsToSearch={termsToSearch}
-
         />
         <ProductBrowser
           setTermsToSearch={setTermsToSearch}

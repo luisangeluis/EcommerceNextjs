@@ -12,30 +12,36 @@ import Radio from "@mui/material/Radio";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const GenreForm = ({ termsToSearch,setTermsToSearch }) => {
+const GenreForm = ({ termsToSearch, setTermsToSearch }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
+  console.log({ selectedCategory });
+
   useEffect(() => {
-    getCategories();
+    //getCategories();
+    showCategories();
   }, []);
 
   useEffect(() => {
-    setTermsToSearch({...termsToSearch, categoryId: selectedCategory });
+    setTermsToSearch({ ...termsToSearch, categoryId: selectedCategory });
   }, [selectedCategory]);
+
+  useEffect(() => {
+    if (!termsToSearch.categoryId) {
+      setSelectedCategory("");
+    }
+  }, [termsToSearch]);
 
   const handleChange = (e) => {
     setSelectedCategory(e.target.value);
   };
 
-  const getCategories = () => {
-    fetch(`${apiUrl}/api/v1/categories`)
-      .then((res) => res.ok === true && res.json())
-      .then((res) => {
-        console.log(res.data);
-        setCategories(res.data);
-      })
-      .catch((error) => console.log(error.message));
+  const showCategories = async () => {
+    const data = await fetch(`${apiUrl}/api/v1/categories`);
+    const categories = await data.json();
+
+    setCategories(categories.data);
   };
 
   return (
@@ -62,13 +68,7 @@ const GenreForm = ({ termsToSearch,setTermsToSearch }) => {
       </FormControl>
       {selectedCategory && (
         <div>
-          <button
-            onClick={() => {
-              setSelectedCategory("");
-            }}
-          >
-            Clear filters
-          </button>
+          <button onClick={() => setSelectedCategory("")}>Clear filters</button>
         </div>
       )}
     </>
