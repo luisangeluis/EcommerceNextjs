@@ -8,12 +8,6 @@ import InputText from "@/components/atoms/InputText/InputText";
 const ProductBrowser = ({ termsToSearch, setTermsToSearch }) => {
   const [inputValue, setInputValue] = useState("");
 
-  useEffect(() => {
-    if (inputValue === "" && Object.keys(termsToSearch).length === 0) {
-      setTermsToSearch({});
-    }
-  }, [inputValue]);
-
   const handlerClick = () => {
     if (inputValue) {
       setTermsToSearch({ productInfo: inputValue });

@@ -10,13 +10,11 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const CustomPagination = ({ totalPages,termsToSearch, setTermsToSearch }) => {
   const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    if (page) setTermsToSearch({ ...termsToSearch, page });
-  }, [page]);
-
-  const handleChange = (e, value) => setPage(value);
-
+  
+  const handleChange = (e, value) => {
+    setPage(value);
+    setTermsToSearch({ ...termsToSearch, page });
+  };
 
   return (
     <section className={styles.paginationContainer}>

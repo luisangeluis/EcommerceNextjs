@@ -16,6 +16,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   const [termsToSearch, setTermsToSearch] = useState({});
+  const [showButtonClear,setShowButtonClear] = useState();
 
   useEffect(() => {
     dispatch(getProducts(termsToSearch));
@@ -29,11 +30,12 @@ export default function Home() {
         </Backdrop>
       )}
       <section>
-        <GenreForm
+        <ProductBrowser
           setTermsToSearch={setTermsToSearch}
           termsToSearch={termsToSearch}
         />
-        <ProductBrowser
+       
+        <GenreForm
           setTermsToSearch={setTermsToSearch}
           termsToSearch={termsToSearch}
         />
