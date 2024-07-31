@@ -1,16 +1,22 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 //STYLES
 import styles from "./ProductBrowser.module.scss";
 //COMPONENTS
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import InputText from "@/components/atoms/InputText/InputText";
 
-const ProductBrowser = ({ termsToSearch, setTermsToSearch }) => {
+const ProductBrowser = ({termsToSearch, setTermsToSearch }) => {
   const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    if (!termsToSearch.productInfo) {
+        setInputValue("");
+    }
+  }, [termsToSearch]);
 
   const handlerClick = () => {
     if (inputValue) {
-      setTermsToSearch({ productInfo: inputValue });
+      setTermsToSearch({productInfo: inputValue}); 
     }
   };
 
