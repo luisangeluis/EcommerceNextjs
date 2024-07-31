@@ -30,13 +30,15 @@ export default function Home() {
     setTermsToSearch({ page: 1, productInfo: "", categoryId: "" });
 
   return (
-    <section className={styles.productBrowser}>
+    <section className={styles.homeContainer}>
       {products.isLoading && (
         <Backdrop customClass={"pFixed"}>
           <Loader />
         </Backdrop>
       )}
-      <section>
+      
+        
+      <section className={styles.browserSection}>
         <ProductBrowser
           termsToSearch={termsToSearch}
           setTermsToSearch={setTermsToSearch}
@@ -46,7 +48,7 @@ export default function Home() {
           setTermsToSearch={setTermsToSearch}
           termsToSearch={termsToSearch}
         />
-        <BtnCustom onClick={clearTerms}>Clear all</BtnCustom>
+        <BtnCustom customClass={"btnBorderBlack"} onClick={clearTerms} >Clear all</BtnCustom>
       </section>
       {products.products.length > 0 && (
         <Products products={products.products} />

@@ -76,8 +76,12 @@ body {
 
 main {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
   margin-top: 11rem;
+
+  width: 100%;
 }
 
 @media screen and (min-width: 992px) {

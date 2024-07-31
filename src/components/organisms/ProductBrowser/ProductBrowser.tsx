@@ -26,7 +26,7 @@ const ProductBrowser = ({termsToSearch, setTermsToSearch }) => {
   };
 
   return (
-    <section className={styles.productFinderContainter}>
+    <section className={styles.productBrowserContainter}>
       <InputText
         onChange={handleChange}
         placeholder={"Type a term"}

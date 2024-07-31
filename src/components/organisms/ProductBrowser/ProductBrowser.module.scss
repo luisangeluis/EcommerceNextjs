@@ -1,19 +1,22 @@
-.productFinderContainter {
+.productBrowserContainter {
   display: flex;
-  justify-content: center;
+  //justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding:1rem .5rem;
   gap: .5rem;
   border-radius: .5rem;
 
+  /*
   .input {
     padding: .5rem;
     border-radius: 10px;
   }
+  */
 }
 
 @media screen and (min-width:992px) {
-  .productFinderContainter {
+  .productBrowserContainter {
     justify-content: flex-end;
 
     flex-direction: row;
