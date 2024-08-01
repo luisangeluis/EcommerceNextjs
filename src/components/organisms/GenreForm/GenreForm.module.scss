@@ -3,7 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  background-color: var(--colorWhite);
+  //border:var(--borderBlack);
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px 2px var(--colorBlack);
+  
   &:nth-child(1) {
     order: 2;
   }

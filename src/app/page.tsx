@@ -21,9 +21,11 @@ export default function Home() {
     productInfo: "",
     categoryId: "",
   });
+  
 
   useEffect(() => {
     dispatch(getProducts(termsToSearch));
+    
   }, [termsToSearch]);
 
   const clearTerms = () =>
@@ -36,19 +38,21 @@ export default function Home() {
           <Loader />
         </Backdrop>
       )}
-      
-        
+
       <section className={styles.browserSection}>
         <ProductBrowser
           termsToSearch={termsToSearch}
           setTermsToSearch={setTermsToSearch}
         />
-
         <GenreForm
           setTermsToSearch={setTermsToSearch}
           termsToSearch={termsToSearch}
         />
-        <BtnCustom customClass={"btnBorderBlack"} onClick={clearTerms} >Clear all</BtnCustom>
+        {products.products.length === 0 && (
+          <BtnCustom customClass={"btnBorderBlack"} onClick={clearTerms}>
+            Clear all
+          </BtnCustom>
+        )}
       </section>
       {products.products.length > 0 && (
         <Products products={products.products} />

@@ -43,8 +43,7 @@ const GenreForm = ({ termsToSearch, setTermsToSearch }) => {
   };
 
   return (
-    <>
-      <FormControl className={styles.categoriesContainer}>
+    <FormControl className={styles.categoriesContainer}>
         <FormLabel className={styles.categoriesLabel}>Category</FormLabel>
         <RadioGroup
           row
@@ -64,13 +63,7 @@ const GenreForm = ({ termsToSearch, setTermsToSearch }) => {
           ))}
         </RadioGroup>
       </FormControl>
-      {selectedCategory && (
-        <div>
-          <button onClick={() => setSelectedCategory("")}>Clear filters</button>
-        </div>
-      )}
-    </>
-  );
+    );
 };
 
 export default GenreForm;
