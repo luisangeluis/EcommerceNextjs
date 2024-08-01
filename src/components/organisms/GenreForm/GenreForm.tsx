@@ -22,7 +22,7 @@ const GenreForm = ({ termsToSearch, setTermsToSearch }) => {
 
   useEffect(() => {
     if (selectedCategory)
-      setTermsToSearch({ ...termsToSearch, categoryId: selectedCategory });
+      setTermsToSearch({ ...termsToSearch, categoryId: selectedCategory,page:1 });
   }, [selectedCategory]);
 
   useEffect(() => {

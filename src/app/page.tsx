@@ -21,11 +21,9 @@ export default function Home() {
     productInfo: "",
     categoryId: "",
   });
-  
 
   useEffect(() => {
     dispatch(getProducts(termsToSearch));
-    
   }, [termsToSearch]);
 
   const clearTerms = () =>
@@ -44,10 +42,12 @@ export default function Home() {
           termsToSearch={termsToSearch}
           setTermsToSearch={setTermsToSearch}
         />
-        <GenreForm
-          setTermsToSearch={setTermsToSearch}
-          termsToSearch={termsToSearch}
-        />
+        {products.totalResults > 0 && (
+          <GenreForm
+            setTermsToSearch={setTermsToSearch}
+            termsToSearch={termsToSearch}
+          />
+        )}
         {products.products.length === 0 && (
           <BtnCustom customClass={"btnBorderBlack"} onClick={clearTerms}>
             Clear all
@@ -57,6 +57,7 @@ export default function Home() {
       {products.products.length > 0 && (
         <Products products={products.products} />
       )}
+
       {products.totalPages > 0 && (
         <CustomPagination
           totalPages={products.totalPages}
