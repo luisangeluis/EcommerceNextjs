@@ -5,9 +5,8 @@ import styles from "./ProductBrowser.module.scss";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import InputText from "@/components/atoms/InputText/InputText";
 
-const ProductBrowser = ({termsToSearch, setTermsToSearch }) => {
+const ProductBrowser = ({termsToSearch, setTermsToSearch,setShowBtnClear }) => {
   const [inputValue, setInputValue] = useState("");
-
   
   useEffect(() => {
     if (!termsToSearch.productInfo) {
@@ -15,11 +14,10 @@ const ProductBrowser = ({termsToSearch, setTermsToSearch }) => {
     }
   }, [termsToSearch]);
   
-  
-  
   const handlerClick = () => {
     if (inputValue) {
-      setTermsToSearch({productInfo: inputValue}); 
+      setTermsToSearch({productInfo: inputValue,page:1,categoryId:""}); 
+      setShowBtnClear(true);
     }
   };
 

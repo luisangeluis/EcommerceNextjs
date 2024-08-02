@@ -25,12 +25,13 @@ const GenreForm = ({ termsToSearch, setTermsToSearch }) => {
       setTermsToSearch({ ...termsToSearch, categoryId: selectedCategory,page:1 });
   }, [selectedCategory]);
 
+  
   useEffect(() => {
     if (!termsToSearch.categoryId) {
       setSelectedCategory("");
     }
   }, [termsToSearch]);
-
+  
   const handleChange = (e) => {
     setSelectedCategory(e.target.value);
   };

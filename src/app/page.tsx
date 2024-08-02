@@ -16,6 +16,7 @@ import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 export default function Home() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
+  const [showBtnClear, setShowBtnClear] = useState(false);
   const [termsToSearch, setTermsToSearch] = useState({
     page: 1,
     productInfo: "",
@@ -26,8 +27,10 @@ export default function Home() {
     dispatch(getProducts(termsToSearch));
   }, [termsToSearch]);
 
-  const clearTerms = () =>
+  const clearTerms = () =>{
+    setShowBtnClear(false);
     setTermsToSearch({ page: 1, productInfo: "", categoryId: "" });
+  }
 
   return (
     <section className={styles.homeContainer}>
@@ -41,6 +44,7 @@ export default function Home() {
         <ProductBrowser
           termsToSearch={termsToSearch}
           setTermsToSearch={setTermsToSearch}
+          setShowBtnClear={setShowBtnClear}
         />
         {products.totalResults > 0 && (
           <GenreForm
@@ -48,11 +52,13 @@ export default function Home() {
             termsToSearch={termsToSearch}
           />
         )}
-        {products.products.length === 0 && (
+        
+        {showBtnClear === true && (
           <BtnCustom customClass={"btnBorderBlack"} onClick={clearTerms}>
             Clear all
           </BtnCustom>
         )}
+        
       </section>
       {products.products.length > 0 && (
         <Products products={products.products} />
