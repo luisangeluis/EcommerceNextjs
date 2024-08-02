@@ -50,6 +50,7 @@ export default function Home() {
           <GenreForm
             setTermsToSearch={setTermsToSearch}
             termsToSearch={termsToSearch}
+            setShowBtnClear={setShowBtnClear}
           />
         )}
         
