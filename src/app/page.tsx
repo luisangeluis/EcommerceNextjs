@@ -1,11 +1,13 @@
 "use client";
+
+import { useEffect, useState } from "react";
+//REDUX
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "@/store/slices/productsSlice";
 //STYLES
 import styles from "@/styles/home.module.scss";
 //COMPONENTS
 import ProductBrowser from "@/components/organisms/ProductBrowser/ProductBrowser";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { getProducts } from "@/store/slices/productsSlice";
 import Loader from "@/components/molecules/Loader/Loader";
 import GenreForm from "@/components/organisms/GenreForm/GenreForm";
 import Products from "@/components/organisms/Products/Products";
@@ -39,7 +41,6 @@ export default function Home() {
           <Loader />
         </Backdrop>
       )}
-
       <section className={styles.browserSection}>
         <ProductBrowser
           termsToSearch={termsToSearch}
@@ -61,10 +62,9 @@ export default function Home() {
         )}
         
       </section>
-      {products.products.length > 0 && (
+      {products.products.length > 0 ? (
         <Products products={products.products} />
-      )}
-
+      ):<h2>Not found results</h2>}
       {products.totalPages > 0 && (
         <CustomPagination
           totalPages={products.totalPages}

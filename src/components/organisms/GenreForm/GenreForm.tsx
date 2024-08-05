@@ -50,7 +50,7 @@ const GenreForm = ({ termsToSearch, setTermsToSearch,setShowBtnClear }) => {
     <FormControl className={styles.categoriesContainer}>
         <FormLabel className={styles.categoriesLabel}>Category</FormLabel>
         <RadioGroup
-          row
+          row={false}
           aria-labelledby="categories"
           name="categories"
           className={styles.categories}

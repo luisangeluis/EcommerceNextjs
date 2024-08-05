@@ -5,11 +5,13 @@ import styles from "./Alert.module.scss";
 //Fontawesome
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Alert = ({ message }) => {
   const dispatch = useDispatch();
-  const handleClick = () => dispatch(setProducts({ message: "" }));
+  const products = useSelector((state) => state.products);
+
+  const handleClick = () => dispatch(setProducts({...products, message: "" }));
 
   return (
     <section className={styles.alert}>

@@ -1,10 +1,12 @@
 .categoriesContainer {
-  padding: 1rem .5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  width: 100%;
   background-color: var(--colorWhite);
-  //border:var(--borderBlack);
   border-radius: 5px;
   box-shadow: 1px 1px 10px 2px var(--colorBlack);
   
@@ -19,24 +21,19 @@
 
   .categories {
     padding: 0 .5rem;
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
 @media screen and (min-width:768px) {
-  .categoriesContainer {
-    .categories {
-      flex-direction: row;
-
-    }
-
-  }
+ 
 }
 
 @media screen and (min-width:992px) {
   .categoriesContainer {
     align-items: flex-start;
     padding: 1rem;
+    width:initial;
 
     &:nth-child(1) {
       order: initial;

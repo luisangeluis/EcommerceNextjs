@@ -3,6 +3,10 @@
     flex-direction: column;
     flex-grow: 1;
     padding: .5rem;
+
+    .browserSection{
+        padding: .5rem;
+    }
 }
 
 @media screen and (min-width:992px) {
