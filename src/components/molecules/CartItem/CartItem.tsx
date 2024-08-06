@@ -15,13 +15,10 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 //Components
 import Select from "@/components/molecules/Select/Select";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 const productQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const CartItem = ({ item }) => {
   const router = useRouter();
-  const userToken = useSelector((state) => state.userToken);
-  const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState();
 
