@@ -20,33 +20,23 @@ const productQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const CartItem = ({ item }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState();
-
-  useEffect(() => {
-    setQuantity(item.quantity);
-  }, []);
 
   const handleDeleteClick = () => {
     const currentToken = localStorage.getItem("ecoUserToken");
+    
     +!currentToken
       ? router.push("/login")
       : dispatch(deleteCartItem(currentToken, item.id));
   };
 
-  const handleChange = (e) => {
+  const updateItems = (newQuantity) => {
     const currentToken = localStorage.getItem("ecoUserToken");
 
-    const currentValue = e.target.value;
-
-    if (
-      currentValue >= 1 &&
-      currentValue <= 10 &&
-      currentToken !== null &&
-      currentToken !== ""
+    if (currentToken !== null && currentToken !== ""
     ) {
       dispatch(
         updateCartItem(currentToken, item.id, {
-          quantity: Number(currentValue),
+          quantity: Number(newQuantity),  
         }),
       );
     }
@@ -66,8 +56,8 @@ const CartItem = ({ item }) => {
       <div className={styles.itemFooter}>
         <Select
           options={productQuantity}
-          onChange={handleChange}
-          defaultValue={item.quantity}
+          updateItems={updateItems}
+          quantity={item.quantity}
         />
       </div>
     </article>
