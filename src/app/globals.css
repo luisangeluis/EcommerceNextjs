@@ -34,6 +34,16 @@
   box-sizing: border-box;
 }
 
+html {
+  font-family: var(--font-roboto-mono);
+}
+
+h1{
+  /*font-family: var(--font-roboto-mono);*/
+}
+
+
+
 input:focus,
 input:active,
 input:disabled {

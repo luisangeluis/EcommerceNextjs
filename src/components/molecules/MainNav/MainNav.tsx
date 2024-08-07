@@ -29,7 +29,7 @@ const MainNav = ({ customClass }) => {
     if (typeof window !== undefined) {
       const currentToken = localStorage.getItem("ecoUserToken");
 
-      if (!user.id && currentToken !== "" && currentToken !== null) {
+      if (!user.id && currentToken) {
         dispatch(getUser(currentToken));
       }
     }

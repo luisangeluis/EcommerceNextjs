@@ -26,9 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.className}>
       <Providers>
-        <body className={inter.className}>
+        <body >
           <Header />
           <Cart />
           <main>{children}</main>
