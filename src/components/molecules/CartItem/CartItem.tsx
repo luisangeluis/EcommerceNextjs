@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import { deleteCartItem, updateCartItem } from "@/store/slices/cartSlice";
-
 //Styles
 import styles from "./CartItem.module.scss";
-
 //Fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-
 //Components
 import Select from "@/components/molecules/Select/Select";
+import CounterBox from "@/components/atoms/CounterBox/CounterBox";
 
 const productQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -23,21 +20,18 @@ const CartItem = ({ item }) => {
 
   const handleDeleteClick = () => {
     const currentToken = localStorage.getItem("ecoUserToken");
-    
+
     +!currentToken
       ? router.push("/login")
       : dispatch(deleteCartItem(currentToken, item.id));
   };
 
-  const updateItems = (newQuantity) => {
+  const updateItems = (value) => {
     const currentToken = localStorage.getItem("ecoUserToken");
 
-    if (currentToken !== null && currentToken !== ""
-    ) {
+    if (currentToken) {
       dispatch(
-        updateCartItem(currentToken, item.id, {
-          quantity: Number(newQuantity),  
-        }),
+        updateCartItem(currentToken, item.id, { quantity: Number(value) }),
       );
     }
   };
@@ -56,8 +50,8 @@ const CartItem = ({ item }) => {
       <div className={styles.itemFooter}>
         <Select
           options={productQuantity}
-          updateItems={updateItems}
           quantity={item.quantity}
+          updateItems={updateItems}
         />
       </div>
     </article>

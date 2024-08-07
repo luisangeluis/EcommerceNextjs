@@ -19,29 +19,18 @@ const Cart = () => {
   const [subTotal, setSubtotal] = useState(0);
   const router = useRouter();
 
-  /*
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      const currentToken = localStorage.getItem("ecoUserToken");
-
-      if (!cart.isClosed && currentToken !== null && currentToken !== "") {
-        dispatch(getCart(currentToken));
-      }
-    }
-  }, [cart.isClosed]);
-  */
-
   
   useEffect(() => {
     if (typeof window !== undefined) {
       const currentToken = localStorage.getItem("ecoUserToken");
 
-      if (currentToken !== null && currentToken !== "") {
+      if (!cart.isClosed && currentToken) {
+
         dispatch(getCart(currentToken));
       }
     }
-  }, []);
-  /*
+  }, [cart.isClosed]);
+
   useEffect(() => {
     if (!cart.isClosed) {
       let sum = cart.data.cartItems?.reduce(
@@ -51,20 +40,7 @@ const Cart = () => {
       setSubtotal(sum);
     }
   }, [cart]);
-  */
   
-  useEffect(() => {
-    if(cart.data.cartItems?.length>0){
-      
-    let sum = cart.data.cartItems?.reduce(
-    (accum, cartItem) => accum + cartItem.quantity * cartItem.product.price,
-      0,
-    );
-    setSubtotal(sum);
-    }
-    
-  }, [cart]);
-
   const handlerClick = () => dispatch(clearCart());
 
   const showCartItems = (items: []) => {
