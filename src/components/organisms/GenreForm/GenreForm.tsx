@@ -47,8 +47,9 @@ const GenreForm = ({ termsToSearch, setTermsToSearch,setShowBtnClear }) => {
   };
 
   return (
-    <FormControl className={styles.categoriesContainer}>
-        <FormLabel className={styles.categoriesLabel}>Category</FormLabel>
+    <section className={styles.genreFormContainer}>
+    <FormControl >
+        <FormLabel className={styles.genreFormLabel}>Category</FormLabel>
         <RadioGroup
           row={false}
           aria-labelledby="categories"
@@ -67,6 +68,7 @@ const GenreForm = ({ termsToSearch, setTermsToSearch,setShowBtnClear }) => {
           ))}
         </RadioGroup>
       </FormControl>
+    </section>
     );
 };
 

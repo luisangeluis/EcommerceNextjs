@@ -51,7 +51,7 @@ const Header = () => {
   return (
     <header className={`${styles.header}`}>
       <div className={styles.headerHeader}>
-        <h1 className={`titleOne`}>
+        <h1>
           <Link href={"/"}>Ecommerce</Link>
         </h1>
         {showToggle && (

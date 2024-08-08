@@ -35,14 +35,18 @@
 }
 
 html {
-  font-family: var(--font-roboto-mono);
+  font-family: var(--font-inter);
 }
 
 h1{
-  /*font-family: var(--font-roboto-mono);*/
+  font-family: var(--font-roboto-mono);
+  font-weight: 700;
+  font-size: 1.9rem;
 }
 
-
+button:hover{
+  opacity: .8;
+}
 
 input:focus,
 input:active,
@@ -61,7 +65,7 @@ img {
 }
 
 .titleOne {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .titleThree {
@@ -95,8 +99,22 @@ main {
 
   width: 100%;
 }
+@media screen and (min-width: 576px) {
+  h1{
+    font-size: 2.8rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  h1{
+    font-size: 3rem;
+  }
+}
 
 @media screen and (min-width: 992px) {
+  h1{
+  }
+  
   main {
     margin-top: 9rem;
 

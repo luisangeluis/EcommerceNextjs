@@ -3,10 +3,11 @@
   //justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding:1rem .5rem;
+  padding: .5rem;
   gap: .5rem;
   border-radius: .5rem;
-
+  box-shadow: 1px 1px 10px 2px var(--colorBlack);
+  
   /*
   .input {
     padding: .5rem;
@@ -23,6 +24,5 @@
     margin-left: 0;
     margin-right: 0;
     // width: 75%;
-    padding: 1rem;
   }
 }

@@ -2,7 +2,7 @@
 import Providers from "../store/Provider";
 //STYLES
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter,Roboto } from "next/font/google";
 //FONTAWESOME
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -13,7 +13,21 @@ import Cart from "@/components/molecules/Cart/Cart";
 
 config.autoAddCss = false;
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  weight: ['400', '900'],
+  style: ['normal'],
+});
+
+const roboto = Roboto({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable:"--font-roboto-mono"
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -26,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={`${roboto.variable} ${inter.variable}`} > 
       <Providers>
         <body >
           <Header />

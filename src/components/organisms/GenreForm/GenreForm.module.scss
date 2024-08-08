@@ -1,9 +1,7 @@
-.categoriesContainer {
+.genreFormContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
   padding: 1rem;
   width: 100%;
   background-color: var(--colorWhite);
@@ -14,7 +12,7 @@
     order: 2;
   }
 
-  .categoriesLabel {
+  .genreFormLabel {
     padding: 0 .5rem;
     color: black;
   }
@@ -30,16 +28,16 @@
 }
 
 @media screen and (min-width:992px) {
-  .categoriesContainer {
+  .genreFormContainer {
     align-items: flex-start;
-    padding: 1rem;
+    //padding: 1rem;
     width:initial;
 
     &:nth-child(1) {
       order: initial;
     }
 
-    .categoriesLabel {
+    .genreFormLabel {
       text-align: left;
     }
   }
