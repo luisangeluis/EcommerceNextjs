@@ -35,11 +35,11 @@
 }
 
 html {
-  font-family: var(--font-inter);
+  font-family: var(--font-roboto-mono);
 }
 
 h1{
-  font-family: var(--font-roboto-mono);
+  /*font-family: var(--font-roboto-mono);*/
   font-weight: 700;
   font-size: 1.9rem;
 }

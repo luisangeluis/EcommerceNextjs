@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, setCart } from "@/store/slices/cartSlice";
 import styles from "./ProductDetail.module.scss";
+import SubTitle1 from "@/components/atoms/SubTitle1/SubTitle1";
 
 const ProductDetail = ({ product }) => {
   const router = useRouter();
@@ -54,7 +55,7 @@ const ProductDetail = ({ product }) => {
               return (
                 <li key={i}>
                   <button onClick={() => handlerClickSelectedImage(image)}>
-                    <Image src={image.url} width={500} height={500} alt={""} />
+                    <Image src={image.url} width={500} height={500} alt={"hola"} />
                   </button>
                 </li>
               );
@@ -81,7 +82,7 @@ const ProductDetail = ({ product }) => {
         </div>
       </div>
       <div className={`${styles.detailBody}`}>
-        <h2>{product.title}</h2>
+        <SubTitle1>{product.title}</SubTitle1>
         <p>Acerca de este articulo</p>
         <p>{product.description}</p>
         <h3>${product.price}</h3>
