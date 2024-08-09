@@ -55,7 +55,12 @@ const ProductDetail = ({ product }) => {
               return (
                 <li key={i}>
                   <button onClick={() => handlerClickSelectedImage(image)}>
-                    <Image src={image.url} width={500} height={500} alt={"hola"} />
+                    <Image
+                      src={image.url}
+                      width={500}
+                      height={500}
+                      alt={"hola"}
+                    />
                   </button>
                 </li>
               );
@@ -82,16 +87,20 @@ const ProductDetail = ({ product }) => {
         </div>
       </div>
       <div className={`${styles.detailBody}`}>
-        <SubTitle1>{product.title}</SubTitle1>
-        <p>Acerca de este articulo</p>
+        <div>
+          <SubTitle1>{product.title}</SubTitle1>
+          <p>Acerca de este articulo</p>
+        </div>
         <p>{product.description}</p>
-        <h3>${product.price}</h3>
-        <button
-          className={`bg-emerald-500 p-2 rounded`}
-          onClick={() => handlerClickAddToCart(product)}
-        >
-          Add to cart
-        </button>
+        <div>
+          <h3>${product.price}</h3>
+          <button
+            className={`bg-emerald-500 p-2 rounded`}
+            onClick={() => handlerClickAddToCart(product)}
+          >
+            Add to cart
+          </button>
+        </div>
       </div>
     </article>
   );

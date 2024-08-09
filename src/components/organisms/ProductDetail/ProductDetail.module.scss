@@ -57,10 +57,14 @@
         grid-template-columns: 1fr;
 
         li {
-          width: 50%;
           margin-left: auto;
         }
       }
+    }
+
+    .detailBody{
+      justify-content:space-between;
+      text-align:left;
     }
   }
 }
