@@ -12,6 +12,8 @@
   --colorFiveTransparent: rgba(216, 168, 120, 0.5);
   --colorRed: #dc3545;
   --colorBlack: #6c757d;
+  --colorBlackTransparent: #6c757d50;
+
   --colorDark: #000000;
   --colorDarkTransparent: #00000050;
   --colorWhite: #ffffff;
@@ -26,6 +28,8 @@
   --borderBlack: solid 2px var(--colorBlack);
   --borderDark: solid 2px var(--colorDark);
   --borderWhite: solid 2px var(--colorWhite);
+
+  --boxShadowBlack:0px 0px 10px 2px var(--colorBlack);
 }
 
 * {
@@ -37,6 +41,8 @@
 html {
   font-family: var(--font-roboto-mono);
 }
+
+
 
 h1{
   /*font-family: var(--font-roboto-mono);*/
@@ -90,13 +96,10 @@ body {
 
 main {
   display: flex;
-  /*
-  justify-content: center;
-  align-items: center;
-  */
   flex-grow: 1;
+  
   margin-top: 11rem;
-
+  padding:1rem;
   width: 100%;
 }
 @media screen and (min-width: 576px) {
@@ -117,7 +120,14 @@ main {
   
   main {
     margin-top: 9rem;
-
     padding: 1rem 2rem;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  main{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
   }
 }

@@ -1,4 +1,6 @@
 .title2{
+  margin:.5rem 0;
+  padding:.5rem 0;
   font-size: 1.6rem;
 }
 
@@ -16,7 +18,7 @@
 }
 @media screen and (min-width: 992px){
   .title2{
+    padding:1rem;
     text-align: left;
-    margin: 1.3rem 0;
   }
 }

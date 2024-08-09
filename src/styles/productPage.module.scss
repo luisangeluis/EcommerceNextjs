@@ -2,6 +2,21 @@
   flex-grow: 1;
   width: 100%;
   height: inherit;
-  padding: 1rem 0;
   text-align: center;
+  //border:solid 1px var(--colorBlackTransparent);
+  border-radius:10px;
+  background-color:var(--colorBlackTransparent);
+}
+
+@media screen and (min-width:992px){
+  .productPage{
+    padding: 1rem;
+
+  }
+}
+
+@media screen and (min-width:1200px){
+  .productPage{
+
+  }
 }

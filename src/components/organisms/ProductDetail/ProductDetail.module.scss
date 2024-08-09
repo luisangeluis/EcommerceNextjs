@@ -1,6 +1,9 @@
 .productDetail {
   padding: 1rem 1rem;
-
+  //box-shadow:var(--boxShadowBlack);
+  border-radius:10px;
+  //background-color:var(--colorBlackTransparent);
+  
   .imagesDetail {
     margin: 1rem 0;
     padding: 1rem 0;
@@ -15,6 +18,10 @@
 
       li {
         margin: 0.5rem 0;
+        padding:.5rem;
+       // box-shadow:var(--boxShadowBlack);
+        //border-radius:2px;
+        //background-color:white;
       }
     }
 
@@ -33,6 +40,7 @@
     flex-direction: column;
     margin: 1rem 0;
     padding: 1rem 0;
+    //border:solid 1px red;
   }
 }
 
