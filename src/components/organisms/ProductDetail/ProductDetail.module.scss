@@ -40,11 +40,17 @@
     font-size: 1.2rem;
     
     .detailBodyHeader{
+      text-align: center;
+      padding:.5rem;
       font-size: 1.5rem;
     }
     
     .detailBodyMain{
       flex-grow:1;
+    }
+    .detailBodyFooter{
+      text-align: center;
+
     }
   }
 }

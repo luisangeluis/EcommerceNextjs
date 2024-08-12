@@ -21,7 +21,7 @@ const MyPurchases = () => {
     }
   }, []);
 
-  // const purchases = await getMyPurchases(userToken);
+  // const purchases = await getMyPurchases(userToken); 
   return <section className={styles.miPurchases}></section>;
 };
 

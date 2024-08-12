@@ -92,7 +92,7 @@ const ProductDetail = ({ product }) => {
       </div>
       <div className={`${styles.detailBody}`}>
         <div className={styles.detailBodyHeader}>
-          <h5>{firstMayusc(product.title)}</h5>
+          <h5 className="font-semibold">{firstMayusc(product.title)}</h5>
         
         </div>
         
@@ -100,12 +100,12 @@ const ProductDetail = ({ product }) => {
           <h6>Acerca de este articulo.</h6>
           <p>{firstMayusc(product.description)}</p>
         
-          <h3>${product.price}</h3>
+          <h3 className={`font-semibold`}>${product.price}</h3>
         </div>
         
         <div className={`${styles.detailBodyFooter} `}>
           <button
-            className={`bg-emerald-500 p-2 rounded text-right`}
+            className={`bg-emerald-500 p-2 rounded`}
             onClick={() => handlerClickAddToCart(product)}
           >
             Add to cart
