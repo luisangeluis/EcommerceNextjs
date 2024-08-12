@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 //Components
 import Select from "@/components/molecules/Select/Select";
-import CounterBox from "@/components/atoms/CounterBox/CounterBox";
+import firstMayusc from "@/utils/firstMayusc";
 
 const productQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -39,13 +39,12 @@ const CartItem = ({ item }) => {
   return (
     <article className={styles.item}>
       <div className={styles.itemHeader}>
+        <p>{firstMayusc(item.product.title)}</p>
         <button onClick={handleDeleteClick}>
           <FontAwesomeIcon icon={faTrash} className="fa fa-trash" />
         </button>
       </div>
       <div className={styles.itemBody}>
-        <p>{item.product.title}</p>
-        <p>${item.product.price}</p>
       </div>
       <div className={styles.itemFooter}>
         <Select
@@ -53,6 +52,7 @@ const CartItem = ({ item }) => {
           quantity={item.quantity}
           updateItems={updateItems}
         />
+        <p>${item.product.price}</p>
       </div>
     </article>
   );

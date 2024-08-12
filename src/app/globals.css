@@ -10,6 +10,7 @@
   --colorFourTransparent: rgba(96, 96, 120, 0.9);
   --colorFive: #d8a878;
   --colorFiveTransparent: rgba(216, 168, 120, 0.5);
+  --colorSix: #e3e6e6;
   --colorRed: #dc3545;
   --colorBlack: #6c757d;
   --colorBlackTransparent: #6c757d50;
@@ -30,6 +31,8 @@
   --borderWhite: solid 2px var(--colorWhite);
 
   --boxShadowBlack:0px 0px 10px 2px var(--colorBlack);
+  --boxShadowDark:0px 0px 10px 2px var(--borderDark);
+
 }
 
 * {
