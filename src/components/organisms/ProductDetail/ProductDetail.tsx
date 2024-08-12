@@ -10,6 +10,7 @@ import styles from "./ProductDetail.module.scss";
 //COMPONENTS
 import SubTitle1 from "@/components/atoms/SubTitle1/SubTitle1";
 import SubTitle2 from "@/components/atoms/SubTitle2/SubTitle2";
+import firstMayusc from "@/utils/firstMayusc";
 
 const ProductDetail = ({ product }) => {
   const router = useRouter();
@@ -91,13 +92,13 @@ const ProductDetail = ({ product }) => {
       </div>
       <div className={`${styles.detailBody}`}>
         <div className={styles.detailBodyHeader}>
-          <h5>{product.title}</h5>
+          <h5>{firstMayusc(product.title)}</h5>
         
         </div>
         
         <div className={styles.detailBodyMain}>
           <h6>Acerca de este articulo.</h6>
-          <p>{product.description}</p>
+          <p>{firstMayusc(product.description)}</p>
         
           <h3>${product.price}</h3>
         </div>

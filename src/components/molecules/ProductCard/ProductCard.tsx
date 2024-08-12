@@ -5,6 +5,7 @@ import styles from "./ProductCard.module.scss";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import firstMayusc from "@/utils/firstMayusc";
 
 type Props = {
   product: Product;
@@ -32,8 +33,8 @@ const ProductCard = ({ product }: Props) => {
         height={1000}
       />
       <div className={`${styles.cardBody}`}>
-        <h3>{product.title}</h3>
-        <p>{product.description}</p>
+        <h3>{firstMayusc(product.title)}</h3>
+        <p>{firstMayusc(product.description)}</p>
         <p>{product.price}</p>
       </div>
     </article>
