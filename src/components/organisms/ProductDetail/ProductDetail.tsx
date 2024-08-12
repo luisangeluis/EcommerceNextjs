@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, setCart } from "@/store/slices/cartSlice";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+//STYLES
 import styles from "./ProductDetail.module.scss";
+//COMPONENTS
 import SubTitle1 from "@/components/atoms/SubTitle1/SubTitle1";
+import SubTitle2 from "@/components/atoms/SubTitle2/SubTitle2";
 
 const ProductDetail = ({ product }) => {
   const router = useRouter();
@@ -87,20 +90,27 @@ const ProductDetail = ({ product }) => {
         </div>
       </div>
       <div className={`${styles.detailBody}`}>
-        <div>
-          <SubTitle1>{product.title}</SubTitle1>
-          <p>Acerca de este articulo</p>
+        <div className={styles.detailBodyHeader}>
+          <h5>{product.title}</h5>
+        
         </div>
-        <p>{product.description}</p>
-        <div>
+        
+        <div className={styles.detailBodyMain}>
+          <h6>Acerca de este articulo.</h6>
+          <p>{product.description}</p>
+        
           <h3>${product.price}</h3>
+        </div>
+        
+        <div className={`${styles.detailBodyFooter} `}>
           <button
-            className={`bg-emerald-500 p-2 rounded`}
+            className={`bg-emerald-500 p-2 rounded text-right`}
             onClick={() => handlerClickAddToCart(product)}
           >
             Add to cart
           </button>
         </div>
+
       </div>
     </article>
   );

@@ -12,29 +12,31 @@ import Radio from "@mui/material/Radio";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const GenreForm = ({ termsToSearch, setTermsToSearch,setShowBtnClear }) => {
+const GenreForm = ({ termsToSearch, setTermsToSearch, setShowBtnClear }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
-  
+
   useEffect(() => {
     showCategories();
   }, []);
 
   useEffect(() => {
-    if (selectedCategory)
-      {
-        setShowBtnClear(true);
-        setTermsToSearch({ ...termsToSearch, categoryId: selectedCategory,page:1 });
-      }
+    if (selectedCategory) {
+      setShowBtnClear(true);
+      setTermsToSearch({
+        ...termsToSearch,
+        categoryId: selectedCategory,
+        page: 1,
+      });
+    }
   }, [selectedCategory]);
 
-  
   useEffect(() => {
     if (!termsToSearch.categoryId) {
       setSelectedCategory("");
     }
   }, [termsToSearch]);
-  
+
   const handleChange = (e) => {
     setSelectedCategory(e.target.value);
   };
@@ -48,7 +50,7 @@ const GenreForm = ({ termsToSearch, setTermsToSearch,setShowBtnClear }) => {
 
   return (
     <section className={styles.genreFormContainer}>
-    <FormControl >
+      <FormControl>
         <FormLabel className={styles.genreFormLabel}>Category</FormLabel>
         <RadioGroup
           row={false}
@@ -69,7 +71,7 @@ const GenreForm = ({ termsToSearch, setTermsToSearch,setShowBtnClear }) => {
         </RadioGroup>
       </FormControl>
     </section>
-    );
+  );
 };
 
 export default GenreForm;

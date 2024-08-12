@@ -2,8 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom:2.5rem;
   padding: 1rem;
   width: 100%;
+  min-height: 3rem;
   background-color: var(--colorWhite);
   border-radius: 5px;
   box-shadow: 1px 1px 10px 2px var(--colorBlack);
@@ -30,6 +32,8 @@
 @media screen and (min-width:992px) {
   .genreFormContainer {
     align-items: flex-start;
+    margin-bottom:0;
+
     //padding: 1rem;
     width:initial;
 
