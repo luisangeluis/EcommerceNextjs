@@ -15,7 +15,7 @@ import MainNav from "@/components/molecules/MainNav/MainNav";
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
-  const [showToggle, setShowToggel] = useState(false);
+  const [showToggle, setShowToggle] = useState(false);
   const screenWidth = useRef(0);
 
   useEffect(() => {
@@ -40,10 +40,10 @@ const Header = () => {
     screenWidth.current = getSizeWidth();
 
     if (screenWidth.current > 992) {
-      setShowToggel(false);
+        setShowToggle(false);
       setOpenNav(true);
     } else {
-      setShowToggel(true);
+        setShowToggle(true);
       setOpenNav(false);
     }
   };

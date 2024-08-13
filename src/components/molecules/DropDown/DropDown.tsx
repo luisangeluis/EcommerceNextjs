@@ -7,7 +7,7 @@ const DropDown = ({ customClass, userName, list }) => {
   const handleClick = () => console.log("click");
 
   return (
-    <article className={styles.DropDownContainer}>
+    <article className={`${styles.DropDownContainer} ${styles.fadeIn}`}>
       <div className={styles.DropDownBody}>
         <p>User:{userName}</p>
         <BtnCustom onClick={handleClick} customClass={customClass}>
