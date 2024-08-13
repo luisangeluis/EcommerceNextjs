@@ -62,9 +62,12 @@
     text-align: left;
 
     .imagesDetail {
-      display: grid;
-      grid-template-columns: 1fr 5fr;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap:1rem;
 
+      
       .list {
         grid-template-columns: 1fr;
 
@@ -72,6 +75,7 @@
           margin-left: auto;
         }
       }
+      
     }
 
     .detailBody{

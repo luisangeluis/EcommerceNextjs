@@ -53,9 +53,10 @@ const ProductDetail = ({ product }) => {
   return (
     <article className={`${styles.productDetail} p-2`}>
       <div className={styles.imagesDetail}>
-        <ul className={styles.list}>
-          {product.productImage.length > 0 &&
-            product.productImage.map((image, i) => {
+        {/*<ul className={styles.list}>*/}
+        {product.productImage.length > 0 && (
+          <ul>
+            {product.productImage.map((image, i) => {
               return (
                 <li key={i}>
                   <button onClick={() => handlerClickSelectedImage(image)}>
@@ -69,7 +70,9 @@ const ProductDetail = ({ product }) => {
                 </li>
               );
             })}
-        </ul>
+          </ul>
+        )}
+        {/*</ul>*/}
         <div className={styles.selectedImage}>
           {product.productImage.length ? (
             <Image
@@ -93,16 +96,15 @@ const ProductDetail = ({ product }) => {
       <div className={`${styles.detailBody}`}>
         <div className={styles.detailBodyHeader}>
           <h5 className="font-semibold">{firstMayusc(product.title)}</h5>
-        
         </div>
-        
+
         <div className={styles.detailBodyMain}>
           <h6>Acerca de este articulo.</h6>
           <p>{firstMayusc(product.description)}</p>
-        
+
           <h3 className={`font-semibold`}>${product.price}</h3>
         </div>
-        
+
         <div className={`${styles.detailBodyFooter} `}>
           <button
             className={`bg-emerald-500 p-2 rounded`}
@@ -111,7 +113,6 @@ const ProductDetail = ({ product }) => {
             Add to cart
           </button>
         </div>
-
       </div>
     </article>
   );

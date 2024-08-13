@@ -3,12 +3,13 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart, setCart } from "@/store/slices/cartSlice";
-//import { setAlert } from "@/store/slices/alertSlice";
 //STYLES
 import styles from "./cartDetail.module.scss";
 //COMPONENTS
 import CartItemDetail from "@/components/molecules/CartItemDetail/CartItemDetail";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
+import PaymentBox from "@/components/molecules/PaymentBox/PaymentBox";
+import Title2 from "@/components/atoms/Title2/Title2";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -27,12 +28,10 @@ const CartDetail = () => {
         dispatch(getCart(currentToken));
       }
     }
-    // user ? dispatch(getCart(userToken)) : router.push("/login");
   }, []);
 
   const makeOrder = () => {
     let currentToken = "";
-    //if (typeof window !== undefined) {
     currentToken = localStorage.getItem("ecoUserToken");
 
     const init = {
@@ -46,35 +45,22 @@ const CartDetail = () => {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        //dispatch(setAlert(res.message));
         setTimeout(() => {
           router.push("/my-purchases");
-          //dispatch(setAlert(""));
         }, 3000);
       })
       .catch((error) => console.log(error));
-    //}
   };
 
   return (
     <section className={styles.cartDetail}>
       <div>
-        <h2>Cart detail</h2>
+        <Title2>Cart detail</Title2>
         {cart.data.cartItems?.length > 0 && (
-          <>
-            <p>
-              Total: $
-              {cart.data.cartItems?.reduce(
-                (accum, item) => accum + item.product.price * item.quantity,
-                0,
-              )}
-            </p>
-            {/*<button onClick={makeOrder}>*/}
-            <BtnCustom customClass={"btnBorderBlack"} onClick={makeOrder}>
-              Proceed to payment
-            </BtnCustom>
-            {/*</button>*/}
-          </>
+          <PaymentBox quantity={cart.data.cartItems?.reduce(
+            (accum, item) => accum + item.product.price * item.quantity,
+            0,
+          )} onClick={makeOrder}/>
         )}
       </div>
       <div className={styles.cartDetailBody}>

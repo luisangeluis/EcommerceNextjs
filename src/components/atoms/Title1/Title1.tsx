@@ -1,8 +1,8 @@
 import styles from "./Title1.module.scss";
 
-const Title1=(title:string)=>{
+const Title1=({children})=>{
   return(
-    <h1 className={styles.title1}>{title}</h1>
+    <h1 className={styles.title1}>{children}</h1>
   )
 }
 
