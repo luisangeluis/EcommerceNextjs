@@ -53,9 +53,8 @@ const ProductDetail = ({ product }) => {
   return (
     <article className={`${styles.productDetail} p-2`}>
       <div className={styles.imagesDetail}>
-        {/*<ul className={styles.list}>*/}
         {product.productImage.length > 0 && (
-          <ul>
+          <ul className={styles.list}>
             {product.productImage.map((image, i) => {
               return (
                 <li key={i}>
@@ -72,7 +71,6 @@ const ProductDetail = ({ product }) => {
             })}
           </ul>
         )}
-        {/*</ul>*/}
         <div className={styles.selectedImage}>
           {product.productImage.length ? (
             <Image
@@ -94,25 +92,26 @@ const ProductDetail = ({ product }) => {
         </div>
       </div>
       <div className={`${styles.detailBody}`}>
-        <div className={styles.detailBodyHeader}>
-          <h5 className="font-semibold">{firstMayusc(product.title)}</h5>
-        </div>
+        <article className={styles.detailBodyCard}>
+          <div className={styles.detailBodyHeader}>
+            <h5 className="font-semibold">{firstMayusc(product.title)}</h5>
+          </div>
 
-        <div className={styles.detailBodyMain}>
-          <h6>Acerca de este articulo.</h6>
-          <p>{firstMayusc(product.description)}</p>
+          <div className={styles.detailBodyMain}>
+            <h6>Acerca de este articulo.</h6>
+            <p>{firstMayusc(product.description)}</p>
+          </div>
 
-          <h3 className={`font-semibold`}>${product.price}</h3>
-        </div>
-
-        <div className={`${styles.detailBodyFooter} `}>
-          <button
-            className={`bg-emerald-500 p-2 rounded`}
-            onClick={() => handlerClickAddToCart(product)}
-          >
-            Add to cart
-          </button>
-        </div>
+          <div className={`${styles.detailBodyFooter} `}>
+            <h3 className={`font-semibold`}>${product.price}</h3>
+            <button
+              className={`bg-emerald-500 p-2 rounded`}
+              onClick={() => handlerClickAddToCart(product)}
+            >
+              Add to cart
+            </button>
+          </div>
+        </article>
       </div>
     </article>
   );

@@ -16,7 +16,7 @@ const product = async ({ params }: ProductProps) => {
 
   return (
     <section className={styles.productPage}>
-      <Title2 title={"Detail product"} />
+      <Title2>Detail product</Title2>
       <ProductDetail product={product.response} />
     </section>
   );
