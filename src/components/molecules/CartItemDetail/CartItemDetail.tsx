@@ -1,3 +1,4 @@
+import firstMayusc from "@/utils/firstMayusc";
 import styles from "./CartItemDetail.module.scss";
 
 const CartItemDetail = ({ cartItemDetail }) => {
@@ -5,8 +6,8 @@ const CartItemDetail = ({ cartItemDetail }) => {
     <article className={styles.CartItemDetail}>
       <div className={styles.body}>
         <div>
-          <h3>{cartItemDetail.product.title}</h3>
-          <p>{cartItemDetail.product.description}</p>
+          <h3>{firstMayusc(cartItemDetail.product.title)}</h3>
+          <p>{firstMayusc(cartItemDetail.product.description)}</p>
         </div>
         <div>
           <h4>Price: ${cartItemDetail.product.price}</h4>
