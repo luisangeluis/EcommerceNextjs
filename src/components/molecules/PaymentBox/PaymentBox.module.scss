@@ -1,12 +1,27 @@
 .paymentBoxContainer{
+  width: 100%;
   border: var(--borderWhite);
   padding: 1rem .5rem;
   border-radius: 10px;
+  text-align: center;
+
+  p{
+    text-align: center;
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (min-width:992px){
   .paymentBoxContainer{
     padding: 1rem;
+    width: 25%;
+
+  }
+}
+
+@media screen and (min-width:1200px){
+  .paymentBoxContainer{
+    width: min(20%,200px);
 
   }
 }

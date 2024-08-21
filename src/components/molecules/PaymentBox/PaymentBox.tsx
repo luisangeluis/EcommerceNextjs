@@ -5,7 +5,7 @@ import SubTitle1 from "@/components/atoms/SubTitle1/SubTitle1";
 const PaymentBox=({quantity,onClick})=>{
   return(
     <div className={styles.paymentBoxContainer}>
-      <SubTitle1>Total: ${quantity}.00</SubTitle1>
+      <p>Total: ${quantity}.00</p>
       <BtnCustom customClass={"btnFour"} onClick={onClick}>
         Proceed to payment
       </BtnCustom>

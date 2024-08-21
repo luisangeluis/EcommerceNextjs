@@ -29,10 +29,10 @@ export default function Home() {
     dispatch(getProducts(termsToSearch));
   }, [termsToSearch]);
 
-  const clearTerms = () =>{
+  const clearTerms = () => {
     setShowBtnClear(false);
     setTermsToSearch({ page: 1, productInfo: "", categoryId: "" });
-  }
+  };
 
   return (
     <section className={styles.homeContainer}>
@@ -54,17 +54,18 @@ export default function Home() {
             setShowBtnClear={setShowBtnClear}
           />
         )}
-        
+
         {showBtnClear === true && (
           <BtnCustom customClass={"btnBorderBlack"} onClick={clearTerms}>
             Clear all
           </BtnCustom>
         )}
-        
       </section>
+      
       {products.products.length > 0 ? (
         <Products products={products.products} />
-      ):<h2>Not found results</h2>}
+      ):<h2>{products.message}</h2>}
+      
       {products.totalPages > 0 && (
         <CustomPagination
           totalPages={products.totalPages}

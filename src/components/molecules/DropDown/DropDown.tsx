@@ -9,7 +9,7 @@ const DropDown = ({ customClass, userName, list }) => {
   return (
     <article className={`${styles.DropDownContainer} ${styles.fadeIn}`}>
       <div className={styles.DropDownBody}>
-        <p>User:{userName}</p>
+        <p>User: {userName}</p>
         <BtnCustom onClick={handleClick} customClass={customClass}>
           Log out
         </BtnCustom>
@@ -21,7 +21,6 @@ const DropDown = ({ customClass, userName, list }) => {
               </li>
             );
           })}
-          {/*<li>opcion 2</li>*/}
         </ul>
       </div>
     </article>

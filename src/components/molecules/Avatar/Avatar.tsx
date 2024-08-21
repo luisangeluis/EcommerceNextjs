@@ -4,7 +4,7 @@ import styles from "./Avatar.module.scss";
 //COMPONENTS
 import DropDown from "../DropDown/DropDown";
 
-const list = [{ route: "my-purchases", displayName: "my purchases" }];
+const list = [{ route: "my-purchases", displayName: "My purchases" }];
 
 const Avatar = ({ user, onClick, customClass }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
