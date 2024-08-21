@@ -7,12 +7,20 @@ import InputText from "@/components/atoms/InputText/InputText";
 
 const ProductBrowser = ({termsToSearch, setTermsToSearch,setShowBtnClear }) => {
   const [inputValue, setInputValue] = useState("");
-  
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     if (!termsToSearch.productInfo) {
         setInputValue("");
     }
   }, [termsToSearch]);
+
+  const showCategories = async () => {
+    const data = await fetch(`${apiUrl}/api/v1/categories`);
+    const categories = await data.json();
+
+    setCategories(categories.data);
+  };
   
   const handlerClick = () => {
     if (inputValue) {

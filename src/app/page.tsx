@@ -14,6 +14,7 @@ import Products from "@/components/organisms/Products/Products";
 import CustomPagination from "@/components/molecules/CustomPagination/CustomPagination";
 import Backdrop from "@/components/atoms/Backdrop/Backdrop";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
+import ProductBrowser2 from "@/components/organisms/ProductBrowser/ProductBrowser2";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -41,6 +42,9 @@ export default function Home() {
           <Loader />
         </Backdrop>
       )}
+      <ProductBrowser2 termsToSearch={termsToSearch} setTermsToSearch={setTermsToSearch}/>
+      {
+        /*
       <section className={styles.browserSection}>
         <ProductBrowser
           termsToSearch={termsToSearch}
@@ -61,7 +65,7 @@ export default function Home() {
           </BtnCustom>
         )}
       </section>
-      
+      */}
       {products.products.length > 0 ? (
         <Products products={products.products} />
       ):<h2>{products.message}</h2>}
