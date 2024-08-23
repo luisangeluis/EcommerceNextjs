@@ -1,0 +1,15 @@
+.browserContainer{
+  padding:.5rem;
+  border: solid 1px var(--colorFourTransparent);
+  border-radius: 10px;
+}
+@media screen and (min-width:992px){
+  .browserContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    padding:1rem;
+
+  }
+}

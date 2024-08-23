@@ -3,7 +3,7 @@ import styles from "./BtnCustom.module.scss";
 //Puedo meter todos los estilos que quiero que tenga o que podria tener este btn
 //Siempre y cuando no cambie tanto el estilo
 
-const BtnCustom = ({ onClick, children, customClass }) => {
+const BtnCustom = ({children,onClick, customClass }) => {
   return (
     <div className={styles.btnCustomContainer}>
       <button

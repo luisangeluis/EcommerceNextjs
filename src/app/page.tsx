@@ -15,6 +15,7 @@ import CustomPagination from "@/components/molecules/CustomPagination/CustomPagi
 import Backdrop from "@/components/atoms/Backdrop/Backdrop";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import ProductBrowser2 from "@/components/organisms/ProductBrowser/ProductBrowser2";
+import Browser from "@/components/molecules/Browser/Browser";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -25,11 +26,14 @@ export default function Home() {
     productInfo: "",
     categoryId: "",
   });
-
+  const [inputValue, setInputValue] = useState();
+  
   useEffect(() => {
     dispatch(getProducts(termsToSearch));
   }, [termsToSearch]);
 
+    
+  
   const clearTerms = () => {
     setShowBtnClear(false);
     setTermsToSearch({ page: 1, productInfo: "", categoryId: "" });
@@ -42,34 +46,20 @@ export default function Home() {
           <Loader />
         </Backdrop>
       )}
-      <ProductBrowser2 termsToSearch={termsToSearch} setTermsToSearch={setTermsToSearch}/>
-      {
-        /*
-      <section className={styles.browserSection}>
-        <ProductBrowser
-          termsToSearch={termsToSearch}
-          setTermsToSearch={setTermsToSearch}
-          setShowBtnClear={setShowBtnClear}
+      <section className={styles.searchSection}>
+        <Browser
+          placeholder="Type a product"
+          btnText="Search"
+          btnCustomClass="btnThree"
+          value={inputValue}
+          onChange={(e) =>setInputValue(e.target.value)}
         />
-        {products.totalResults > 0 && (
-          <GenreForm
-            setTermsToSearch={setTermsToSearch}
-            termsToSearch={termsToSearch}
-            setShowBtnClear={setShowBtnClear}
-          />
-        )}
-
-        {showBtnClear === true && (
-          <BtnCustom customClass={"btnBorderBlack"} onClick={clearTerms}>
-            Clear all
-          </BtnCustom>
-        )}
       </section>
-      */}
       {products.products.length > 0 ? (
         <Products products={products.products} />
-      ):<h2>{products.message}</h2>}
-      
+      ) : (
+        <h2>{products.message}</h2>
+      )}
       {products.totalPages > 0 && (
         <CustomPagination
           totalPages={products.totalPages}

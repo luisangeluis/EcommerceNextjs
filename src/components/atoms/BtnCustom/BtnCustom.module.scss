@@ -1,4 +1,5 @@
 .btnCustomContainer {
+  margin:.5rem 0;
   .btn {
     padding: 0.5rem 1rem;
     width: 100%;
@@ -53,6 +54,8 @@
 
 @media screen and (min-width:992px){
   .btnCustomContainer{
+    margin: 0;
+
     width: initial;
   }
 }

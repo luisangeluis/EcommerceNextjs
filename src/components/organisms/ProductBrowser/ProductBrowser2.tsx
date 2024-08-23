@@ -47,7 +47,7 @@ const ProductBrowser2 = ({ termsToSearch, setTermsToSearch }) => {
   };
 
   return (
-    <section>
+    <section className={styles.productBrowserContainer}>
       <div>
         <InputText
           onChange={(e) => setInputValue(e.target.value)}

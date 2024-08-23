@@ -1,20 +1,15 @@
-.productBrowserContainter {
-  display: flex;
-  flex-direction: column;
-  margin-bottom:2.5rem;
-  padding: .5rem;
-  gap: .5rem;
-  border-radius: .5rem;
-  box-shadow: 1px 1px 10px 2px var(--colorBlack);
+.productBrowserContainer{
+  padding:1rem .5rem;
+  
+  >div{
+    margin:1rem 0;
+  }
 }
 
-@media screen and (min-width:992px) {
-  .productBrowserContainter {
-    justify-content: flex-end;
-    flex-direction: row;
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom:0;
-
+@media screen and (min-width:992px){
+  .productBrowserContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }

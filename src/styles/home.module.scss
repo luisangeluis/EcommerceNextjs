@@ -11,6 +11,11 @@
 
 @media screen and (min-width:992px) {
     .homeContainer {
+        .searchSection{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .browserSection {
             display: flex;
             justify-content: space-between;
