@@ -41,12 +41,7 @@ const GenreForm = ({ termsToSearch, setTermsToSearch, setShowBtnClear }) => {
     setSelectedCategory(e.target.value);
   };
 
-  const showCategories = async () => {
-    const data = await fetch(`${apiUrl}/api/v1/categories`);
-    const categories = await data.json();
-
-    setCategories(categories.data);
-  };
+  const showCategories = async ():Promise<any[]> => await fetch(`${apiUrl}/api/v1/categories`);
 
   return (
     <section className={styles.genreFormContainer}>

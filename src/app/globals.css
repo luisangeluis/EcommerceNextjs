@@ -25,6 +25,8 @@
   --borderThree: solid 2px var(--colorThree);
   --borderFour: solid 2px var(--colorFour);
   --borderFive: solid 2px var(--colorFive);
+  --borderSix: solid 2px var(--colorSix);
+
   --borderRed: solid 2px var(--colorRed);
   --borderBlack: solid 2px var(--colorBlack);
   --borderDark: solid 2px var(--colorDark);
@@ -36,7 +38,7 @@
 }
 
 * {
-  margin: 0;
+  margin:0;
   padding: 0;
   box-sizing: border-box;
 }

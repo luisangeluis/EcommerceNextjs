@@ -4,6 +4,13 @@
     flex-grow: 1;
     padding: .5rem;
 
+    .searchSection{
+        padding:1rem .5rem;
+        border-radius: 10px;
+        box-shadow: var(--boxShadowDark);
+        
+    }
+    
     .browserSection{
         padding: .5rem;
     }

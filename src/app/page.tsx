@@ -16,6 +16,9 @@ import Backdrop from "@/components/atoms/Backdrop/Backdrop";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import ProductBrowser2 from "@/components/organisms/ProductBrowser/ProductBrowser2";
 import Browser from "@/components/molecules/Browser/Browser";
+import ListMui from "@/components/molecules/ListMui/ListMui";
+
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -27,16 +30,37 @@ export default function Home() {
     categoryId: "",
   });
   const [inputValue, setInputValue] = useState();
+  const [genres,setGenres] = useState();
+  const [selectedGenre,setSelectedGenre] = useState("");
   
   useEffect(() => {
     dispatch(getProducts(termsToSearch));
   }, [termsToSearch]);
 
+  useEffect(() =>{
+    showCategories()
+      .then(data=>setGenres(data.data))
+      .catch(err=>console.log({err}));
+  },[])
     
   
   const clearTerms = () => {
     setShowBtnClear(false);
     setTermsToSearch({ page: 1, productInfo: "", categoryId: "" });
+  };
+
+  const showCategories = async () => {
+    try{
+      const response = await fetch(`${apiUrl}/api/v1/categories`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      return data;
+    }catch(err){
+      console.log(err)  
+    }
   };
 
   return (
@@ -54,7 +78,14 @@ export default function Home() {
           value={inputValue}
           onChange={(e) =>setInputValue(e.target.value)}
         />
+        <ListMui 
+          label="Genres"
+          items={genres}
+          value={selectedGenre}
+          onChange={(e)=>setSelectedGenre(e.target.value)}
+        />
       </section>
+      <hr/ >
       {products.products.length > 0 ? (
         <Products products={products.products} />
       ) : (
