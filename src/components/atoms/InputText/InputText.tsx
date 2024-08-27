@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styles from "./InputText.module.scss";
 
 const InputText = ({ placeholder, value,onChange }) => {
