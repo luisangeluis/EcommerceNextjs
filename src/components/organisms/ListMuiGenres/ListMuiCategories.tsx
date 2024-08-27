@@ -1,8 +1,14 @@
 import ListMui from "@/components/molecules/ListMui/ListMui";
 import getCategories from "@/utils/getCategories";
 import { useEffect, useState } from "react";
+import { useDispatch ,useSelector } from "react-redux";
+import { setTermsToSearch } from "@/store/slices/termsToSearchSlice";
+
 
 const ListMuiCategories = () => {
+  const dispatch = useDispatch();
+  const termsToSearch = useSelector((state) => state.termsToSearch);
+  
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
 
@@ -14,7 +20,7 @@ const ListMuiCategories = () => {
 
   useEffect(()=>{
     if(selectedGenre){
-      
+      dispatch(setTermsToSearch({...termsToSearch, categoryId: selectedGenre}))
     }
   },[selectedGenre])
 

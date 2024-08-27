@@ -1,6 +1,6 @@
-import Browser from "@/components/molecules/Browser/Browser";
 import { setTermsToSearch } from "@/store/slices/termsToSearchSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Browser from "@/components/molecules/Browser/Browser";
 
 const BrowserProducts = () => {
   const dispatch = useDispatch();

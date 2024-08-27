@@ -10,7 +10,6 @@ import styles from "@/styles/home.module.scss";
 import Loader from "@/components/molecules/Loader/Loader";
 import Products from "@/components/organisms/Products/Products";
 import Backdrop from "@/components/atoms/Backdrop/Backdrop";
-import ListMui from "@/components/molecules/ListMui/ListMui";
 import BrowserProducts from "@/components/organisms/BrowserProducts/BrowserProducts";
 import { getProducts } from "@/store/slices/productsSlice";
 import getCategories from "@/utils/getCategories";
@@ -20,16 +19,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   const termsToSearch = useSelector((state) => state.termsToSearch);
-  const [genres, setGenres] = useState();
-  const [selectedGenre, setSelectedGenre] = useState("");
-
-  /*
-  useEffect(() => {
-    getCategories()
-      .then((data) => setGenres(data.data))
-      .catch((err) => console.log({ err }));
-  }, []);
-  */
+  
   useEffect(() => {
     dispatch(getProducts(termsToSearch));
   }, [termsToSearch]);
@@ -44,13 +34,6 @@ export default function Home() {
       <section className={styles.searchSection}>
         <BrowserProducts />
         <ListMuiCategories />
-        {/*
-        <ListMui
-          label="Genres"
-          items={genres}
-          value={selectedGenre}
-          onChange={(e) => setSelectedGenre(e.target.value)}
-        />*/}
       </section>
       <hr />
       {products.products.length > 0 ? (
