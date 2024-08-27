@@ -1,11 +1,9 @@
 import styles from "./ListMui.module.scss";
 //COMPONENTS
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
-import SubTitle2 from "@/components/atoms/SubTitle2/SubTitle2";
 
 interface ListMuiProps{
   label:string,
