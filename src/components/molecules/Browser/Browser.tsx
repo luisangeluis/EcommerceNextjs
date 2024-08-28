@@ -22,7 +22,7 @@ const Browser = ({
     setValue(event.target.value);
   }
   
-  console.log("browser")
+  //console.log("browser")
   return (
     <section className={styles.browserContainer}>
       <InputText placeholder={placeholder} value={value} onChange={handleChange} />

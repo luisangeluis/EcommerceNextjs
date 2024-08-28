@@ -14,6 +14,7 @@ import BrowserProducts from "@/components/organisms/BrowserProducts/BrowserProdu
 import { getProducts } from "@/store/slices/productsSlice";
 import getCategories from "@/utils/getCategories";
 import ListMuiCategories from "@/components/organisms/ListMuiGenres/ListMuiCategories";
+import PaginationMuiProducts from "@/components/organisms/PaginationMuiProducts/PaginationMuiProducts";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ export default function Home() {
       ) : (
         <h2>{products.message}</h2>
       )}
-
+      <PaginationMuiProducts />
       {/*products.totalPages > 0 && (
         <CustomPagination
           totalPages={products.totalPages}
