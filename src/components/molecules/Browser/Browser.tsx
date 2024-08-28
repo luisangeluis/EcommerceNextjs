@@ -4,6 +4,8 @@ import InputText from "@/components/atoms/InputText/InputText";
 import { useState } from "react";
 
 type BrowserProps = {
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   btnText: string;
   onClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -11,22 +13,17 @@ type BrowserProps = {
 };
 
 const Browser = ({
+  value,
+  onChange,
   placeholder,
   btnText,
   onClick,
   btnCustomClass,
 }: BrowserProps) => {
-  const [value,setValue] = useState("");
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  }
-  
-  //console.log("browser")
   return (
     <section className={styles.browserContainer}>
-      <InputText placeholder={placeholder} value={value} onChange={handleChange} />
-      <BtnCustom onClick={()=>onClick(value)} customClass={btnCustomClass}>
+      <InputText placeholder={placeholder} value={value} onChange={onChange} />
+      <BtnCustom onClick={() => onClick(value)} customClass={btnCustomClass}>
         {btnText}
       </BtnCustom>
     </section>

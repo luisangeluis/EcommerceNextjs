@@ -30,8 +30,7 @@ export default function Home() {
   useEffect(() => {
     if (termsToSearch.productInfo || termsToSearch.categoryId)
       setShowBtnClear(true);
-    else 
-      setShowBtnClear(false);
+    else setShowBtnClear(false);
   }, [termsToSearch]);
 
   const handleClick = () =>
@@ -65,9 +64,11 @@ export default function Home() {
       ) : (
         <h2 className="grow">{products.message}</h2>
       )}
-      <section className={styles.paginationSection}>
-        <PaginationMuiProducts />
-      </section>
+      {products.products.length > 0 && (
+        <section className={styles.paginationSection}>
+          <PaginationMuiProducts />
+        </section>
+      )}
     </section>
   );
 }

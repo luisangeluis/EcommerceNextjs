@@ -15,6 +15,13 @@ const PaginationMuiProducts=()=>{
     }
   },[page])
 
+  /*
+  useEffect(()=>{
+    if(page!==termsToSearch.page){
+      setPage(termsToSearch.page); 
+    }
+  },[termsToSearch])
+  */
   const handleChange=(e,value)=>setPage(value);
   
   return(

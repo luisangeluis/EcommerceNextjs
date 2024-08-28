@@ -24,6 +24,10 @@ const ListMuiCategories = () => {
     }
   },[selectedGenre])
 
+  useEffect(()=>{
+    setSelectedGenre(termsToSearch.categoryId);
+  },[termsToSearch])
+
   const handleChange = (e) => setSelectedGenre(e.target.value);
 
   return (
