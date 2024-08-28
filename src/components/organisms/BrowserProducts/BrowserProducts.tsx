@@ -8,7 +8,7 @@ const BrowserProducts = () => {
 
   const handleClick = (value) => {
     if (value)
-      dispatch(setTermsToSearch({ ...termsToSearch, productInfo: value }));
+      dispatch(setTermsToSearch({ productInfo: value }));
   };
 
   return (
