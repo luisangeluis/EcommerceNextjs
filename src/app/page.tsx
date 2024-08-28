@@ -42,14 +42,9 @@ export default function Home() {
       ) : (
         <h2>{products.message}</h2>
       )}
+      <section className={styles.paginationSection}>
       <PaginationMuiProducts />
-      {/*products.totalPages > 0 && (
-        <CustomPagination
-          totalPages={products.totalPages}
-          termsToSearch={termsToSearch}
-          setTermsToSearch={setTermsToSearch}
-        />
-      )*/}
+      </section>
     </section>
   );
 }

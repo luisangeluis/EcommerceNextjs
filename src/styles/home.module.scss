@@ -1,5 +1,7 @@
 .homeContainer {
     display: flex;
+    justify-content: space-between;
+    
     flex-direction: column;
     flex-grow: 1;
     padding: .5rem;
@@ -10,9 +12,11 @@
         box-shadow: var(--boxShadowDark);
         
     }
-    
-    .browserSection{
-        padding: .5rem;
+
+    .paginationSection{
+        display:flex;
+        justify-content: center;
+        align-items:center;
     }
 }
 
@@ -22,15 +26,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-        .browserSection {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
 
-            > :first-child{
-                order: 2;
+            
+            >:nth-child(1){
+                 order:2;   
             }
         }
+       
     }
 }
