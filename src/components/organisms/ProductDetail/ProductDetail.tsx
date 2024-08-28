@@ -98,7 +98,7 @@ const ProductDetail = ({ product }) => {
           </div>
 
           <div className={styles.detailBodyMain}>
-            <h6>Acerca de este articulo.</h6>
+            <h6>About this article.</h6>
             <p>{firstMayusc(product.description)}</p>
           </div>
 

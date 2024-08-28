@@ -12,7 +12,6 @@ import Products from "@/components/organisms/Products/Products";
 import Backdrop from "@/components/atoms/Backdrop/Backdrop";
 import BrowserProducts from "@/components/organisms/BrowserProducts/BrowserProducts";
 import { getProducts } from "@/store/slices/productsSlice";
-import getCategories from "@/utils/getCategories";
 import ListMuiCategories from "@/components/organisms/ListMuiGenres/ListMuiCategories";
 import PaginationMuiProducts from "@/components/organisms/PaginationMuiProducts/PaginationMuiProducts";
 
