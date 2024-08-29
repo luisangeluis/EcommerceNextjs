@@ -24,13 +24,15 @@ export default function Home() {
   const [showBtnClear, setShowBtnClear] = useState(false);
 
   useEffect(() => {
+    console.log("termsToSearch")
     dispatch(getProducts(termsToSearch));
-  }, [termsToSearch]);
 
-  useEffect(() => {
-    if (termsToSearch.productInfo || termsToSearch.categoryId)
+    if (termsToSearch.productInfo || termsToSearch.categoryId){
       setShowBtnClear(true);
-    else setShowBtnClear(false);
+    }
+    else {
+      setShowBtnClear(false);
+    }
   }, [termsToSearch]);
 
   const handleClick = () =>
