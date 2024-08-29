@@ -50,13 +50,13 @@ export const getProducts =
         if (!data.totalResults)
           dispatch(
             setProducts({ ...data, isLoading: false, message: "no results" }),
-          );
+         );
         else dispatch(setProducts({ ...data, isLoading: false }));
       })
       .catch((error) => {
         console.log(error);
         dispatch(
           setProducts({ isLoading: false, message: "Unexpected error" }),
-        );
+       );
       });
   };

@@ -3,30 +3,26 @@ import { setTermsToSearch } from "@/store/slices/termsToSearchSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const PaginationMuiProducts=()=>{
-  const products = useSelector(state=>state.products);
-  const termsToSearch = useSelector(state=>state.termsToSearch);
-  const [page,setPage] = useState(1);
+const PaginationMuiProducts = () => {
+  const products = useSelector((state) => state.products);
+  const termsToSearch = useSelector((state) => state.termsToSearch);
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    if(page){
-      dispatch(setTermsToSearch({...termsToSearch,page}))
+  useEffect(() => {
+    if (page) {
+      dispatch(setTermsToSearch({ ...termsToSearch, page }));
     }
-  },[page])
+  }, [page]);
 
-  /*
-  useEffect(()=>{
-    if(page!==termsToSearch.page){
-      setPage(termsToSearch.page); 
-    }
-  },[termsToSearch])
-  */
-  const handleChange=(e,value)=>setPage(value);
-  
-  return(
-    <PaginationMui totalPages={products.totalPages} page={page} onChange={handleChange}/>
-  )
-  
-}
+  const handleChange = (e, value) => setPage(value);
+
+  return (
+    <PaginationMui
+      totalPages={products.totalPages}
+      page={page}
+      onChange={handleChange}
+    />
+  );
+};
 export default PaginationMuiProducts;
