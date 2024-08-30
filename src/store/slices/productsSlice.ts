@@ -50,7 +50,7 @@ export const getProducts =
         if (!data.totalResults)
           dispatch(
             setProducts({ ...data, isLoading: false, message: "no results" }),
-         );
+         ) ;
         else dispatch(setProducts({ ...data, isLoading: false }));
       })
       .catch((error) => {

@@ -10,7 +10,8 @@ const PaginationMuiProducts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (page) {
+    const currentPage = termsToSearch.page;
+    if (page !== currentPage) {
       dispatch(setTermsToSearch({ ...termsToSearch, page }));
     }
   }, [page]);
@@ -20,7 +21,7 @@ const PaginationMuiProducts = () => {
   return (
     <PaginationMui
       totalPages={products.totalPages}
-      page={page}
+      page={products.currentPage}
       onChange={handleChange}
     />
   );

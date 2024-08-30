@@ -21,7 +21,7 @@ import ProductCardGroup from "@/components/organisms/ProductCardGroup/ProductCar
 
 export default function Home() {
   const dispatch = useDispatch();
-  // const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products);
   const termsToSearch = useSelector((state) => state.termsToSearch);
 
   useEffect(() => {
@@ -31,24 +31,17 @@ export default function Home() {
 
   return (
     <section className={styles.homeContainer}>
-      {/* {products.isLoading && (
+      {products.isLoading && (
         <Backdrop customClass={"pFixed"}>
           <Loader />
         </Backdrop>
-      )} */}
+      )}
       <ProductSearchSection />
       <hr />
       <ProductCardGroup />
-      {/* {products.products.length > 0 ? (
-        <Products products={products.products} />
-      ) : (
-        <h2 className="grow">{products.message}</h2>
-      )} */}
-      {/* {products.products.length > 0 && (
-        <section className={styles.paginationSection}>
-          <PaginationMuiProducts />
-        </section>
-      )} */}
+      <section className={styles.paginationSection}>
+        <PaginationMuiProducts />
+      </section>
     </section>
   );
 }
