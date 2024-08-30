@@ -17,7 +17,11 @@ const ListMuiCategories = () => {
 
   const handleChange = (e) =>
     dispatch(
-      setTermsToSearch({ ...termsToSearch, categoryId: e.target.value })
+      setTermsToSearch({
+        ...termsToSearch,
+        categoryId: e.target.value,
+        page: 1,
+      })
     );
 
   return (
