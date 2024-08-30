@@ -7,35 +7,24 @@ import { setTermsToSearch } from "@/store/slices/termsToSearchSlice";
 const ListMuiCategories = () => {
   const dispatch = useDispatch();
   const termsToSearch = useSelector((state) => state.termsToSearch);
-
-  const [genres, setGenres] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState("");
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     getCategories()
-      .then((data) => setGenres(data.data))
+      .then((data) => setCategories(data.data))
       .catch((err) => console.log({ err }));
   }, []);
 
-  useEffect(() => {
-    if (selectedGenre) {
-      dispatch(
-        setTermsToSearch({ ...termsToSearch, categoryId: selectedGenre })
-      );
-    }
-  }, [selectedGenre]);
-
-  useEffect(() => {
-    setSelectedGenre(termsToSearch.categoryId);
-  }, [termsToSearch]);
-
-  const handleChange = (e) => setSelectedGenre(e.target.value);
+  const handleChange = (e) =>
+    dispatch(
+      setTermsToSearch({ ...termsToSearch, categoryId: e.target.value })
+    );
 
   return (
     <ListMui
       label="Categories"
-      items={genres}
-      value={selectedGenre}
+      items={categories}
+      value={termsToSearch.categoryId}
       onChange={handleChange}
     />
   );

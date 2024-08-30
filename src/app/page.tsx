@@ -39,6 +39,7 @@ export default function Home() {
       <ProductSearchSection />
       <hr />
       <ProductCardGroup />
+
       <section className={styles.paginationSection}>
         <PaginationMuiProducts />
       </section>
