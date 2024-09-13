@@ -58,7 +58,8 @@ export default function Home() {
   };
 
   const handleClick = (value) => {
-    if (value) dispatch(setTermsToSearch({ productInfo: value }));
+    if (value)
+      dispatch(setTermsToSearch({ categoryId: "", productInfo: value }));
   };
 
   const setCategory = (e) => {
