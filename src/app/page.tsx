@@ -8,16 +8,15 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "@/styles/home.module.scss";
 //COMPONENTS
 import Loader from "@/components/molecules/Loader/Loader";
-import Products from "@/components/organisms/Products/Products";
 import Backdrop from "@/components/atoms/Backdrop/Backdrop";
-import BrowserProducts from "@/components/organisms/BrowserProducts/BrowserProducts";
 import { getProducts } from "@/store/slices/productsSlice";
-import ListMuiCategories from "@/components/organisms/ListMuiGenres/ListMuiCategories";
-import PaginationMuiProducts from "@/components/organisms/PaginationMuiProducts/PaginationMuiProducts";
 import { setTermsToSearch } from "@/store/slices/termsToSearchSlice";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
-import ProductCardGroup from "@/components/organisms/ProductCardGroup/ProductCardGroup";
 import Browser from "@/components/molecules/Browser/Browser";
+import ListMui from "@/components/molecules/ListMui/ListMui";
+import getCategories from "@/utils/getCategories";
+import ProductCard from "@/components/molecules/ProductCard/ProductCard";
+import PaginationMui from "@/components/molecules/CustomPagination/PaginationMui";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -26,6 +25,13 @@ export default function Home() {
 
   const [showBtnClear, setShowBtnClear] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategories()
+      .then((data) => setCategories(data.data))
+      .catch((err) => console.log({ err }));
+  }, []);
 
   useEffect(() => {
     console.log("termsToSearch");
@@ -55,6 +61,20 @@ export default function Home() {
     if (value) dispatch(setTermsToSearch({ productInfo: value }));
   };
 
+  const setCategory = (e) => {
+    dispatch(
+      setTermsToSearch({
+        ...termsToSearch,
+        categoryId: e.target.value,
+        page: 1,
+      })
+    );
+  };
+
+  const setPage = (e, value) => {
+    dispatch(setTermsToSearch({ ...termsToSearch, page: value }));
+  };
+
   return (
     <section className={styles.homeContainer}>
       {products.isLoading && (
@@ -71,7 +91,12 @@ export default function Home() {
           btnCustomClass="btnThree"
           onClick={handleClick}
         />
-        <ListMuiCategories />
+        <ListMui
+          label="Categories"
+          items={categories}
+          value={termsToSearch.categoryId}
+          onChange={setCategory}
+        />
         {showBtnClear === true && (
           <BtnCustom onClick={clearTerms} customClass={"btnBorderBlack"}>
             Clear all
@@ -79,11 +104,16 @@ export default function Home() {
         )}
       </div>
       <hr />
-      <ProductCardGroup />
-
-      <section className={styles.paginationSection}>
-        <PaginationMuiProducts />
+      <section>
+        {products.products.map((product, i: number) => (
+          <ProductCard product={product} key={i} />
+        ))}
       </section>
+      <PaginationMui
+        totalPages={products.totalPages}
+        page={products.currentPage}
+        onChange={setPage}
+      />
     </section>
   );
 }
