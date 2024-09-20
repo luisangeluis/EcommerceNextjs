@@ -44,7 +44,8 @@ export default function Home() {
     }
   }, [termsToSearch]);
 
-  const clearTerms = () =>
+  const clearTerms = () => {
+    setInputValue("");
     dispatch(
       setTermsToSearch({
         page: 1,
@@ -52,6 +53,7 @@ export default function Home() {
         categoryId: "",
       })
     );
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -83,7 +85,7 @@ export default function Home() {
           <Loader />
         </Backdrop>
       )}
-      <div>
+      <section className={styles.searchSection}>
         <Browser
           value={inputValue}
           onChange={handleChange}
@@ -103,18 +105,22 @@ export default function Home() {
             Clear all
           </BtnCustom>
         )}
-      </div>
+      </section>
       <hr />
-      <section>
+      <section className={styles.productsSection}>
         {products.products.map((product, i: number) => (
           <ProductCard product={product} key={i} />
         ))}
       </section>
-      <PaginationMui
-        totalPages={products.totalPages}
-        page={products.currentPage}
-        onChange={setPage}
-      />
+      {products.totalResults > 0 && (
+        <section className={styles.paginationSection}>
+          <PaginationMui
+            totalPages={products.totalPages}
+            page={products.currentPage}
+            onChange={setPage}
+          />
+        </section>
+      )}
     </section>
   );
 }

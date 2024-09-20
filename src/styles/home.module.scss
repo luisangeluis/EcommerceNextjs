@@ -20,6 +20,16 @@
     }
 }
 
+@media screen and (min-width:768px){
+    .homeContainer{
+        .productsSection{
+            display:grid;
+            grid-template-columns: repeat(2,1fr);
+            gap:.5rem;
+        }
+    }
+}
+
 @media screen and (min-width:992px) {
     .homeContainer {
         .searchSection{
@@ -32,6 +42,26 @@
                  order:2;   
             }
         }
+
+        .productsSection{
+            grid-template-columns: repeat(3,1fr);
+        }
        
+    }
+}
+
+@media screen and (min-width:1200px){
+    .homeContainer{
+        .productsSection{
+            grid-template-columns: repeat(4,1fr);
+        }
+    }
+}
+
+@media screen and (min-width:1400px){
+    .homeContainer{
+        .productsSection{
+            grid-template-columns: repeat(5,1fr);
+        }
     }
 }
