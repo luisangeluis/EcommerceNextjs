@@ -1,22 +1,24 @@
-.subTitle2{
+.subTitle2 {
   font-size: 1.1rem;
 }
 
-@media screen and (min-width: 576px){
-  .subTitle2{
+@media screen and (min-width: 576px) {
+  .subTitle2 {
     font-size: 1.3rem;
 
   }
 }
-@media screen and (min-width: 768px){
-  .subTitle2{
+
+@media screen and (min-width: 768px) {
+  .subTitle2 {
     font-size: 1.5rem;
 
   }
 }
-@media screen and (min-width: 992px){
-  .subTitle2{
-    text-align: left;
+
+@media screen and (min-width: 992px) {
+  .subTitle2 {
+    //text-align: left;
     margin: 1.2rem 0;
   }
 }

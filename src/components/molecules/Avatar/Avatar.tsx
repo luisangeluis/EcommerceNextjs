@@ -19,7 +19,7 @@ const Avatar = ({ user, onClick, customClass }) => {
       {openDropdown && (
         <DropDown
           userName={user?.firstName}
-          customClass={"btnThree"}
+          customClass={"btnBorderDark"}
           list={list}
         />
       )}
