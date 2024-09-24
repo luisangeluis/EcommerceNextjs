@@ -54,13 +54,16 @@ const CartDetail = () => {
 
   return (
     <section className={styles.cartDetail}>
-        <Title2>Cart detail</Title2>
       <div className={styles.cartDetailHeader}>
+        <Title2>Cart detail</Title2>
         {cart.data.cartItems?.length > 0 && (
-          <PaymentBox quantity={cart.data.cartItems?.reduce(
-            (accum, item) => accum + item.product.price * item.quantity,
-            0,
-          )} onClick={makeOrder}/>
+          <PaymentBox
+            quantity={cart.data.cartItems?.reduce(
+              (accum, item) => accum + item.product.price * item.quantity,
+              0,
+            )}
+            onClick={makeOrder}
+          />
         )}
       </div>
       <div className={styles.cartDetailBody}>

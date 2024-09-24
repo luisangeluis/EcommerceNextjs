@@ -19,13 +19,11 @@ const Cart = () => {
   const [subTotal, setSubtotal] = useState(0);
   const router = useRouter();
 
-  
   useEffect(() => {
     if (typeof window !== undefined) {
       const currentToken = localStorage.getItem("ecoUserToken");
 
       if (!cart.isClosed && currentToken) {
-
         dispatch(getCart(currentToken));
       }
     }
@@ -40,7 +38,7 @@ const Cart = () => {
       setSubtotal(sum);
     }
   }, [cart]);
-  
+
   const handlerClick = () => dispatch(clearCart());
 
   const showCartItems = (items: []) => {
@@ -61,17 +59,17 @@ const Cart = () => {
       )}
       <section className={styles.cartContainer}>
         <div className={styles.cartHeader}>
-          <BtnCustom onClick={handlerClick}>
+          <BtnCustom onClick={handlerClick} customClass="font-semibold">
             <FontAwesomeIcon icon={faX} className="fa-solid fa-x" />
           </BtnCustom>
-          <h3 className={`titleFour`}>Subtotal</h3>
-          <p>{`$${subTotal ? subTotal : "00"}.00`}</p>
           <BtnCustom
             onClick={() => router.push("/cart")}
-            customClass={"btnDark"}
+            customClass={"btnFour"}
           >
             Detail cart
           </BtnCustom>
+          <h3 className={`titleFour`}>Subtotal</h3>
+          <p>{`$${subTotal ? subTotal : "00"}.00`}</p>
         </div>
         <div className={`${styles.cartBody}`}>
           {cart.data.cartItems?.length === 0 && <h3>No items</h3>}

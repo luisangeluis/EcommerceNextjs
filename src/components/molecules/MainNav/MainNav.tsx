@@ -81,7 +81,11 @@ const MainNav = ({ customClass }) => {
         <>
           {user.isLoading && <Loader />}
           {cart.isClosed && (
-            <BtnCustom onClick={handlerClick} customClass={"btnWhite"}>
+            <BtnCustom
+              onClick={handlerClick}
+              customClass={`btnWhite`}
+              disabled={pathname === "/cart" && true}
+            >
               <FontAwesomeIcon
                 icon={faCartShopping}
                 className="fa-solid fa-cart-shopping"
