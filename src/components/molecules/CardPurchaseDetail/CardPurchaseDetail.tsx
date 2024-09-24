@@ -10,20 +10,20 @@ const CardPurchaseDetail = ({ purchaseDetail }) => {
   return (
     <article className={styles.CardPurchaseDetailContainer}>
       <div className={styles.header}>
-        <SubTitle2>Order number: {purchaseDetail.id}</SubTitle2>
+        <p className="font-bold text-xl">Order number: {purchaseDetail.id}</p>
         <p>{`-- Created: ${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} --`}</p>
-        <br /> 
+        <br />
       </div>
       <div className={styles.body}>
         {purchaseDetail.orderDetails.map((e) => {
           return (
             <div key={e.id}>
-            <div className={styles.detail}>
-              <p>Quantity: {e.quantity}</p>
-              <p>Price: {e.price}</p>
-              <SubTitle2>Subtotal: {e.subtotal}</SubTitle2>
-            </div>
-              <hr/>
+              <div className={styles.detail}>
+                <p>Quantity: {e.quantity}</p>
+                <p>Price: {e.price}</p>
+                <SubTitle2>Subtotal: {e.subtotal}</SubTitle2>
+              </div>
+              <hr />
             </div>
           );
         })}
