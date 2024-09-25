@@ -7,31 +7,36 @@ import DropDown from "../DropDown/DropDown";
 const list = [{ route: "my-purchases", displayName: "My purchases" }];
 
 const Avatar = ({ user, onClick, customClass }) => {
-  const dropdownRef = useRef(null);
   const [openDropdown, setOpenDropdown] = useState(false);
-  console.log({ openDropdown });
+  const dropdownRef = useRef(null);
+  //console.log({ openDropdown });
 
   useEffect(() => {
-    const hideDropdown = (e) => {
-      console.log("click document");
+    document.addEventListener("click", closeDropdown);
+    document.addEventListener("keydown", checkKey);
 
-      if (openDropdown) {
-        console.log("drop opened");
-        /*
-        if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-          setOpenDropdown(false);
-        }*/
-      }
-    };
-
-    document.addEventListener("click", hideDropdown);
-
+    // Limpia el evento al desmontar el componente
     return () => {
-      document.removeEventListener("click", hideDropdown);
+      document.removeEventListener("click", closeDropdown);
+      document.removeEventListener("keydown", checkKey);
     };
-  }, []);
+  }, [openDropdown]);
 
-  const handleClick = () => setOpenDropdown(!openDropdown);
+  const handleClick = (e) => {
+    e.stopPropagation();
+    setOpenDropdown(!openDropdown);
+  };
+
+  const closeDropdown = (e) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setOpenDropdown(false);
+    }
+  };
+
+  const checkKey = (e) => {
+    console.log(e.code);
+    if (e.key === "Escape") setOpenDropdown(false);
+  };
 
   return (
     <article className={styles.avatarContainer}>
