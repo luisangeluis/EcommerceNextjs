@@ -13,7 +13,7 @@ const DropDown = ({ customClass, userName, list }) => {
     <article className={`${styles.DropDownContainer} ${styles.fadeIn}`}>
       <div className={styles.DropDownBody}>
         <p
-          className="font-semibold rounded-lg p-2"
+          className="font-semibold"
           style={{
             backgroundColor: "var(--colorFour)",
             color: "var(--colorWhite)",
