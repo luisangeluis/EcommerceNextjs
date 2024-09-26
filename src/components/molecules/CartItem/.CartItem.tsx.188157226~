@@ -57,12 +57,12 @@ const CartItem = ({ item }) => {
         )}
       </div>
       <div className={styles.itemFooter}>
-        <div className="absolute bottom-2 left-2">
-          <Select
-            options={productQuantity}
-            quantity={item.quantity}
-            updateItems={updateItems}
-          />
+        <div className="absolute top-2 right-2">
+        <Select
+          options={productQuantity}
+          quantity={item.quantity}
+          updateItems={updateItems}
+        />
         </div>
         <p>${item.product.price} c/u</p>
       </div>
