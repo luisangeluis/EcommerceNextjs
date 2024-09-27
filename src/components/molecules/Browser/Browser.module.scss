@@ -1,12 +1,15 @@
-.browserContainer{
-  margin:1rem 0;
-  padding:.5rem;
-  //border: var(--borderFour);
-  //border-radius: 10px;
+.browserContainer {
+  margin: 1rem 0;
+  //padding: .5rem;
+  height: 2.5rem;
+
+  >* {
+    height: 100%;
+  }
 }
 
-@media screen and (min-width:992px){
-  .browserContainer{
+@media screen and (min-width:992px) {
+  .browserContainer {
     display: flex;
     gap: .5rem;
 

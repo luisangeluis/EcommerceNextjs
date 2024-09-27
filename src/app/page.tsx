@@ -1,20 +1,22 @@
 "use client";
-
 import { useEffect, useState } from "react";
+
 //REDUX
 import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "@/store/slices/productsSlice";
+import { setTermsToSearch } from "@/store/slices/termsToSearchSlice";
+
+//UTILITIES
+import getCategories from "@/utils/getCategories";
 
 //STYLES
 import styles from "@/styles/home.module.scss";
 //COMPONENTS
 import Loader from "@/components/molecules/Loader/Loader";
 import Backdrop from "@/components/atoms/Backdrop/Backdrop";
-import { getProducts } from "@/store/slices/productsSlice";
-import { setTermsToSearch } from "@/store/slices/termsToSearchSlice";
 import BtnCustom from "@/components/atoms/BtnCustom/BtnCustom";
 import Browser from "@/components/molecules/Browser/Browser";
 import ListMui from "@/components/molecules/ListMui/ListMui";
-import getCategories from "@/utils/getCategories";
 import ProductCard from "@/components/molecules/ProductCard/ProductCard";
 import PaginationMui from "@/components/molecules/CustomPagination/PaginationMui";
 
@@ -51,7 +53,7 @@ export default function Home() {
         page: 1,
         productInfo: "",
         categoryId: "",
-      })
+      }),
     );
   };
 
@@ -70,7 +72,7 @@ export default function Home() {
         ...termsToSearch,
         categoryId: e.target.value,
         page: 1,
-      })
+      }),
     );
   };
 
