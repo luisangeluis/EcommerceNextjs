@@ -1,11 +1,15 @@
 "use client";
-
-import type { Product } from "@/types";
-import styles from "./ProductCard.module.scss";
-
+//NEXT
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import firstMayusc from "@/utils/firstMayusc";
+
+//TYPES
+import type { Product } from "@/types";
+
+//STYLES
+import styles from "./ProductCard.module.scss";
+
 
 type Props = {
   product: Product;

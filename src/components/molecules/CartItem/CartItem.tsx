@@ -1,5 +1,12 @@
+//React
 import { useState, useEffect } from "react";
+//import noImage from "./no-image.png";
+//import nextImage from "/next.svg";
+//import vercelImage from "/vercel.svg";
+
+//Next
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import { deleteCartItem, updateCartItem } from "@/store/slices/cartSlice";
@@ -11,7 +18,6 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 //Components
 import Select from "@/components/molecules/Select/Select";
 import firstMayusc from "@/utils/firstMayusc";
-import Image from "next/image";
 
 const productQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -46,15 +52,17 @@ const CartItem = ({ item }) => {
         <p>{firstMayusc(item.product.title)}</p>
       </div>
       <div className={styles.itemBody}>
-        {item.product.productImage.length > 0 && (
-          <Image
-            src={item.product.productImage[0].url}
-            alt={item.product.title}
-            width={100}
-            height={100}
-            style={{ borderRadius: "5px" }}
-          />
-        )}
+        <Image
+          src={
+            item.product.productImage > 0
+              ? item.product.productImage[0].url
+              : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
+          }
+          alt={item.product.title}
+          width={100}
+          height={100}
+          style={{ borderRadius: "5px" }}
+        />
       </div>
       <div className={styles.itemFooter}>
         <div className="absolute bottom-2 left-2">

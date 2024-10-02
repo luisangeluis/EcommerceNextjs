@@ -38,7 +38,7 @@ export default function Home() {
   useEffect(() => {
     console.log("termsToSearch");
     dispatch(getProducts(termsToSearch));
-
+    //comment test
     if (termsToSearch.productInfo || termsToSearch.categoryId) {
       setShowBtnClear(true);
     } else {

@@ -98,7 +98,8 @@ const ProductDetail = ({ product }) => {
           </div>
 
           <div className={styles.detailBodyMain}>
-            <h6>About this article.</h6>
+            <h4 className="font-bold">About this article.</h4>
+
             <p>{firstMayusc(product.description)}</p>
           </div>
 
