@@ -22,16 +22,17 @@ const DropDown = ({ customClass, userName, list, onClick }) => {
         <ul className={styles.list}>
           {list.map((e, i) => {
             return (
-              <li
-                key={i}
-                style={{
-                  backgroundColor: "var(--colorSix)",
-                  borderRadius: "5px",
-                  padding: ".5rem",
-                  fontWeight: "bold",
-                }}
-              >
-                <Link href={`/${e.route}`}>{`${e.displayName}`}</Link>
+              <li key={i}>
+                <Link
+                  href={`/${e.route}`}
+                  style={{
+                    backgroundColor: "var(--colorSix)",
+                    borderRadius: "5px",
+                    padding: ".5rem",
+                    fontWeight: "bold",
+                    display: "block",
+                  }}
+                >{`${e.displayName}`}</Link>
               </li>
             );
           })}
