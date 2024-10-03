@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+//import noImage from "@/../public/no-image.png";
 
 //REDUX
 import { useDispatch, useSelector } from "react-redux";
@@ -120,6 +122,7 @@ export default function Home() {
             totalPages={products.totalPages}
             page={products.currentPage}
             onChange={setPage}
+            
           />
         </section>
       )}

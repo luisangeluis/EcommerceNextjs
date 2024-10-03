@@ -1,25 +1,30 @@
-.paginationContainer {
+.paginationMuiContainer {
   display: flex;
   justify-content: space-around;
-  align-items: center;  
+  align-items: center;
   padding: 1rem .5rem;
 
-  .pagination{
-    font-size: 2.5rem;
-    // background-color: var(--colorFour);
-    color:blue;
-    font-weight: bold;
+  .pagination {
+    color: blue;
     border-radius: 10px;
     border: var(--borderFour);
+
+
+    .paginationItem {
+      font-weight: 200;
+      font-size: 1.5rem;
     }
-  
+  }
+
+
 }
 
-@media screen and (min-width:992px){
-  .paginationContainer{
+
+@media screen and (min-width:992px) {
+  .paginationContainer {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    
+
   }
 }
