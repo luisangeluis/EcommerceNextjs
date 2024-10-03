@@ -3,10 +3,13 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Avatar.module.scss";
 //COMPONENTS
 import DropDown from "../DropDown/DropDown";
+import { useDispatch } from "react-redux";
+import { clearUser } from "@/store/slices/userSlice";
 
 const list = [{ route: "my-purchases", displayName: "My purchases" }];
 
 const Avatar = ({ user, onClick, customClass }) => {
+  const dispatch= useDispatch();
   const [openDropdown, setOpenDropdown] = useState(false);
   const dropdownRef = useRef(null);
   //console.log({ openDropdown });
@@ -38,6 +41,11 @@ const Avatar = ({ user, onClick, customClass }) => {
     if (e.key === "Escape") setOpenDropdown(false);
   };
 
+  const logOut=()=>{
+    localStorage.removeItem("ecoUserToken");
+    dispatch(clearUser());
+  }
+
   return (
     <article className={styles.avatarContainer}>
       <button className={styles.avatarBtn} onClick={handleClick}>
@@ -49,6 +57,7 @@ const Avatar = ({ user, onClick, customClass }) => {
             userName={user?.firstName}
             customClass={"btnBorderDark"}
             list={list}
+            onClick={logOut}
           />
         </div>
       )}

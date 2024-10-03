@@ -6,9 +6,7 @@ import Link from "next/link";
 import SubTitle2 from "@/components/atoms/SubTitle2/SubTitle2";
 import firstMayusc from "@/utils/firstMayusc";
 
-const DropDown = ({ customClass, userName, list }) => {
-  const handleClick = () => console.log("click");
-
+const DropDown = ({ customClass, userName, list, onClick }) => {
   return (
     <article className={`${styles.DropDownContainer} ${styles.fadeIn}`}>
       <div className={styles.DropDownBody}>
@@ -38,7 +36,7 @@ const DropDown = ({ customClass, userName, list }) => {
             );
           })}
         </ul>
-        <BtnCustom onClick={handleClick} customClass={customClass}>
+        <BtnCustom onClick={onClick} customClass={customClass}>
           Log out
         </BtnCustom>
       </div>

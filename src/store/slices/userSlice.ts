@@ -25,15 +25,14 @@ const userSlice = createSlice({
     },
     clearUser: () => {
       return {
-        data: {
-          id: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          roleId: "",
-        },
+        id: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        roleId: "",
         isLoading: false,
-        error: "",
+        isError: false,
+        message: "",
       };
     },
   },
