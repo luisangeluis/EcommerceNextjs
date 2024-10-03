@@ -3,8 +3,8 @@ import styles from "./CardPurchaseDetail.module.scss";
 import SubTitle1 from "@/components/atoms/SubTitle1/SubTitle1";
 
 const CardPurchaseDetail = ({ purchaseDetail }) => {
-  console.log(purchaseDetail.createdAt);
-  console.log(new Date(purchaseDetail.createdAt));
+  //console.log(purchaseDetail.createdAt);
+  //console.log(new Date(purchaseDetail.createdAt));
   const date = new Date(purchaseDetail.createdAt);
 
   return (

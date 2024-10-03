@@ -38,7 +38,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    console.log("termsToSearch");
+    //console.log("termsToSearch");
     dispatch(getProducts(termsToSearch));
     //comment test
     if (termsToSearch.productInfo || termsToSearch.categoryId) {
@@ -122,7 +122,6 @@ export default function Home() {
             totalPages={products.totalPages}
             page={products.currentPage}
             onChange={setPage}
-            
           />
         </section>
       )}

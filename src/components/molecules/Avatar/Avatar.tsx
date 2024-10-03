@@ -9,7 +9,7 @@ import { clearUser } from "@/store/slices/userSlice";
 const list = [{ route: "my-purchases", displayName: "My purchases" }];
 
 const Avatar = ({ user, onClick, customClass }) => {
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
   const [openDropdown, setOpenDropdown] = useState(false);
   const dropdownRef = useRef(null);
   //console.log({ openDropdown });
@@ -37,14 +37,14 @@ const Avatar = ({ user, onClick, customClass }) => {
   };
 
   const checkKey = (e) => {
-    console.log(e.code);
+    //console.log(e.code);
     if (e.key === "Escape") setOpenDropdown(false);
   };
 
-  const logOut=()=>{
+  const logOut = () => {
     localStorage.removeItem("ecoUserToken");
     dispatch(clearUser());
-  }
+  };
 
   return (
     <article className={styles.avatarContainer}>

@@ -19,9 +19,9 @@ const MyPurchases = () => {
 
       if (currentToken) {
         getPurchases(currentToken)
-          .then((res) =>res.json())
+          .then((res) => res.json())
           .then((res) => {
-            console.log(res.response);
+            //console.log(res.response);
             setPurchases(res.response);
           })
           .catch((error) => console.log(error));
@@ -46,7 +46,9 @@ const MyPurchases = () => {
   return (
     <section className={styles.myPurchases}>
       <Title2>My purchases</Title2>
-      {purchases?.map((e) => <CardPurchaseDetail purchaseDetail={e} key={e.id}/>)}
+      {purchases?.map((e) => (
+        <CardPurchaseDetail purchaseDetail={e} key={e.id} />
+      ))}
     </section>
   );
 };
