@@ -2,12 +2,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  //flex-direction: column;
+  position: relative;
   padding: 0.5rem;
   flex-grow: 1;
+
+  .user {
+    box-shadow: var(--boxShadowBlack);
+    padding: .5rem;
+    border-radius: 10px;
+    top: 0;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .loginContainer {
     padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .loginContainer {
+    .user {
+      top: 10%;
+
+    }
   }
 }
