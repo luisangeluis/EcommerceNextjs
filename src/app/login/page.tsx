@@ -7,10 +7,10 @@ const login = () => {
     <section className={styles.loginContainer}>
       <section className={`${styles.user} absolute`}>
         <p>
-          email: <b>user.one@correo.com</b>
+          <b>Email: </b>user.one@correo.com
         </p>
         <p>
-          Password: <b>12345</b>
+          <b>Pass: </b>12345
         </p>
       </section>
 
