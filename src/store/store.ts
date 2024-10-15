@@ -5,12 +5,17 @@ import modalContainer from "./slices/modalContainerSlice";
 import products from "./slices/productsSlice";
 import termsToSearch from "./slices/termsToSearchSlice";
 
-export default configureStore({
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+
+const store = configureStore({
   reducer: {
     cart: cartReducer,
     user,
     modalContainer,
     products,
-    termsToSearch
+    termsToSearch,
   },
 });
+
+export default store;

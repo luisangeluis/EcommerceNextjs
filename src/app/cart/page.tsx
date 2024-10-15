@@ -1,7 +1,8 @@
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "@/store/hook";
 import { getCart, setCart } from "@/store/slices/cartSlice";
 //STYLES
 import styles from "./cartDetail.module.scss";
@@ -14,7 +15,7 @@ import Title2 from "@/components/atoms/Title2/Title2";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const CartDetail = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const cart = useSelector((state: any) => state.cart);
 
