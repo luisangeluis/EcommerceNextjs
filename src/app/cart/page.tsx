@@ -1,8 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
-import { useAppDispatch } from "@/store/hook";
+import { useAppDispatch, useAppSelector } from "@/store/hook";
 import { getCart, setCart } from "@/store/slices/cartSlice";
 //STYLES
 import styles from "./cartDetail.module.scss";
@@ -17,7 +16,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 const CartDetail = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const cart = useSelector((state: any) => state.cart);
+  const cart = useAppSelector((state: any) => state.cart);
 
   useEffect(() => {
     console.log("naciendo cartDetail");

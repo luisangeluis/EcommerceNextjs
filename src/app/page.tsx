@@ -4,9 +4,9 @@ import Image from "next/image";
 //import noImage from "@/../public/no-image.png";
 
 //REDUX
-import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "@/store/slices/productsSlice";
 import { setTermsToSearch } from "@/store/slices/termsToSearchSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hook";
 
 //UTILITIES
 import getCategories from "@/utils/getCategories";
@@ -23,9 +23,9 @@ import ProductCard from "@/components/molecules/ProductCard/ProductCard";
 import PaginationMui from "@/components/molecules/CustomPagination/PaginationMui";
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
-  const termsToSearch = useSelector((state) => state.termsToSearch);
+  const dispatch = useAppDispatch();
+  const products = useAppSelector((state) => state.products);
+  const termsToSearch = useAppSelector((state) => state.termsToSearch);
 
   const [showBtnClear, setShowBtnClear] = useState(false);
   const [inputValue, setInputValue] = useState("");
