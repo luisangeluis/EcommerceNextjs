@@ -16,7 +16,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 const CartDetail = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state: any) => state.cart);
 
   useEffect(() => {
     console.log("naciendo cartDetail");
